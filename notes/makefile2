@@ -19,10 +19,12 @@ hellomake.h
   void myPrintHelloMake(void);
 
 /* p compilar
- This compiles the two .c files and names the executable hellomake
+ This compiles the two .c files and names the executable hellomake 
+                                          (the file that will be created, after compiling)
  The -I. is included so that gcc will look in the current directory (.)
  for the include file hellomake.h. */
 gcc -o hellomake hellomake.c hellofunc.c -I.
+$  ./hellomake //--> p rodar
 
 
 // with make file

@@ -45,6 +45,8 @@ string
 
 void 
   (void *) -> ponteiro p void
+  void(*f)(int) -> function retorna void e recebe um int
+  int(*f)(char*) -> function retorna int e recbe um char*
 
 array
   array[] = *array
@@ -172,7 +174,7 @@ null = '\0'
       .age = 30
   };
 
-  ----
+  // ----
   typedef	struct s_point
   {
     int x;
@@ -180,3 +182,32 @@ null = '\0'
   } t_point;
 
   t_point point; // sem o struct
+  // ----------------
+
+// File
+   /* Posix Open function
+    The first parameter : Path, 
+      location of the file that you wish to open.
+      when the file is in the same directory in which the file
+      to be opened resides,you can omit its path or write twice.
+    The second parameter : Flag,
+      options with which you can open a file.
+      O_RDONLY, O_WRONLY, O_RDWR, O_CREAT, and O_EXCL (prevent file creation)
+      You can combine more than one flag at once, separated by "|"
+    */
+
+    #include <stdio.h>
+    #include <fcntl.h>
+    #include <errno.h>
+
+    extern int errno;
+    int file_descriptor = open("nome.txt", O_RDONLY);
+    printf("%d", file_descriptor);
+    if (file_descriptor < 0)
+    {
+      printf("Erro %d", errno);
+    }
+
+    file_descriptor == 3, if success
+                        -1, fail
+    
