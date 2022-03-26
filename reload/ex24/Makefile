@@ -13,6 +13,7 @@ $(NAME):
 
 clean:
 	/bin/rm -f $(OBJ)
+
 fclean: clean
 	/bin/rm -f $(NAME)
 

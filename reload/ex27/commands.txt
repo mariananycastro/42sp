@@ -1,0 +1,9 @@
+gerando .o
+	gcc -c -Wall -Werror -Wextra ft_display_file.c
+	gcc -o ft_display_file ft_display_file.o -I.
+  ./ft_display_file bola.txt
+
+
+sem gerar .o
+  gcc -o ft_display_file ft_display_file.c -I.
+  ./ft_display_file bola.txt
