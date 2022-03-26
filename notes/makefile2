@@ -1,0 +1,80 @@
+// I made this file only to take notes, so it may not always makes sense :D
+
+hellomake.c
+    #include <hellomake.h> //inclui o .h
+    int main() {
+      myPrintHelloMake();
+      return(0);
+    }	
+
+hellofunc.c
+    #include <stdio.h>
+    #include <hellomake.h> //inclui o .h
+    void myPrintHelloMake(void) {
+      printf("Hello makefiles!\n");
+      return;
+    }
+	
+hellomake.h
+  void myPrintHelloMake(void);
+
+/* p compilar
+ This compiles the two .c files and names the executable hellomake
+ The -I. is included so that gcc will look in the current directory (.)
+ for the include file hellomake.h. */
+gcc -o hellomake hellomake.c hellofunc.c -I.
+
+
+// with make file
+hellomake: hellomake.c hellofunc.c
+            //  list of files on which the command depends on, 
+            // if this files change this command must be executed
+  gcc -o hellomake hellomake.c hellofunc.c -I.
+
+// p compilar
+// make hellomake
+
+// ----
+CC=gcc // c compiler
+CFLAGS=-I. //flasg to compiler command
+DEPS = hellomake.h // todos os arquivos .c dependendem do .h
+OBJ = hellomake.o hellofunc.o 
+
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+  /*.o file depends upon the .c version of the file and 
+  the .h files included in the DEPS macro. 
+
+  -c flag says to generate the object file --> file.o
+
+  $@ and $^, which are the left and right sides of the :
+
+  -o $@ says to put the output of the compilation in the file 
+  named on the left side of the :
+  
+   $< is the first item in the dependencies list, 
+   and the CFLAGS macro is defined as above.
+  */
+
+hellomake: hellomake.o hellofunc.o
+  $(CC) -o hellomake hellomake.o hellofunc.o
+// isso vira isso
+hellomake: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)
+  
+
+  /*A file ending in .o is an object file. The compiler creates an object 
+    file for each source file, before linking them together, into the final
+    executable.
+  
+  files--hellomake.o and hellofunc.o--in the dependency list and in the 
+  rule, make knows it must first compile the .c versions individually, 
+  and then build the executable hellomake.
+    */
+
+// ---------------
+myprogram.exe: myprogram.o
+// file.exe depends on file.o
+    $(CC) -o myprogram.exe myprogram.o
+// how to  create myprogram.exe from myprogram.o
+

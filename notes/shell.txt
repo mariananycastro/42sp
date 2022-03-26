@@ -1,0 +1,68 @@
+// I made this file only to take notes, so it may not always makes sense :D
+
+$ cd ~.ssh/
+$ cat id_rsa.pub
+$ git clone ... diretorio
+$ wget link_arquivo
+$ pwd => caminho do arquivo
+$ man comando_no_terminal => consulta o que este comando faz
+
+$ mkdir
+$ touch
+touch test1 -t 202106012146 => altera data de alteração do arquivo
+touch -h -t 201301291810 myfile.txt => alterar data de alteração p link
+
+# Criar arquivo com link_arquivo
+$ ln nome_arquivo_copiado nome_link
+  não permitido p diretorio
+
+$ ln -s nome_arquivo_copiado nome_link (soft_link)
+ln -s test0 test6 
+drwxrwxr-x 2 mariana mariana 4096 Mar 22 18:45 test0
+lrwxrwxrwx 1 mariana mariana    5 Mar 22 18:50 test6 -> test0
+
+$ rm -rf
+
+# listar
+## autorizações
+$ ls -l 
+tipo de arquivo
+(diretorio, link(atalho) ou arquivo)                                                      Modification time
+d rwxrwxr-x          2                      mariana     mariana       4096                Mar 22 18:45       test0
+  autorizações       Number of hard links   Owner name  Owner group   File size in bytes                     file name
+https://riptutorial.com/bash/example/2194/list-files-in-a-long-listing-format
+
+# autorizações
+drwx => 1(referencia arquivo) grupo nome
+d: dir l:atalho
+
+alterar permissões
+$ chmod 777 -R /path/to/Dir 
+    0 = ---
+    1 = --x
+    2 = -w-
+    3 = -wx
+    4 = r-
+    5 = r-x
+    6 = rw-
+    7 = rwx
+
+alterar grupo ownership
+$ chgrp OpsGroup /usr/database/demo.dbf
+
+Change the group ownership of a directory and all sub-directories to 'OpsGroup', display all the changes made:
+$ chgrp -c -R OpsGroup /usr/database/
+
+A file's owner can be changed using the chown command.
+$ sudo chown kate file1.txt
+
+# descompactar
+$ tar -cf nome.tar arquivo_p_compactar
+$ tar -xf nome.tar
+$ tar -xzf nome.tar.gz
+
+# github
+  git remote -v
+   git remote set-url origin url_git_hub
+    git@vogsphere-v2.42sp.org.br:vogsphere/intra-uuid-b0cdb3f6-e999-4e3e-ae54-b6408d95577e-4062538-mcastro
+  
