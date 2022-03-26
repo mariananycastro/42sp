@@ -1,0 +1,6 @@
+gcc -Wall -Werror -Wextra -c ./filec/*.c -I ./header
+ar -rc libft.a *.o
+
+gcc main.o libft.a
+./a.out a c b
+
