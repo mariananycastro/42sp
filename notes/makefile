@@ -30,3 +30,43 @@ I made this file only to take notes, so it may not always makes sense :D
 	command, only the library (.a) file need be referenced
 
 	gcc main.c file_name.a
+
+
+	-----
+	1. Compile the ``.c'' file containing the source code
+		gcc -Wall -g -c hello.c
+
+		-c : produce an object file called (in this case) ``hello.o''.
+		-g : tells the compiler to include information needed by the debugger
+
+	2. Link the ``.o'' file to produce an executable 
+		gcc -o hello hello.o -lm
+
+		-o : tells C what to name the executable
+		-lm : tells C to link in the math libraries.
+
+	3. Run the executable in the usual way
+		gcc -Wall -g -o hello hello.c -lm
+
+		if your entire program is contained within a single file, you can do
+		the compilation and linking in one step by entering the command
+
+	---
+	multiple files
+	putting the various functions that make up the program into more than one file. 
+--> compiling, linking, and running 
+
+1. Compile each of the ``.c'' files separately.
+	gcc -Wall -g -c main.c
+	gcc -Wall -g -c help.c
+
+2. Link the two resulting ``.o'' files into a single executable program.
+	gcc -o demo main.o help.o -lm
+
+	This results in an executable called ``demo''.
+
+3. Run the resulting executable.
+	demo
+
+
+

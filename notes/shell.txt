@@ -1,6 +1,10 @@
 // I made this file only to take notes, so it may not always makes sense :D
 
-$ cd ~.ssh/
+
+norminette -R CheckForbiddenSourceHeader
+norminette -R CheckDefine
+
+$ cd ~/.ssh
 $ cat id_rsa.pub
 $ git clone ... diretorio
 $ wget link_arquivo

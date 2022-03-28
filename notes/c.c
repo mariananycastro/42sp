@@ -19,9 +19,10 @@ sth > 0 ? sth_happens : sth_els_happens;
 //  macro preprocessor
 
 // -> header file
-#include <stdio.h> // printf("string %s", var) %d, %s, %lu, %f, %zu (sizeof)
+#include <stdio.h> // printf("string %s", var) %d, %s, %lu, %f, %zu (sizeof) / puts("") ou puts(var)
 #include <unistd.h> // write(1, &var, n_caracteres)
 #include "arquvivo.c" // prototipar void function(charx);
+#include  <bsd/string.h> //strlcpy gcc main.c -lbsd
 
 int main() {}
 
@@ -74,6 +75,12 @@ null = '\0'
 // variavel / var
   typedef int bolinha; 
   bolinha number = 1;
+
+  int *p, *q; // cria 2 var ponteiro.
+
+// string 
+  white_spaces = { 9 .. 13 } + 32
+  non_printable = { 0 .. 31 } + 127
 
 // main                    
   int main(int argc,              char *artgv[]) {}
@@ -184,6 +191,10 @@ null = '\0'
   t_point point; // sem o struct
   // ----------------
 
+  read:
+    https://c-for-dummies.com/blog/?p=3708
+    http://c-for-dummies.com/blog/?p=2708
+
 // File
    /* Posix Open function
     The first parameter : Path, 
@@ -210,4 +221,5 @@ null = '\0'
 
     file_descriptor == 3, if success
                         -1, fail
+
     

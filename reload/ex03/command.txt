@@ -1,0 +1,6 @@
+mkdir bolinha
+touch ./bolinha/test1.sh ./bolinha/teste.txt ./bolinha/test2.sh ./bolinha/teste3.rb
+touch test1.sh teste5.rb teste2.sh
+
+
+./find_sh.sh | cat -e
