@@ -23,8 +23,6 @@
 // ex19
 // gcc -Wall -Werror -Wextra ft_sort_params.c && ./a.out teste1 abc teste0 
 
-
-
 void ft_putchar(char letter)
 {
   write(1, &letter, 1);

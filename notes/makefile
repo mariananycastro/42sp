@@ -24,13 +24,17 @@ I made this file only to take notes, so it may not always makes sense :D
 	ar : An archive is a single file holding a collection of other files in 
 	a structure that makes it possible to retrieve the original individual files 
 	(called members of the archive). 
-
+	ar creates an index, this index is updated in the archive whenever ar makes
+	a change to its contents
+	-r : replace existing or insert new file(s) into the archive
+		(ar t file_name.a - list of files in the index)
+		(ar p file_name.a - show content)
+		(ar d file_name.a file_to_delete.txt)
 
 5. Now, instead of having to include all relevant file names in the compilation
 	command, only the library (.a) file need be referenced
 
 	gcc main.c file_name.a
-
 
 	-----
 	1. Compile the ``.c'' file containing the source code
@@ -67,6 +71,13 @@ I made this file only to take notes, so it may not always makes sense :D
 
 3. Run the resulting executable.
 	demo
+
+---
+gcc -E : preprocessor 
+		-S : translate to assembly 
+		-c : assembly to executable, generate .o files
+		-o : to object file -> gcc file.c -o tip -> ./tip
+					create a link between files .o, just need to prototype the functions
 
 
 
