@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcastro <mariananycastro@gmail.com>        +#+  +:+       +#+        */
+/*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 00:32:11 by mcastro           #+#    #+#             */
-/*   Updated: 2022/03/28 00:34:24 by mcastro          ###   ########.fr       */
+/*   Updated: 2022/03/30 20:39:33 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ char	*ft_strdup(char *src)
 		copy[i] = src[i];
 		i++;
 	}
+	copy[i] = '\0';
 	return (copy);
 }
