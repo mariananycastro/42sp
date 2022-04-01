@@ -6,25 +6,25 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 22:00:42 by mariana           #+#    #+#             */
-/*   Updated: 2022/03/31 22:00:44 by mariana          ###   ########.fr       */
+/*   Updated: 2022/03/31 22:30:30 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_numeric(char caracter)
+static int	ft_is_numeric(char caracter)
 {
 	if (caracter >= 48 && caracter <= 57)
 		return (1);
 	return (0);
 }
 
-int	ft_is_white_space(char caracter)
+static int	ft_is_white_space(char caracter)
 {
 	if (caracter == 32 || (caracter >= 9 && caracter <= 13))
 		return (1);
 	return (0);
 }
 
-int	ft_turn_to_number(int number, char str)
+static int	ft_turn_to_number(int number, char str)
 {
 	int	new_number;
 

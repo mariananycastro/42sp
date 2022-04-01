@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 00:32:11 by mcastro           #+#    #+#             */
-/*   Updated: 2022/03/31 22:15:36 by mariana          ###   ########.fr       */
+/*   Updated: 2022/03/31 22:27:51 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(char *src)
 	int		i;
 	int		size;
 
-	size = ft_length(src);
+	size = ft_strlen(src);
 	copy = (char *) malloc((size) * sizeof(char));
 	if (copy == NULL)
 	{
