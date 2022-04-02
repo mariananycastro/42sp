@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_if.c                                      :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/28 01:32:52 by mcastro           #+#    #+#             */
-/*   Updated: 2022/03/31 22:02:15 by mariana          ###   ########.fr       */
+/*   Created: 2022/04/02 13:01:54 by mariana           #+#    #+#             */
+/*   Updated: 2022/04/02 13:02:03 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_count_if(char **tab, int (*f)(char*))
-{
-	int	i;
-	int	answer;
+char *ft_substr(char const *s, unsigned int start, size_t len){
+    char *substring;
+    size_t i;
 
-	i = 0;
-	answer = 0;
-	while (tab[i])
-	{
-		if (f(tab[i]) == 1)
-			answer++;
-		i++;
-	}
-	return (answer);
+    if (!s)
+        return (NULL);
+    substring = (char *) malloc((len) * sizeof(char));
+    if (substring == NULL)
+        return (NULL);
+    i = 0;
+    while(s[start] && i < len - 1)
+    {
+        substring[i] = s[start];
+        start++;
+        i++;
+    }
+    return (substring);
 }

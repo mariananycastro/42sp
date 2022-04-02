@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:13:41 by mariana           #+#    #+#             */
-/*   Updated: 2022/03/31 22:27:09 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/02 13:44:13 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,27 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stddef.h>
 
-int							ft_atoi(char *str);
-int							ft_count_if(char **tab, int (*f)(char*));
-void						ft_foreach(int *tab, int length, void (*f)(int));
-void						ft_ft(int *nbr);
-int							ft_is_prime(int nb);
-void						ft_print(int argc, char *argv[ ]);
-void						ft_putchar(char c);
-void						ft_putnbr_base(int nbr, char *base);
-void						ft_putstr(char *str);
-int							*ft_range(int min, int max);
-int							ft_recursive_factorial(int nb);
-int							ft_recursive_power(int nb, int power);
-void						ft_rev_int_tab(int *tab, int size);
-void						ft_sort_int_tab(int *tab, int size);
-int							ft_sqrt(int nb);
-int							ft_strcmp(char *s1, char *s2);
-char						*ft_strcpy(char *dest, char *src);
-char						*ft_strdup(char *src);
+int							ft_atoi(char *str); // retorn int de acordo com string recebida
+void						ft_bzero(void *s, size_t n); // desaloca n espaços da string s
+int							ft_isalnum(int c); // return se é num ou letra
+int							ft_isalpha(int c); // return se é letra
+int							ft_isascii(int c); // return se faz parte tabela ascii
+int							ft_isdigit(int c); // return se é num
+int							ft_islower(int c); // return se é letra minus
+int							ft_isprint(int c); // return se é printable
+int							ft_isspace(int c); // return se é space
+int							ft_isupper(int c); // return se é letra maius
+
+// talvez refazer??
+void						*ft_memcpy(void *dest, const void *src, size_t n); // copia n data de *src p *dest
+char						*ft_strdup(char *src); // return copia de src
 unsigned	int		ft_strlcat(char *dest, char *src, unsigned int size);
 unsigned	int		ft_strlcpy(char *dest, char *src, unsigned int size);
-int							ft_strlen(char *str);
-char						*ft_strstr(char *str, char *to_find);
-void						ft_swap(int *a, int *b);
+
+int							ft_strlen(char const *str);
+char						*ft_substr(char const *s, unsigned int start, size_t len); // returno copia a partir do start a string s, até a len max da copia 
+char						*ft_strjoin(char const *s1, char const *s2); // return nova string concatenando s1 e s2
+char						*ft_strtrim(char const *s1, char const *set);
 #endif

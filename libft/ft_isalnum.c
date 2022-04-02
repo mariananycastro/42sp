@@ -1,29 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 22:02:55 by mariana           #+#    #+#             */
-/*   Updated: 2022/03/31 22:03:06 by mariana          ###   ########.fr       */
+/*   Created: 2022/04/01 19:03:18 by mariana           #+#    #+#             */
+/*   Updated: 2022/04/02 12:46:52 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_is_prime(int nb)
-{
-	int	i;
-
-	i = 2;
-	if (nb <= 1)
-		return (0);
-	while (i <= nb / i)
-	{
-		if (nb % i == 0)
-			return (0);
-		i++;
-	}
-	return (1);
+int ft_isalnum(int c){
+    return (ft_isalpha(c) || ft_isdigit(c));
 }

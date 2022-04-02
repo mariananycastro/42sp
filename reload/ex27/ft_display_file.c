@@ -7,9 +7,9 @@ int	main(int argc, char **argv)
 	int		fd;
 
 	if (argc < 2)
-		write(1, "File name missing.\n", 20);
+		write(1, "File name missing.\n", 19);
 	else if (argc > 2)
-		write(1, "Too many arguments.\n", 21);
+		write(1, "Too many arguments.\n", 20);
 	else
 	{
 		fd = open(argv[1], O_RDONLY);
