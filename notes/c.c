@@ -277,3 +277,11 @@ null = '\0'
 	qual o tipo de variavel eu quero utilizar
     (char *) malloc (i * sizeof(char));
 					tamanho da string
+
+
+//
+write(#, "string", n_space)
+#
+// 0 entrada padrao - stdin
+// 1 saida padrao - stdout
+// 2 erro padrao - stderr

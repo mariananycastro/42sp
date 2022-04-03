@@ -41,4 +41,7 @@ char						*ft_strjoin(char const *s1, char const *s2); // return nova string con
 char						*ft_strtrim(char const *s1, char const *set); // retorna s1 removendo set no inicio e final de s1 
 char						**ft_split(char const *s, char c); // divide s a cada c, e return array de string
 char						*ft_itoa(int n); // return uma string de um numero;
+void						ft_putchar_fd(char c, int fd); // print char c
+void						ft_putendl_fd(char *s, int fd); // print string s + new line
+void						ft_putstr_fd(char *s, int fd); // print string s
 #endif

@@ -33,7 +33,7 @@ int main(){
     ft_memcpy(&dest[0], &str[2], 4);
     printf("0 %d\n", str[0]);
     printf("0 %d\n", str[1]);
-    printf("0 %d\n", str[2]);
+    printf("51 %d\n", str[2]);
     printf("52 %d\n", str[3]);
     printf("53 %d\n", str[4]);
 
@@ -87,4 +87,11 @@ int main(){
     puts("ft_itoa");
 	
 	puts(ft_itoa(-1230));
+
+	puts("-----");
+    puts("write");
+	ft_putchar_fd(97, 1);
+	puts ("\n");
+	ft_putendl_fd("abc\n", 1);
+	ft_putstr_fd("aaa\n", 1);
 }
