@@ -66,7 +66,7 @@ char **ft_split(char const *s, char c){
 			count_letters++;
 		i++;
 	}
-	if(count_letters != 0)
+	if (count_letters != 0)
 		ft_set_str(s, array, array_index, begin_string, count_letters);
 	array[array_index + 1] = '\0';
 	return (array);

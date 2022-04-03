@@ -6,10 +6,11 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:20:27 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/02 11:38:03 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/03 19:37:18 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit(int c){
-    return (c >= 48 && c <= 57);
+int	ft_isdigit(int c)
+{
+	return (c >= 48 && c <= 57);
 }

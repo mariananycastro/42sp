@@ -6,16 +6,16 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 16:35:17 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/03 18:51:42 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/03 19:59:41 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int ft_size(int n)
+static int	ft_size(int n)
 {
-	int size;
-	int copy_n;
+	int	size;
+	int	copy_n;
 
 	copy_n = n;
 	size = 1;
@@ -24,26 +24,28 @@ static int ft_size(int n)
 		copy_n = copy_n * -1;
 		size++;
 	}
-	while(copy_n / 10 >= 1){
+	while (copy_n / 10 >= 1)
+	{
 		copy_n = (copy_n / 10);
 		size++;
 	}
 	return (size);
 }
 
-char *ft_itoa(int n){
-	int size;
-	char *string;
-	int i;
-	int copy_n;
+char	*ft_itoa(int n)
+{
+	int		size;
+	char	*string;
+	int		i;
+	int		copy_n;
 
 	copy_n = n;
 	if (n < 0)
 		copy_n = copy_n * -1;
 	size = ft_size(n);
-	string = (char*) malloc((size + 1)* sizeof(char));
+	string = (char *) malloc((size + 1) * sizeof(char));
 	if (!string)
-		return(NULL);
+		return (NULL);
 	i = 0;
 	if (n < 0)
 	{

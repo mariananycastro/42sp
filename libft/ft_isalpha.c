@@ -6,12 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:06:23 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/02 12:47:05 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/03 19:36:34 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isalpha(int c){
-    return (ft_isupper(c) == 1 || ft_islower(c) == 1);
+int	ft_isalpha(int c)
+{
+	return (ft_isupper(c) == 1 || ft_islower(c) == 1);
 }

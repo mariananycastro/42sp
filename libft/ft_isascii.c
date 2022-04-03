@@ -6,10 +6,11 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:19:38 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/02 11:37:56 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/03 19:40:30 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isascii(int c){
-    return (c >= 0 && c <= 128);
+int	ft_isascii(int c)
+{
+	return (c >= 0 && c <= 128);
 }

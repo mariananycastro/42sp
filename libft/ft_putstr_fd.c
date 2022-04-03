@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 19:02:53 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/03 19:03:19 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/03 19:40:18 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 void	ft_putstr_fd(char *s, int fd)
 {
 	if (!s)
-		return (NULL);
+		return ;
 	write(fd, s, ft_strlen(s));
 }

@@ -6,10 +6,11 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:25:22 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/02 11:38:22 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/03 19:35:51 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isprint(int c){
-    return (c >= 32 && c <= 126);
+int	ft_isprint(int c)
+{
+	return (c >= 32 && c <= 126);
 }

@@ -6,10 +6,11 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:15:49 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/02 12:47:29 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/03 19:36:17 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isupper(int c){
-    return (c >= 65 && c <= 90);
+int	ft_isupper(int c)
+{
+	return (c >= 65 && c <= 90);
 }

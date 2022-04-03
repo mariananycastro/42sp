@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 19:01:25 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/03 19:01:27 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/03 19:36:59 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	const char	empty = '\n';
-
+	if (!s)
+		return ;
 	write(fd, s, ft_strlen(s));
-	write(fd, &empty, 1);
+	write(fd, "\n", 1);
 }
