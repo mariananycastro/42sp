@@ -82,4 +82,9 @@ int main(){
 		printf("array%d %s\n",i, array[i]);
 		i++;
 	}
+
+	puts("-----");
+    puts("ft_itoa");
+	
+	puts(ft_itoa(-1230));
 }

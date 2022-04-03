@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:13:41 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/03 16:33:59 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/03 18:53:45 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,3 +40,5 @@ char						*ft_substr(char const *s, unsigned int start, size_t len); // returno 
 char						*ft_strjoin(char const *s1, char const *s2); // return nova string concatenando s1 e s2
 char						*ft_strtrim(char const *s1, char const *set); // retorna s1 removendo set no inicio e final de s1 
 char						**ft_split(char const *s, char c); // divide s a cada c, e return array de string
+char						*ft_itoa(int n); // return uma string de um numero;
+#endif
