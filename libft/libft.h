@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:13:41 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/02 13:44:13 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/03 16:33:59 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ unsigned	int		ft_strlcpy(char *dest, char *src, unsigned int size);
 int							ft_strlen(char const *str);
 char						*ft_substr(char const *s, unsigned int start, size_t len); // returno copia a partir do start a string s, até a len max da copia 
 char						*ft_strjoin(char const *s1, char const *s2); // return nova string concatenando s1 e s2
-char						*ft_strtrim(char const *s1, char const *set);
-#endif
+char						*ft_strtrim(char const *s1, char const *set); // retorna s1 removendo set no inicio e final de s1 
+char						**ft_split(char const *s, char c); // divide s a cada c, e return array de string

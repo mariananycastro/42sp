@@ -11,3 +11,11 @@ fclean: clean
 	/bin/rm -f libft.a
 
 re: fclean all
+
+comp: 
+	gcc main.o libft.a
+
+result:
+	./a.out
+
+compi: libft comp result

@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:01:54 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/02 13:02:03 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/03 16:00:32 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ char *ft_substr(char const *s, unsigned int start, size_t len){
         start++;
         i++;
     }
+	substring[i] = '\0';
     return (substring);
 }

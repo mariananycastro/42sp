@@ -44,6 +44,14 @@ string
       address = &str[i] ou str[i++]
                 str + 1; str++
 
+void ft_test(){
+	const char *a[2];
+	a[0] = "blah";
+	a[1] = "hmm";
+	
+	printf("%s", a[0]); // "blah"
+}
+
 void 
   (void *) -> ponteiro p void
   void(*f)(int) -> function retorna void e recebe um int
@@ -66,6 +74,44 @@ array
   char str[4][5] = {"11", "22", "33", "44"} => gera espaços vazios não utilizados
   char *b = str[4][1];  
 
+  ------
+
+	char strs[NUMBER_OF_STRINGS][STRING_LENGTH+1];
+	...
+	strcpy(strs[0], aString); // where aString is either an array or pointer to char
+	strcpy(strs[1], "foo");
+	
+	char strs[NUMBER_OF_STRINGS][STRING_LENGTH+1] = {"foo", "bar", "bletch", ...};
+
+	Instead of using a 2-d array of char, you can store a 1-d array of pointers to char:
+		// sem desperdiçar memoria
+	char *strs[NUMBER_OF_STRINGS];	
+	allocated memory to hold the pointers to the strings; the memory for the strings 
+	themselves must be allocated 
+	elsewhere (either as static arrays or by using malloc() or calloc())
+	char *strs[NUMBER_OF_STRINGS] = {"foo", "bar", "bletch", ...};
+
+	Instead of copying the contents of the string constants, youre simply 
+	storing the pointers to them. 
+
+	that string constants may not be writable; you can reassign the pointer, like so:
+	strs[i] = "bar";
+	strs[i] = "foo"; 
+	But you may not be able to change the strings contents; i.e.,
+	strs[i] = "bar";
+	strcpy(strs[i], "foo"); may not be allowed
+
+	You can use malloc() to dynamically allocate the buffer for each string and copy to that buffer:
+	strs[i] = malloc(strlen("foo") + 1);
+	strcpy(strs[i], "foo");
+
+BTW,
+
+char (*a[2])[14];
+
+
+
+
 // numbers
 int = 2147483648
       -2147483647
@@ -77,6 +123,11 @@ null = '\0'
   bolinha number = 1;
 
   int *p, *q; // cria 2 var ponteiro.
+
+// casting
+  (char*) - typecasting some data type to char-type pointer
+  *(char*) - accessing the content of the location to which the pointer
+    variable points to
 
 // string 
   white_spaces = { 9 .. 13 } + 32
@@ -221,5 +272,8 @@ null = '\0'
 
     file_descriptor == 3, if success
                         -1, fail
-
-    
+--------------
+// malloc
+	qual o tipo de variavel eu quero utilizar
+    (char *) malloc (i * sizeof(char));
+					tamanho da string
