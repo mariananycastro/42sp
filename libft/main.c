@@ -94,4 +94,5 @@ int main(){
 	puts ("\n");
 	ft_putendl_fd("abc\n", 1);
 	ft_putstr_fd("aaa\n", 1);
+	ft_putnbr_fd(10, 1);
 }

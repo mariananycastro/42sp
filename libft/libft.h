@@ -44,4 +44,5 @@ char						*ft_itoa(int n); // return uma string de um numero;
 void						ft_putchar_fd(char c, int fd); // print char c
 void						ft_putendl_fd(char *s, int fd); // print string s + new line
 void						ft_putstr_fd(char *s, int fd); // print string s
+void						ft_putnbr_fd(int n, int fd); // print number
 #endif
