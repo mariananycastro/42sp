@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 16:35:17 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/03 19:59:41 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/03 20:12:45 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ char	*ft_itoa(int n)
 	int		copy_n;
 
 	copy_n = n;
-	if (n < 0)
-		copy_n = copy_n * -1;
 	size = ft_size(n);
 	string = (char *) malloc((size + 1) * sizeof(char));
 	if (!string)
@@ -49,6 +47,7 @@ char	*ft_itoa(int n)
 	i = 0;
 	if (n < 0)
 	{
+		copy_n = copy_n * -1;
 		string[0] = 45;
 		i++;
 	}
