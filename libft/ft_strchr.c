@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 22:18:04 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/04 18:32:03 by mariana          ###   ########.fr       */
+/*   Created: 2022/04/04 19:03:10 by mariana           #+#    #+#             */
+/*   Updated: 2022/04/15 21:20:19 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+char	*ft_strchr(const char *s, int c)
 {
-	int				size_src;
-	int				size_dest;
-	unsigned int	i;
-	unsigned int	current_size;
+	size_t	i;
+	size_t	size;
 
-	if (size == 0)
-		return (0);
-	size_dest = ft_strlen(dest);
-	size_src = ft_strlen(src);
+	if (!s)
+		return (NULL);
+	size = ft_strlen(s);
 	i = 0;
-	current_size = size_dest;
-	while (current_size <= size - 2 && src[i])
+	while (i <=  size)
 	{
-		dest[current_size] = src[i];
-		current_size++;
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
 		i++;
 	}
-	dest[size - 1] = '\0';
-	return (size_dest + size_src);
+	return (NULL);
 }

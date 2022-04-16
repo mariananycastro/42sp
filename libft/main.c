@@ -86,13 +86,40 @@ int main(){
 	puts("-----");
     puts("ft_itoa");
 	
-	puts(ft_itoa(-1230));
+	puts(ft_itoa(1230));
 
 	puts("-----");
-    puts("write");
+    puts("write a ");
 	ft_putchar_fd(97, 1);
-	puts ("\n");
-	ft_putendl_fd("abc\n", 1);
-	ft_putstr_fd("aaa\n", 1);
+    puts("\nwrite abc new line ");
+	ft_putendl_fd("abc", 1);
+    puts("\nwrite aaa ");
+	ft_putstr_fd("aaa", 1);
+    puts("\nwrite 10 ");
 	ft_putnbr_fd(10, 1);
+
+    puts("\n-----");
+    puts("ft_strchr");
+    char word[] = "abc";
+    puts(ft_strchr(word, 97));
+    puts(ft_strchr(word, 0));
+    // puts(ft_strchr(word, 100));
+
+    puts("\n-----");
+    puts("ft_memchr");
+    char word2[] = "abc";
+    puts(ft_memchr(word2, 99, 3));
+    // puts(ft_memchr(word2, 99, 2));
+    puts(ft_memchr(word2, 0, 4));
+    // puts(ft_memchr(word2, 100, 3));
+
+    puts("\n-----");
+    puts("ft_memset");
+    char memset_str[] = "abcd";
+    puts(ft_memset(memset_str, 97, 2));
+
+    puts("\n-----");
+    puts("ft_strrchr");
+    char *ft_strrchr_str = "abacd";
+    puts(ft_strrchr(ft_strrchr_str, 'a'));
 }

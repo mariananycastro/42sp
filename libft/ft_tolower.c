@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 18:48:33 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/12 11:24:31 by mariana          ###   ########.fr       */
+/*   Created: 2022/04/04 19:17:40 by mariana           #+#    #+#             */
+/*   Updated: 2022/04/04 19:23:14 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int tolower(int c)
 {
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return ;
-	while (i < n)
-	{
-		*(char *)(s + i) = '\0';
-		i++;
-	}
+	if (ft_isupper(c))
+		return c + 32;	
+	return (c);
 }
