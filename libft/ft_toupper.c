@@ -6,15 +6,15 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:23:29 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/04 19:24:44 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/19 18:23:07 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_toupper(int c)
+int	ft_toupper(int c)
 {
 	if (ft_islower(c))
-		return c - 32;	
+		return (c - 32);
 	return (c);
 }

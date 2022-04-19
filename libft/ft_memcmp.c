@@ -6,22 +6,22 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 14:35:36 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/16 14:59:38 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/19 18:11:39 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned int	i;
 
 	i = 0;
 	while (i < n)
-    {
-        if (((unsigned char*)s1)[i] != ((unsigned char*)s2)[i])
-            return (((unsigned char*)s1)[i] - ((unsigned char*)s2)[i]);
-        i++;
-    }
-    return (0);
+	{
+		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
+			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+		i++;
+	}
+	return (0);
 }

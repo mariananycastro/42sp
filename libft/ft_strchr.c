@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:03:10 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/15 21:20:19 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/19 18:14:01 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strchr(const char *s, int c)
 		return (NULL);
 	size = ft_strlen(s);
 	i = 0;
-	while (i <=  size)
+	while (i <= size)
 	{
 		if (s[i] == (char)c)
 			return ((char *)(s + i));

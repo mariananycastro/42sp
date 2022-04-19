@@ -6,15 +6,15 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:11:29 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/17 15:52:32 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/19 18:17:24 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstnew(void *content)
+t_list	*ft_lstnew(void *content)
 {
-	t_list *new_content;
+	t_list	*new_content;
 
 	new_content = malloc(sizeof(t_list));
 	new_content->content = content;
