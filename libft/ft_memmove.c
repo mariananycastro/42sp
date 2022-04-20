@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 15:10:31 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/19 18:12:40 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/20 07:45:42 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		i = n;
 		while (i > 0)
 		{
-			*(char *)(dest + i) = *(char *)(src + i);
+			((char *)dest)[i - 1] = ((char *)src)[i - 1];
 			i--;
 		}
 	}
@@ -32,7 +32,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		i = 0;
 		while (i < n)
 		{
-			*(char *)(dest + i) = *(char *)(src + i);
+			((char *)dest)[i] = ((char *)src)[i];
 			i++;
 		}
 	}

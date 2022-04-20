@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 22:16:10 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/04 18:35:02 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/19 22:08:18 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ unsigned	int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	if (size == 0)
 		return (answer);
 	i = 0;
-	while (i < size - 1)
+	while (src[i] && i < (size - 1))
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	dest[size - 1] = '\0';
+	dest[i] = '\0';
 	return (answer);
 }
