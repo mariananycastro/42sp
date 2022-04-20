@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 22:00:42 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/15 15:58:22 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/20 09:12:43 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	ft_atoi(char *str)
 	is_neg = 1;
 	while (ft_isspace(str[i]))
 		i++;
-	while (str[i] == '-' || str[i] == '+')
+	if (str[0] == '-' || str[0] == '+')
 	{
-		if (str[i] == '-')
-			is_neg = is_neg * (-1);
+		if (str[0] == '-')
+			is_neg = -1;
 		i++;
 	}
 	while (ft_isdigit(str[i]))

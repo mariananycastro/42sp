@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 16:35:17 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/11 17:06:21 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/20 17:55:01 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	ft_size(int n)
 {
-	int	size;
-	int	copy_n;
+	long int	size;
+	long int	copy_n;
 
 	copy_n = n;
 	size = 1;
@@ -34,18 +34,18 @@ static int	ft_size(int n)
 
 char	*ft_itoa(int n)
 {
-	int		size;
-	char	*string;
-	int		i;
-	int		copy_n;
+	int				size;
+	char			*string;
+	int				i;
+	long int		copy_n;
 
 	copy_n = n;
-	size = ft_size(n);
+	size = ft_size(copy_n);
 	string = (char *) malloc((size + 1) * sizeof(char));
 	if (!string)
 		return (NULL);
 	i = 0;
-	if (n < 0)
+	if (copy_n < 0)
 	{
 		copy_n = copy_n * -1;
 		string[0] = 45;
