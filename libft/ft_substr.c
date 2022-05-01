@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:01:54 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/03 19:44:02 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/24 22:46:03 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,29 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*substring;
-	size_t	i;
+	char			*s_string;
+	unsigned int	sub_len;
+	unsigned int	s_len;
+	unsigned int	i;
 
 	if (!s)
 		return (NULL);
-	substring = (char *) malloc((len) * sizeof(char));
-	if (substring == NULL)
-		return (NULL);
-	i = 0;
-	while (s[start] && i < len - 1)
+	sub_len = 0;
+	s_len = ft_strlen(s);
+	if (start < s_len)
 	{
-		substring[i] = s[start];
-		start++;
+		while (s[sub_len + start] && sub_len < len && len != 0)
+			sub_len++;
+	}
+	s_string = (char *) malloc (sizeof(char) * (sub_len + 1));
+	if (s_string == NULL)
+		return (NULL);
+	ft_bzero(s_string, sub_len + 1);
+	i = 0;
+	while (i < sub_len)
+	{
+		s_string[i] = s[start + i];
 		i++;
 	}
-	substring[i] = '\0';
-	return (substring);
+	return (s_string);
 }

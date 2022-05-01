@@ -6,53 +6,80 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:42:48 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/03 19:53:08 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/23 20:17:12 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_has_set(char const *s1, int index, char const *set, size_t len)
+static int	ft_search_start(char const *s1, char const *set)
 {
-	size_t	i;
+	int	i;
+	int	z;
 
 	i = 0;
-	while (i < len)
+	z = 0;
+	while (s1[i] && set[z])
 	{
-		if (s1[index] == set[i])
+		while (set[z])
 		{
-			index++;
-			i++;
+			if (set[z] == s1[i])
+			{
+				z = 0;
+				i++;
+			}
+			else
+				z++;
 		}
-		else
-			return (0);
 	}
-	return (1);
+	return (i);
+}
+
+static int	ft_search_end(char const *s1, char const *set, int index)
+{
+	int	z;
+
+	z = 0;
+	while (s1[index] && set[z])
+	{
+		while (set[z])
+		{
+			if (set[z] == s1[index])
+			{
+				z = 0;
+				index--;
+			}
+			else
+				z++;
+		}
+	}
+	return (index);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*s1_copy;
-	size_t	set_len;
-	size_t	start;
-	size_t	end;
-	size_t	i;
+	int		start;
+	int		end;
+	int		i;
+	int		mem;
 
-	if (!s1)
+	if (!s1 || !set)
 		return (NULL);
-	start = 0;
-	end = ft_strlen(s1);
-	set_len = ft_strlen(set);
-	if (ft_has_set(s1, 0, set, set_len))
-		start = set_len;
-	if (ft_has_set(s1, (ft_strlen(s1) - set_len), set, set_len))
-		end = end - set_len;
-	s1_copy = (char *) malloc(sizeof(char) * (end - start));
+	start = ft_search_start(s1, set);
+	end = ft_search_end(s1, set, (ft_strlen(s1) - 1));
+	mem = (end - start + 2);
+	if (mem < 0)
+		mem = 1;
+	s1_copy = (char *) malloc(sizeof(char) * mem);
 	if (!s1_copy)
 		return (NULL);
 	i = 0;
-	while (start < end)
-		s1_copy[i++] = s1[start++];
-	s1_copy[i] = 0;
+	if (mem > 1)
+	{
+		while (start <= end)
+			s1_copy[i++] = s1[start++];
+	}
+	s1_copy[i] = '\0';
 	return (s1_copy);
 }

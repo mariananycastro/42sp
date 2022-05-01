@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 13:49:28 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/21 09:51:15 by mariana          ###   ########.fr       */
+/*   Updated: 2022/04/21 16:12:03 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	ft_count_words(char const *s, char c)
 	int	counter;
 
 	words = 0;
+	counter = 0;
 	while (*s != '\0')
 	{
 		if (*s == c)
