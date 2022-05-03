@@ -110,8 +110,6 @@ BTW,
 char (*a[2])[14];
 
 
-
-
 // numbers
 int = 2147483648
       -2147483647
@@ -194,52 +192,6 @@ null = '\0'
     printf("Current time: %s",__TIME__);   
   }
 
-// Struct
-  /*   The Dot(.) operator is used to access members of a structure or union.
-   The Arrow(->) operator exists to access the members of the structure or the unions using pointers
-   define the structure */
-  
-  struct person {
-      char name[32];
-      int age;
-  };
-
-  /* declare a structure variable */
-  struct person me;
-
-  /* fill the structure variable */
-  strcpy(me.name,"Maria");
-  me.age = 22;
-  // or
-  struct person me = { "Maria", 22 };
-  // -----------> p não ter q sempre chamar com struct coloca typedef
-
-  // declarar varias variaveis
-  struct person {
-      char name[32];
-      int age;
-  } me, you, him, her;
-
-
-  // declarar e atribuir
-  struct person {
-      char name[32];
-      int age;
-  } me = { "Maria", 22 };
-
-  struct person you = {
-      .name = "John",
-      .age = 30
-  };
-
-  // ----
-  typedef	struct s_point
-  {
-    int x;
-    int y;
-  } t_point;
-
-  t_point point; // sem o struct
   // ----------------
 
   read:
@@ -275,6 +227,7 @@ null = '\0'
 --------------
 // malloc
 	qual o tipo de variavel eu quero utilizar
+  retorno um void * e por isso tenho q alterar p char *
     (char *) malloc (i * sizeof(char));
 					tamanho da string
 
@@ -285,3 +238,50 @@ write(#, "string", n_space)
 // 0 entrada padrao - stdin
 // 1 saida padrao - stdout
 // 2 erro padrao - stderr
+
+// -------------
+
+Type 	                   Storage size 	                                              Value range
+char 	                     1 byte 	                                      -128 to 127     or     0 to 255
+unsigned char         	   1 byte 	                                                    0 to 255
+signed char 	             1 byte 	                                                 -128 to 127
+int 	                 2 or 4 bytes 	                              -32,768 to 32,767     or     -2,147,483,648 to 2,147,483,647
+unsigned int 	         2 or 4 bytes 	                                    0 to 65,535     or     0 to 4,294,967,295
+short 	                   2 bytes 	                                              -32,768 to 32,767
+unsigned short        	   2 bytes 	                                                    0 to 65,535
+long 	                     8 bytes or (4bytes for 32 bit OS) 	       -9223372036854775808 to 9223372036854775807
+unsigned long         	   8 bytes 	                                                    0 to 18446744073709551615
+
+----
+Null 
+/*  
+To initialize a pointer variable when that pointer variable isn’t assigned
+any valid memory address yet.
+  int * pInt = NULL;
+ 
+To check for a null pointer before accessing any pointer variable. 
+By doing so, we can perform error handling in pointer related code e.g.
+dereference pointer variable only if it’s not NULL.
+  if(pInt != NULL)
+
+To pass a null pointer to a function argument when we don’t 
+want to pass any valid memory address
+
+if(pInt != NULL)
+*/
+
+-----
+const
+
+Pointers to constant:
+int high{ 100 };
+const int* score{ &high };
+
+Constant pointers:
+ int a{ 90 };
+int* const ptr{ &a };
+
+Constant Pointers to constants:
+const int a{ 50 };
+const int* const ptr{ &a };
+-----

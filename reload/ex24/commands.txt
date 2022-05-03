@@ -1,4 +1,4 @@
-gcc -Wall -Werror -Wextra -c ./filec/*.c -I ./header
+gcc -Wall -Werror -Wextra -c ./srcs/*.c -I ./header
 ar -rc libft.a *.o
 
 gcc main.o libft.a
