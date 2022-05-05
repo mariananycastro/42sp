@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:13:41 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/25 17:14:15 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/05 19:28:39 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct	s_list
 	struct s_list *next;
 } t_list;
 
-int							ft_atoi(char *str); // retorn int de acordo com string recebida
+int							ft_atoi(const char *str); // retorn int de acordo com string recebida
 void						ft_bzero(void *s, size_t n);
 /* desaloca n espaços de s, ou seja, zera todas as posições. Em C se alocar
 memória e acessar imediatamente pegará lixo, ou seja, valores que estavam lá 
