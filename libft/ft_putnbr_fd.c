@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 20:13:46 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/03 20:37:48 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/05 21:25:16 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,4 @@ void	ft_putnbr_fd(int n, int fd)
 	new_string = ft_itoa(n);
 	if (new_string)
 		write(fd, new_string, ft_strlen(new_string));
-	free(new_string);
 }

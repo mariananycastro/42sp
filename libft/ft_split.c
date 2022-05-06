@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 13:49:28 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/21 16:12:03 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/05 21:25:42 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,6 @@ char	**ft_split(char const *s, char c)
 	if (!array)
 		return (NULL);
 	array = ft_alloc_words(s, c, array, count_words);
-	array[count_words] = '\0';
+	array[count_words] = NULL;
 	return (array);
 }
