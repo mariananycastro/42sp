@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:13:41 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/05 19:28:39 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/07 19:08:20 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void						ft_putnbr_fd(int n, int fd); // print number
 void						ft_putstr_fd(char *s, int fd); // print string s
 char						**ft_split(char const *s, char c); // divide s a cada c, e return array de string
 char						*ft_strchr(const char *s, int c); // localiza c na string e retorna primeira ocorrencia;
-char						*ft_strdup(char *src); // return copia de src
+char						*ft_strdup(const char *src); // return copia de src
 void						ft_striteri(char *s, void (*f)(unsigned int, char*)); // aplica uma funcão para cada caracter e modifica a string se necessario
 char						*ft_strjoin(char const *s1, char const *s2); // return nova string concatenando s1 e s2
 unsigned	int		ft_strlcat(char *dest, char *src, unsigned int size); // concatena strings
