@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:30:05 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/12 18:50:35 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/12 19:43:05 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static size_t	ft_buffer_size(char *buffer)
 	return (buffer_size);
 }
 
-static char	*ft_strjoins(char const *s1, char const *s2, size_t size)
+static char	*ft_strjoins(char *s1, char *s2, size_t size)
 {
 	char		*new_string;
 	int			len;
