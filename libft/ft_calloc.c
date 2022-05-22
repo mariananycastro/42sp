@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 10:42:49 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/01 17:53:33 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/22 20:35:07 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void		*alloc_nmemb;
-	long int	copy_size;
-	long int	copy_nmemb;
+	void	*ptr;
+	size_t	max_test;
 
-	copy_size = size;
-	copy_nmemb = nmemb;
-	if (copy_nmemb <= 0 || copy_size <= 0)
+	max_test = nmemb * size;
+	if (nmemb != 0 && (max_test / nmemb != size))
 		return (NULL);
-	alloc_nmemb = malloc (nmemb * size);
-	if (!alloc_nmemb)
+	ptr = malloc(nmemb * size);
+	if (!ptr)
 		return (NULL);
-	ft_bzero(alloc_nmemb, nmemb * size);
-	return (alloc_nmemb);
-}
+	ft_bzero(ptr, nmemb * size);
+	return (ptr);
