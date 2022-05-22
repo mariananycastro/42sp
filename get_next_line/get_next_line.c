@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:30:05 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/22 18:02:56 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/22 18:08:13 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void ft_read_file(int fd, char **line)
 	char	*temp;
 	int		read_bytes;
 
-	buffer = (char *) ft_calloc((BUFFER_SIZE + 1), sizeof(char));
+	buffer = (char *) malloc((BUFFER_SIZE + 1)* sizeof(char));
 	if (!buffer)
 		return ;
 	read_bytes = 1;
@@ -56,13 +56,11 @@ int ft_get_current(char *line, char **current)
 		i++;
 	if (line[i] == '\n')
 		i++;
-	*current = (char *) ft_calloc((i + 1), sizeof(char));
-	if (current)
-	{
-		ft_memcpy(*current, line, i);
-		return (i);	
-	}
-	return (0);
+	*current = (char *) malloc((i + 1)* sizeof(char));
+	if (!current)
+		return (0);
+	ft_memcpy(*current, line, i);
+	return (i);	
 }
 
 void ft_set_next_line(char **line, int begin_next)
