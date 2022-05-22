@@ -6,160 +6,101 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:30:05 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/20 21:48:37 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/22 18:02:56 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*read_file(int fd)
+void ft_read_file(int fd, char **line)
 {
 	char	*buffer;
+	char	*temp;
 	int		read_bytes;
 
 	buffer = (char *) ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-	read_bytes = 0;
-	read_bytes = read(fd, buffer, BUFFER_SIZE);
-	if (read_bytes <= 0)
+	if (!buffer)
+		return ;
+	read_bytes = 1;
+	while (!ft_strchr(*line, '\n') && read_bytes != 0)
 	{
-		free(buffer);
-		return (NULL);
+		read_bytes = read(fd, buffer, BUFFER_SIZE);
+		if (read_bytes <= 0)
+		{
+			// free line
+			free(buffer);
+			return ;
+		}
+		buffer[read_bytes] = '\0'; // talvez remover
+		if (!*line)
+		{
+			*line = ft_strdup(buffer);
+		}
+		else
+		{
+			temp = ft_strjoin(*line, buffer);
+			free(*line);
+			*line = temp;
+		}
 	}
-	buffer[BUFFER_SIZE] = '\0';
-	return (buffer);
+	free(buffer);
+	return ;
 }
 
-static char	*aloc_line(int len, char *position)
+int ft_get_current(char *line, char **current)
 {
-	char	*temp;
+	int i;
 
-	temp = (char *) ft_calloc((len), sizeof(char));
-	ft_memcpy(temp, position, len - 1);
-	return (temp);
+	i = 0;
+	while(line[i] && line[i] != '\n')
+		i++;
+	if (line[i] == '\n')
+		i++;
+	*current = (char *) ft_calloc((i + 1), sizeof(char));
+	if (current)
+	{
+		ft_memcpy(*current, line, i);
+		return (i);	
+	}
+	return (0);
+}
+
+void ft_set_next_line(char **line, int begin_next)
+{
+	int len;
+	char *temp;
+
+	len = ft_strlen(*line);
+	if (len >= begin_next)
+	{
+		temp = (char *) malloc((len - begin_next + 1) * sizeof(char));
+		temp = ft_strdup(*line + begin_next);
+		free(*line);
+		*line = temp;
+	}
+	else
+		free(*line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*next;
+	static char	*line;
+	int			current_size;
 	char		*current;
-	char		*buffer;
-	int			s;
-	int			buffer_len;
-	int			bolinha;
-	char		*temp_buffer;
-	char		*temp_buffer2;
 
-	if ((fd < 1) || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	current = NULL;
-	if (next)
+	ft_read_file(fd, &line);
+	if (!line || line[0] == '\0')
 	{
-		s = 0;
-		while (next[s] && next[s] != '\n')
-			s++;
-		if (s == 0)
-		{
-			buffer_len = ft_strlen(next);
-			if (buffer_len > 1)
-			{
-				temp_buffer = aloc_line(buffer_len, (next + 1));
-				free(next);
-				next = temp_buffer;
-				return (current);
-			}
-			else
-			{
-				free(next);
-				return (current);
-			}
-		}
-		else
-		{
-			if (s == BUFFER_SIZE - 1)
-			{
-				current = aloc_line(BUFFER_SIZE, next);
-				free(next);
-			}
-			else
-			{
-				current = aloc_line((s + 1), next);
-				buffer_len = ft_strlen(next);
-				if (buffer_len - s > 1)
-				{
-					temp_buffer = aloc_line((buffer_len - s), (next + s + 1));
-					free(next);
-					next = temp_buffer;
-				}
-				else if (buffer_len - s == 1)
-				{
-					next = '\0';
-					// free(next);
-					return (current);
-				}
-			}
-		}
+		free(line);
+		// printf("aquii c = '%s', l = '%s', %p\n", current, line, &current);
+		return (NULL);
 	}
-	bolinha = 0;
-	while (bolinha == 0)
-	{
-		buffer = read_file(fd);
-		if (!buffer)
-			return (current);
-		s = 0;
-		while (buffer[s] && buffer[s] != '\n')
-			s++;
-		if (s == BUFFER_SIZE)
-		{
-			if (current)
-			{
-				temp_buffer = current;
-				current = ft_strjoin(temp_buffer, buffer);
-				free(temp_buffer);
-				free(buffer);
-			}
-			else
-			{
-				current = aloc_line((BUFFER_SIZE + 1), buffer);
-				free(buffer);
-			}
-		}
-		else
-		{
-			if (s == 0 && !current)
-			{
-				buffer_len = ft_strlen(buffer);
-				current = aloc_line(2, buffer);
-				if (buffer_len > 1)
-					next = aloc_line(buffer_len, (buffer + 1));
-				free(buffer);
-				return (current);
-			}
-			else if (s == 0)
-			{
-				temp_buffer2 = current;
-				current = ft_strjoin(temp_buffer2, buffer);
-			}
-			else
-			{
-				temp_buffer = aloc_line((s + 1), buffer);
-				temp_buffer2 = current;
-				current = ft_strjoin(temp_buffer2, temp_buffer);
-				free(temp_buffer);
-				free(temp_buffer2);
-				buffer_len = ft_strlen(buffer);
-				if (buffer_len - s > 1)
-				{
-					next = aloc_line((buffer_len - s), (buffer + s + 1));
-					free(buffer);
-				}
-				else
-				{
-					free(next);
-					free(buffer);
-				}
-			}
-			bolinha++;
-		}
-	}
+	current_size = ft_get_current(line, &current);
+	ft_set_next_line(&line, current_size);
+	// printf("c = '%s','\n", line);
+	// printf("c = '%s', l = '%s', %p\n", current, line, current_size);
 	return (current);
+	// return (NULL);
 }
