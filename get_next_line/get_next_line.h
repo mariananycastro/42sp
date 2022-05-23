@@ -6,20 +6,20 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:36:42 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/22 21:18:11 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/22 21:47:03 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-#define LIBFT_H
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <stdio.h>
+# define LIBFT_H
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <stdio.h>
 
-#ifndef BUFFER_SIZE
+# ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
-#endif
+# endif
 
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 // localiza c na string e retorna primeira ocorrencia;

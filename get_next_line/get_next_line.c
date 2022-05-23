@@ -6,13 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:30:05 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/22 21:31:44 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/22 21:42:59 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void	ft_read_file(int fd, char **line, char **overflow)
+static void	ft_read_file(int fd, char **line)
 {
 	char	*buffer;
 	int		read_bytes;
@@ -21,16 +21,6 @@ static void	ft_read_file(int fd, char **line, char **overflow)
 	if (!buffer)
 		return ;
 	read_bytes = 1;
-	if (*overflow)
-	{
-		*line = ft_strdup(*overflow);
-		if (!*line)
-			return ;
-		free(*overflow);
-		*overflow = NULL;
-	}
-	else
-		*line = NULL;
 	while (!ft_strchr(*line, '\n') && read_bytes != 0)
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
@@ -84,7 +74,15 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	ft_read_file(fd, &line, &overflow);
+	if (overflow)
+	{
+		line = ft_strdup(overflow);
+		free(overflow);
+		overflow = NULL;
+	}
+	else
+		line = NULL;
+	ft_read_file(fd, &line);
 	if (!line || line[0] == '\0')
 	{
 		free(line);
