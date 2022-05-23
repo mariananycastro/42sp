@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:29:55 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/22 21:22:01 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/22 22:08:55 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,22 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 }
 
 // localiza c na string e retorna primeira ocorrencia;
-char	*ft_strchr(char *s, int c)
+int	ft_strchr(char *s, int c)
 {
 	size_t	i;
 	size_t	size;
 
 	if (!s)
-		return (NULL);
+		return (0);
 	size = ft_strlen(s);
 	i = 0;
 	while (i <= size)
 	{
 		if (s[i] == (char)c)
-			return ((char *)(s + i));
+			return (1);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
 
 // return copia de src
