@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:29:55 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/22 22:08:55 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/25 09:15:09 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-// copia n data de *src p *dest
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
@@ -39,7 +38,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (NULL);
 }
 
-// localiza c na string e retorna primeira ocorrencia;
 int	ft_strchr(char *s, int c)
 {
 	size_t	i;
@@ -58,7 +56,6 @@ int	ft_strchr(char *s, int c)
 	return (0);
 }
 
-// return copia de src
 char	*ft_strdup(char *src)
 {
 	char	*copy;

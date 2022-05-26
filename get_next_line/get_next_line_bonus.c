@@ -6,11 +6,11 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:30:05 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/23 20:31:23 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/25 11:38:18 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static void	ft_read_file(int fd, char **line)
 {
@@ -67,7 +67,7 @@ static void	ft_set_overflow(char **line, int begin_next, char **overflow)
 	free(*line);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line_bonus(int fd)
 {
 	static char	*overflow[1024];
 	char		*line;
