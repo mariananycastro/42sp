@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 10:42:49 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/22 20:35:07 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:47:04 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,4 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (NULL);
 	ft_bzero(ptr, nmemb * size);
 	return (ptr);
+}
