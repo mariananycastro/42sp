@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 09:15:20 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/25 11:38:35 by mariana          ###   ########.fr       */
+/*   Updated: 2022/05/27 09:18:24 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int		ft_strchr(char *s, int c);
 char	*ft_strdup(char *src);
 int		ft_strlen(char *str);
 char	*ft_strappend(char *s1, char *s2);
-char	*get_next_line_bonus(int fd);
+char	*get_next_line(int fd);
 #endif
