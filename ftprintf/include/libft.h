@@ -6,18 +6,16 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:13:41 by mariana           #+#    #+#             */
-/*   Updated: 2022/06/08 12:49:59 by mariana          ###   ########.fr       */
+/*   Updated: 2022/06/12 15:52:34 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <fcntl.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
-# include <stdarg.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000

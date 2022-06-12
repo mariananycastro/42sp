@@ -1,4 +1,4 @@
-NAME		= printf.a
+NAME		= libftprintf.a
 
 LIBFT_DIR	= ./libft/
 LIBFT 		= $(LIBFT_DIR)/libft.a
