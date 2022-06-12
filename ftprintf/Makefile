@@ -30,4 +30,13 @@ fclean: clean
 
 re: fclean all
 
+compi: fclean
+	rm -f a.out
+	$(MAKE) bonus -C $(LIBFT_DIR)
+	cp $(LIBFT) $(NAME)
+	$(CC) -c $(SRC) $(SRC_DIR)main.c -I ./include/
+	mv *.o ./src/
+	ar -rc $(NAME) $(OBJ)
+	gcc $(SRC_DIR)main.o libftprintf.a && ./a.out  
+
 .PHONY: all clean fclean re
