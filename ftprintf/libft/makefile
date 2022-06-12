@@ -14,7 +14,7 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME):
-	gcc -Wall -Wextra -Werror -c $(MANDATORY) -I .
+	gcc -Wall -Wextra -Werror -c $(MANDATORY) -I ../include/
 	ar -rc $(NAME) $(MANDATORY_O)
 
 clean:
@@ -26,5 +26,5 @@ fclean: clean
 re: fclean all
 
 bonus:
-	gcc -Wall -Wextra -Werror -c $(MANDATORY) $(BONUS) -I .
+	gcc -Wall -Wextra -Werror -c $(MANDATORY) $(BONUS) -I ../include/
 	ar -rc $(NAME) $(MANDATORY_O) $(BONUS_O)
