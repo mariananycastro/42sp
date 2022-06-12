@@ -6,11 +6,11 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 00:28:05 by mcastro           #+#    #+#             */
-/*   Updated: 2022/06/12 12:39:22 by mariana          ###   ########.fr       */
+/*   Updated: 2022/06/12 18:59:10 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/libft.h"
+#include "../include/libft.h"
 
 int	ft_strlen(const char *s)
 {

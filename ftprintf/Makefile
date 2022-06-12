@@ -4,7 +4,7 @@ LIBFT_DIR	= ./libft/
 LIBFT 		= $(LIBFT_DIR)/libft.a
 
 SRC_DIR		= ./src/
-SRC			=	$(SRC_DIR)ft_printf.c
+SRC			=	$(SRC_DIR)/*.c
 
 OBJ			= $(SRC:.c=.o)
 

@@ -6,11 +6,11 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 16:10:09 by mariana           #+#    #+#             */
-/*   Updated: 2022/06/12 12:39:22 by mariana          ###   ########.fr       */
+/*   Updated: 2022/06/12 18:59:10 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/libft.h"
+#include "../include/libft.h"
 
 char	*ft_strappend(char *s1, char *s2)
 {

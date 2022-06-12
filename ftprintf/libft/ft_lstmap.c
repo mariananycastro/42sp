@@ -6,11 +6,11 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:40:49 by mariana           #+#    #+#             */
-/*   Updated: 2022/06/12 12:39:22 by mariana          ###   ########.fr       */
+/*   Updated: 2022/06/12 18:59:10 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/libft.h"
+#include "../include/libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {

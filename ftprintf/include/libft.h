@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:13:41 by mariana           #+#    #+#             */
-/*   Updated: 2022/06/12 15:52:34 by mariana          ###   ########.fr       */
+/*   Updated: 2022/06/12 18:54:16 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@
 #  define BUFFER_SIZE 1000
 # endif
 
-typedef struct	s_list
+typedef struct s_list
 {
-	void *content;
-	struct s_list *next;
-} t_list;
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 int				ft_atoi(const char *str);
 void			ft_bzero(void *s, size_t n);
-void 			*ft_calloc(size_t nmemb, size_t size);
+void			*ft_calloc(size_t nmemb, size_t size);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);
 int				ft_isascii(int c);
@@ -54,7 +54,7 @@ char			*ft_strdup(const char *src);
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 char			*ft_strjoin(char const *s1, char const *s2);
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size); 
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 int				ft_strlen(char const *str);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -74,7 +74,7 @@ void			ft_lstdelone(t_list *lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstlast(t_list *lst);
 t_list			*ft_lstmap(t_list *lst,
-	void *(*f)(void *), void (*del)(void *));
+					void *(*f)(void *), void (*del)(void *));
 int				ft_lstsize(t_list *lst);
 char			*ft_strappend(char *s1, char *s2);
 int				ft_str_has_char(char *s, int c);

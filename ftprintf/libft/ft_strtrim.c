@@ -6,11 +6,11 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:42:48 by mariana           #+#    #+#             */
-/*   Updated: 2022/06/12 12:39:22 by mariana          ###   ########.fr       */
+/*   Updated: 2022/06/12 18:59:10 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/libft.h"
+#include "../include/libft.h"
 
 static int	ft_search_start(char const *s1, char const *set)
 {
