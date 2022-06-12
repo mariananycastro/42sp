@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_pointer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 12:05:12 by mariana           #+#    #+#             */
-/*   Updated: 2022/06/12 17:33:55 by mariana          ###   ########.fr       */
+/*   Created: 2022/06/12 16:31:28 by mariana           #+#    #+#             */
+/*   Updated: 2022/06/12 18:27:54 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../include/ft_printf.h"
 
-# include <stdarg.h>
-# include "libft.h"
+int	ft_pointer(unsigned long pointer)
+{
+	int	size;
 
-int ft_printf(const char *, ...);
-int ft_decimal(int number);
-int ft_to_base(unsigned long nbr, unsigned int base_number, char *char_base);
-int ft_string(char *str);
-int ft_pointer(unsigned long position);
-#endif
+	if (pointer == 0)
+	{
+		ft_putstr_fd("(nil)", 1);
+		return (5);
+	}
+	size = 2;
+	ft_putstr_fd("0x", 1);
+	size += ft_to_base(pointer, 16, "0123456789abcdef");
+	return (size);
+}

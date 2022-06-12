@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_decimal.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 12:05:12 by mariana           #+#    #+#             */
-/*   Updated: 2022/06/12 17:33:55 by mariana          ###   ########.fr       */
+/*   Created: 2022/06/12 16:21:47 by mariana           #+#    #+#             */
+/*   Updated: 2022/06/12 17:35:00 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../include/ft_printf.h"
 
-# include <stdarg.h>
-# include "libft.h"
+int	ft_decimal(int number)
+{
+	int			size;
+	long int	copy_n;
 
-int ft_printf(const char *, ...);
-int ft_decimal(int number);
-int ft_to_base(unsigned long nbr, unsigned int base_number, char *char_base);
-int ft_string(char *str);
-int ft_pointer(unsigned long position);
-#endif
+	copy_n = number;
+	size = 0;
+	if (copy_n < 0)
+	{
+		write(1, "-", 1);
+		size += ft_to_base(copy_n * -1, 10, "0123456789") + 1;
+	}
+	else
+		size += ft_to_base(copy_n, 10, "0123456789");
+	return (size);
+}

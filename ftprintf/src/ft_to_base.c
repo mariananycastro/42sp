@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_to_base.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 12:05:12 by mariana           #+#    #+#             */
-/*   Updated: 2022/06/12 17:33:55 by mariana          ###   ########.fr       */
+/*   Created: 2022/06/12 16:23:48 by mariana           #+#    #+#             */
+/*   Updated: 2022/06/12 17:33:51 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../include/ft_printf.h"
 
-# include <stdarg.h>
-# include "libft.h"
+int	ft_to_base(unsigned long nbr, unsigned int base_number, char *char_base)
+{
+	int	size;
 
-int ft_printf(const char *, ...);
-int ft_decimal(int number);
-int ft_to_base(unsigned long nbr, unsigned int base_number, char *char_base);
-int ft_string(char *str);
-int ft_pointer(unsigned long position);
-#endif
+	size = 1;
+	if (nbr >= base_number)
+		size = size + ft_to_base(nbr / base_number, base_number, char_base);
+	ft_putchar_fd(char_base[nbr % base_number], 1);
+	return (size);
+}
