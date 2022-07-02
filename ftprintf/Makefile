@@ -32,6 +32,7 @@ re: fclean all
 
 compi: fclean
 	rm -f a.out
+	rm -f *.o
 	$(MAKE) bonus -C $(LIBFT_DIR)
 	cp $(LIBFT) $(NAME)
 	$(CC) -c $(SRC) $(SRC_DIR)main.c -I ./include/
