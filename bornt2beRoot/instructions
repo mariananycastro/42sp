@@ -7,6 +7,9 @@ https://www.alura.com.br/artigos/conhecendo-o-modelo-osi
 https://www.alura.com.br/artigos/entendendo-as-diferencas-entre-telnet-e-ssh
 https://www.alura.com.br/artigos/protegendo-seu-servidor-com-iptables
 
+check partitions
+	lsblk
+
 You must choose as an operating system either the latest stable version of Debian
 	- The hostname of your virtual machine must be your login ending with 42
 	- A user with your login as username, This user has to belong to the user42 and sudo groups.
@@ -95,7 +98,6 @@ You must choose as an operating system either the latest stable version of Debia
 			Example:
 				/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 
----->
 	- Create a simple script called monitoring.sh.
 	https://debian-handbook.info/browse/pt-BR/stable/sect.task-scheduling-cron-atd.html
 
@@ -109,12 +111,14 @@ You must choose as an operating system either the latest stable version of Debia
 		• It must be developed in bash.
 		• At server startup, the script will display some information on all terminals every 10 minutes
 		• The banner is optional. No error must be visible.
+
 		• The architecture of your operating system and its kernel version.
 		• The number of physical processors.
-		• The number of virtual processors.
+		??• The number of virtual processors._
 		• The current available RAM on your server and its utilization rate as a percentage.
 		• The current available memory on your server and its utilization rate as a percentage.
-		• The current utilization rate of your processors as a percentage.
+
+		??• The current utilization rate of your processors as a percentage.
 		• The date and time of the last reboot.
 		• Whether LVM is active or not.
 		• The number of active connections.
@@ -135,6 +139,17 @@ You must choose as an operating system either the latest stable version of Debia
     	User log: 1
     	Network: IP 10.0.2.15 (08:00:27:51:9b:a5)
     	Sudo : 42 cmd
+
+		sudo crontab -u root -e
+		*/10 * * * * sh /path/to/script
+		sudo crontab -u root -l
+
+		#Format
+  	#min hour day mon dow  command
+  	# Download data every night at 7:25 pm
+  	25  19   *   *   *    $HOME/bin/get.pl
+		# 8:00 am, on weekdays (Monday through Friday)
+    00  08   *   *   1-5  $HOME/bin/dosomething
 
 	- Questions about Debian aptitude and apt, AppArmor
 	- Setting up a new account.
@@ -236,14 +251,10 @@ You must choose as an operating system either the latest stable version of Debia
 	sudo lighty-enable-mod fastcgi-php
 
 	Reload the lighttpd daemon
-
 	sudo service lighttpd force-reload
 
-	--->>>>To test if it's working create the file /var/www/index.php with the following contents:
-
-
+	To test if it's working create the file /var/www/index.php with the following contents:
 	<?php phpinfo(); ?>
-
 	and check out http://localhost/index.php in your browser.
 
 	• Wordpress
@@ -252,12 +263,9 @@ You must choose as an operating system either the latest stable version of Debia
 	wget http://wordpress.org/latest.tar.gz -P /var/www/html
 	tar -xzvf /var/www/html/latest.tar.gz
 	rm /var/www/html/latest.tar.gz
-
-	cp -r /var/www/html/wordpress/* /var/www/html
-	rm -rf /var/www/html/wordpress
-	cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+	mv /var/www/html/wordpress/* /var/www/html
+	sudo mv wp-config-sample.php wp-config.php
 	nano /var/www/html/wp-config.php
-
 
 	replace
 	define( 'DB_NAME', 'database_name_here' );^M
@@ -269,17 +277,6 @@ You must choose as an operating system either the latest stable version of Debia
 	define( 'DB_USER', '<username-2>' );^M
 	define( 'DB_PASSWORD', '<password-2>' );^M
 
-
-	wget -c http://wordpress.org/latest.tar.gz
-	tar -xzvf latest.tar.gz
-	sudo mv wordpress/* /var/www/html/
-	sudo chown -R www-data:www-data /var/www/html/
-	sudo chmod -R 755 /var/www/html/
-	cd /var/www/html/
-	sudo mv wp-config-sample.php wp-config.php
-	sudo rm -rf index.html
-	sudo systemctl restart apache2.service
-	sudo systemctl restart mysql.service
 
 	IP
 	hostname -I
