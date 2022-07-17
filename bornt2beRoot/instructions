@@ -1,3 +1,140 @@
+Avaliation
+pass: boot = 42borntoberoot 
+      mcastro = Born2beroot
+			root = 41MariYamada
+
+- Gerar vdi (maquina local)
+$ cd VirtualBox VMs/born2beRoot
+$ sha1sum born2beRoot.vdi >> temp.txt
+$ diff temp.txt outro.txt
+
+The basic differences between CentOS and Debian.
+https://baigal.medium.com/born2beroot-e6e26dfb50ac
+
+- UFW
+$ dpkg -l | grep ufw
+$ sudo ufw status
+80 porta padrão p http wordpress
+$ sudo ufw allow {8080}
+$ sudo ufw status numbered
+$ sudo ufw delete {number}
+
+- SSH
+$ dpkg -l | grep ssh
+$ sudo service ssh status || sudo systemctl status ssh
+$ ssh your_username@localhost -p 4242
+
+check acesso
+  $ sudo grep Port /etc/ssh/sshd_config
+
+- System version
+	$ head -n 2 /etc/os-release
+
+- Group/User
+  List group users
+    $ getent group sudo
+    $ getent group mcastro42
+
+  List users
+    $ cut -d: -f1 /etc/passwd
+    $ getent passwd <username>
+
+  Checar configuração senha
+    $ chage -l <username>
+
+  Create User
+  $ sudo adduser new_username
+
+  Trocar usuario
+  $ su {user}
+  $ passwd
+
+  Delete User
+  $ sudo userdel {nome}
+
+  Criar group
+  $ sudo groupadd user42
+
+  Listar groups
+  $ getent group || id
+  $ cat /etc/groups
+
+  Add user to a groups
+  $ sudo usermod -aG user42 your_username
+
+  Change existing users
+  $ sudo chage -E 24/06/2018 -m 5 -M 90 -I 10 -W 10 <username>
+  -E data expiração
+  -m dias minimos p mudar de password
+  -M dias max p mudar password
+  -I bloqueio do usuario
+  -W qtos dias vai ficar enviando warning message depois de expirar
+
+- Hostname
+    Change hostaname
+		$ sudo hostnamectl set-hostname new_hostname
+    $ sudo systemctl reboot
+
+    List host info
+    $ hostnamectl
+
+- Partitions
+  $ lsblk
+
+  Rename partitions: https://www.golinuxcloud.com/rename-logical-volume-example/
+
+- Sudo
+  Checar instalação
+    $ dpkg -l | grep sudo
+
+  Config applicada p sudo
+    $ sudo -l
+
+  Change p su user
+  $ su root
+
+  Logs comandos
+  $ cd /var/log/sudo/00/00 && ls
+  $ sudo apt update
+  $ cd <nameofnewdirectory> && ls
+  $ cat log
+
+- Cron
+  lista de scripts
+  sudo crontab -u root -l
+
+  Editar lista
+  sudo crontab -u root -e
+    */10 * * * * sh /path/to/script
+    #min hour day mon dow  command
+    # 8:00 am, on weekdays (Monday through Friday)
+    00  08   *   *   1-5  $HOME/bin/dosomething
+
+    mudar p ==> /1
+    @reboot sleep10; /path/to/monitoring.sh
+    chmod +r arquivo.sh
+
+
+- Lighttpd
+	$ systemctl status lighttpd
+
+- MariaDb
+    $ mysql || mariadb
+    $ SHOW DATABASES;
+
+- PHP
+  $ hostname -I
+  http://{ip}/index.php
+
+- Apparmor
+  $ sudo aa-status
+
+- Ports
+		$ ss -tunlp
+		DHCP -  lista de endereços IP que podem ser atribuídos em uma ou mais sub-redes
+    $ ss -na | grep :4242
+
+Fontes:
 https://www.youtube.com/watch?v=OQEdjt38ZJA
 https://www.youtube.com/watch?v=2w-2MX5QrQw
 https://baigal.medium.com/born2beroot-e6e26dfb50ac
@@ -6,259 +143,166 @@ https://unix.stackexchange.com/questions/502540/why-does-drmvmw-host-log-vmwgfx-
 https://www.alura.com.br/artigos/conhecendo-o-modelo-osi
 https://www.alura.com.br/artigos/entendendo-as-diferencas-entre-telnet-e-ssh
 https://www.alura.com.br/artigos/protegendo-seu-servidor-com-iptables
+https://github.com/HEADLIGHTER/Born2BeRoot-42/blob/main/evalknwoledge.txt
+https://github.com/HEADLIGHTER/Born2BeRoot-42/blob/main/walkthrough37.txt
 
-check partitions
-	lsblk
-
-You must choose as an operating system either the latest stable version of Debian
-	- The hostname of your virtual machine must be your login ending with 42
-	- A user with your login as username, This user has to belong to the user42 and sudo groups.
-		$ su -
-		$ apt-get update -y
-		$ apt-get upgrade -y
-		$ apt install sudo
-
-		check user from group
-			$ getent group sudo
-		add user to sudo group
-			$ usermod -aG sudo
-		dar privilegios de sudo
-			$ sudo visudo
-
-	- You must create at least 2 encrypted partitions using LVM.
-
-	- SSH service will be running on port 4242 only.
-		Descomentar # Port 22
-		$ sudo nano /etc/ssh/sshd_config
-		For security reasons, it must not be possible to connect using SSH as root.
-			PermitRootLogin no
-		$ sudo apt-get update
-		$ sudo apt install openssh-server
-		ssh status
-			sudo systemctl status ssh
-		restart ssh service
-			service ssh restart/start/stop/reload
-		check acesso
-		$ sudo grep Port /etc/ssh/sshd_config
-
-	- UFW firewall must be active when you launch your virtual machine.
+- UFW
+  firewall must be active when you launch your virtual machine.
 		$ apt-get install ufw
 		$ sudo ufw enable/disable
 		$ sudo ufw allow 4242/ssh
 		$ sudo ufw status
 		$ sudo ufw status verbose
 		$ sudo ufw status numbered
+    $ sudo ufw delete (that number, for example 5 or 6, when num numbered)
 
-		$ sudo ufw delete (that number, for example 5 or 6, when num numbered)
-		permitir acesso
+- SSH
+	SSH service will be running on port 4242 only.
+		Descomentar # Port 22
+		$ sudo apt install openssh-server
+		$ sudo apt-get update
+		$ sudo nano /etc/ssh/sshd_config
+    change line "#Port 22" to "Port 4242" and
+    "#PermitRootLogin prohibit-password" to "PermitRootLogin no" -> save and 
+		$ service ssh restart/start/stop/reload
 
-		Start SSH session
-		$ ssh your_username@127.0.0.1 -p 4242
-		sair
-		$ exit/logout
+	Start SSH session
+    Configurar Virtual Box
+      Setting -> Network
+      Attached-to: Bridged Adapter
+      name: Pegar na maquina local
+      $ hostname -I
 
-	- You have to implement a strong password policy.
-		• Your password must be at least 10 characters long.
-		•	It must contain an uppercase letter, a lowercase letter, and a number.
-		•	It must not contain more than 3 consecutive identical characters.
-		• The password must not include the name of the user.
-			mcastro
-			41MariYamada/43MariYamada
-			42borntoberoot
-		• --->>>The following rule does not apply to the root password:
-				The password must have at least 7 characters that are not part of the former password.
-		$ sudo nano /etc/pam.d/common-password
+      Terminal local
+      $ ssh your_username@{ip} -p 4242
+      Sair
+      $ exit/logout
 
-		• Your password has to expire every 30 days.
-		• The minimum number of days allowed before the modification of a password will be set to 2.
-		• The user has to receive a warning message 7 days before their password expires.
-		$ sudo nano /etc/login.defs
+      ou 
+      Setting -> Network -> Adapter 1 -> Advanced -> Port forwarding
+      Add rule
+        Protocol       Host IP       Host Port       Guest IP       Guest Port
+        TCP            127.0.0.1     4242            10.0.2.15      4242      
 
-		to change to existing users
-		$ sudo chage -M <days> <username>
-		$ sudo chage -m <days> <username>
-		$ sudo chage -W <days> <username>
-		change expiring period (-E para password expirara nesta data)
-		$ sudo chage -E 24/06/2018 -m 5 -M 90 -I 10 -W 10 <username>
+      Terminal local
+      $ ssh your_username@@localhost -p 4242
+      Sair
+      $ exit/logout
 
-		check rules
-		$ chage -l your_new_username
+- User/Groups
+	The hostname of your virtual machine must be your login ending with 42
+	A user with your login as username, This user has to belong to the user42 and sudo groups.
+    $ su -
+		$ su - mcastro
+		$ apt-get update -y
+		$ apt-get upgrade -y
+		$ apt install sudo
 
-		to changes take effect, but not for existing users
-		$ sudo reboot
+- Sudo
+  $ su - 
+  $ apt install sudo
+  $ adduser {yourusername} sudo
+  $ sudo reboot
+  $ sudo -v (password)
+  $ sudo addgroup user42
+  $ sudo adduser {yourusername} user42
+  $ sudo apt update
 
-	- You have to install and configure sudo following strict rules.
-		https://www.sudo.ws/docs/man/1.8.18/sudoers.man/
-		• Authentication using sudo has to be limited to 3 attempts in the event of an incorrect password.
-		• A custom message of your choice has to be displayed if an error due to a wrong password occurs when using sudo.
-		• Each action using sudo has to be archived, both inputs and outputs.
-			The log file has to be saved in the /var/log/sudo/ folder.
-		--->>>>>• The TTY mode has to be enabled for security reasons.
-		• For security reasons too, the paths that can be used by sudo must be restricted.
-			Example:
-				/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+  $ sudo touch /etc/sudoers.d/sudoconfig
+  $ sudo nano /etc/sudoers.d/sudoconfig
 
-	- Create a simple script called monitoring.sh.
-	https://debian-handbook.info/browse/pt-BR/stable/sect.task-scheduling-cron-atd.html
+  Defaults      passwd_tries=3
+  Defaults      badpass_message="Incorrect password"
+  Defaults      log_input,log_output
+  Defaults      iolog_dir="/var/log/sudo"
+  Defaults      requiretty
+  Defaults      secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin" 
 
-	(whitelist) em /etc/cron.allow, usuários com autorização para agendar comandos.
-	Ou arquivo explícito para proibição (blacklist), /etc/cron.deny. 
-	Esse mesmo recurso está disponível para o atd (unica vez no futuro), com os arquivos /etc/at.allow e /etc/at.deny.
-	/var/spool/cron/crontabs/usuário ou geral /etc/crontab
+  Obs:
+    Each action using sudo has to be archived, both inputs and outputs. The log file has to be saved in the /var/log/sudo/ folder.
+    The TTY mode has to be enabled for security reasons.
+    For security reasons too, the paths that can be used by sudo must be restricted.
 
-	/etc/cron.hourly/  (daily/weekly/monthly)
+  $ sudo mkdir /var/log/sudo
+  $ sudo nano /etc/login.defs
+    PASS_MAX_DAYS 99999 -> PASS_MAX_DAYS    30
+    PASS_MIN_DAYS 0     -> PASS_MIN_DAYS    2 
+    PASS_WARN_AGE 7
 
-		• It must be developed in bash.
-		• At server startup, the script will display some information on all terminals every 10 minutes
-		• The banner is optional. No error must be visible.
+  $ sudo apt install libpam-pwquality
+  $ sudo nano /etc/pam.d/common-password
+  "password requisite pam_pwqiality.so retry=3 minlen=10 lcredit=-1 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root"
 
-		• The architecture of your operating system and its kernel version.
-		• The number of physical processors.
-		??• The number of virtual processors._
-		• The current available RAM on your server and its utilization rate as a percentage.
-		• The current available memory on your server and its utilization rate as a percentage.
+  Change user password
+  $ passwd 
+  Change root password
+  $ sudo passwd root
 
-		??• The current utilization rate of your processors as a percentage.
-		• The date and time of the last reboot.
-		• Whether LVM is active or not.
-		• The number of active connections.
-		• The number of users using the server.
-		• The IPv4 address of your server and its MAC (Media Access Control) address.
-		• The number of commands executed with the sudo program.
+  $ sudo systemctl reboot
 
-			Broadcast message from root@wil (tty1) (Sun Apr 25 15:45:00 2021):
-    	Architecture: Linux wil 4.19.0-16-amd64 #1 SMP Debian 4.19.181-1 (2021-03-19) x86_64 GNU/Linux
-    	CPU physical : 1
-    	vCPU : 1
-    	Memory Usage: 74/987MB (7.50%)
-    	Disk Usage: 1009/2Gb (39%)
-    	CPU load: 6.7%
-    	Last boot: 2021-04-25 14:45
-    	LVM use: yes
-    	Connections TCP : 1 ESTABLISHED
-    	User log: 1
-    	Network: IP 10.0.2.15 (08:00:27:51:9b:a5)
-    	Sudo : 42 cmd
+Bonus
+https://websiteforstudents.com/ install-lighttpd-http-server-on-ubuntu-16-04-lts-with-mariadb-and-php-7-1-support/
+https://github.com/hanshazairi/42-born2beroot#step-4-downloading--configuring-wordpress
+https://www.rosehosting.com/blog/how-to-install-lighttpd-on-debian-9/#Step-2-Install-MariaDB-Server
+https://pt.stackoverflow.com/questions/132348/qual-a-diferen%C3%A7a-de-usar-o-php-como-m%C3%B3dulo-do-apache-cgi-fastcgi-e-linha-de-co
 
-		sudo crontab -u root -e
-		*/10 * * * * sh /path/to/script
-		sudo crontab -u root -l
+- Lighttpd
+	$ sudo apt install lighttpd
 
-		#Format
-  	#min hour day mon dow  command
-  	# Download data every night at 7:25 pm
-  	25  19   *   *   *    $HOME/bin/get.pl
-		# 8:00 am, on weekdays (Monday through Friday)
-    00  08   *   *   1-5  $HOME/bin/dosomething
+	$ systemctl start lighttpd
+	$ systemctl enable lighttpd
+	$ systemctl status lighttpd
+	$ dpkg -l | grep lighttpd
 
-	- Questions about Debian aptitude and apt, AppArmor
-	- Setting up a new account.
-	- You will have to modify this hostname during your evaluation.
-		$ hostnamectl
-		$ hostnamectl set-hostname new_hostname
+-  MariaDB
+	$ sudo apt install mariadb-server
+	$ sudo apt install mariadb-client
+	$ dpkg -l | grep mariadb-server
 
-		$ sudo nano /etc/hosts
-		Change old_hostname with new_hostname
-		$ sudo reboot
+  Se precisar conectar novamente o banco 
+    $ sudo systemctl stop mysql.service
+    $ sudo systemctl start mysql.service
+    $ sudo systemctl enable mysql.service
 
-	- Create a new user and assign it to a group.
-		check users
-		$ cut -d: -f1 /etc/passwd
-		$ sudo adduser new_username
-		$ sudo groupadd user42
-		$ sudo usermod -aG user42 your_username
-		$ getent group
+  Next, secure your MariaDB installation by using the mysql_secure_installation script. This script will remove anonymous users, disallow root login remotely, and remove the test database.
+	$ mysql_secure_installation
 
-	- Change all the passwords of the accounts present on the virtual machine.
-		log in as user and run:
-		$ passwd
-		or 
-		$ sudo passwd root
-
-	- You will also have to interrupt script without modifying it.
-	- Comands
-		system version
-		• head -n 2 /etc/os-release
-		apparmor
-		• /usr/sbin/aa-status
-		ports
-		network socket connections
-		• ss -tunlp
-		• ss -na | grep :4242
-
-	bonus
-	• Set up a functional WordPress website with the following services: lighttpd, MariaDB, and PHP.
-	https://websiteforstudents.com/ install-lighttpd-http-server-on-ubuntu-16-04-lts-with-mariadb-and-php-7-1-support/
-	https://github.com/hanshazairi/42-born2beroot#step-4-downloading--configuring-wordpress
-	https://www.rosehosting.com/blog/how-to-install-lighttpd-on-debian-9/#Step-2-Install-MariaDB-Server
-	https://pt.stackoverflow.com/questions/132348/qual-a-diferen%C3%A7a-de-usar-o-php-como-m%C3%B3dulo-do-apache-cgi-fastcgi-e-linha-de-co
-
-	• lighttpd
-	sudo apt install lighttpd
-
-	systemctl start lighttpd
-	systemctl enable lighttpd
-	systemctl status lighttpd
-	dpkg -l | grep lighttpd
-
-	porta padrao http
-	sudo ufw allow 80
-
-	• MariaDB
-	salvar
-	sudo apt install mariadb-server
-
-	p acessar
-	sudo apt install mariadb-client
-
-	dpkg -l | grep mariadb-server
-
-	se precisar conectar novamente o banco 
-	sudo systemctl stop mysql.service
-	sudo systemctl start mysql.service
-	sudo systemctl enable mysql.service
-
-	Next, secure your MariaDB installation by using the mysql_secure_installation script. This script will remove anonymous users, disallow root login remotely, and remove the test database.
-	mysql_secure_installation
-
-	Enter current password for root (enter for none): press [Enter]
+  Enter current password for root (enter for none): press [Enter]
   	Set root password? [Y/n]: N
   	Remove anonymous users? [Y/n]: Y
   	Disallow root login remotely? [Y/n]: Y
   	Remove test database and access to it? [Y/n]: Y
   	Reload privilege tables now? [Y/n]: Y
 
-	entrar no banco
-	mysq / mariadb
-	CREATE DATABASE test;
-	SHOW CREATE DATABASE test;
-	SHOW DATABASES;
+  Entrar no banco
+    $ mysql || mariadb
+    $ CREATE DATABASE test;
+    $ SHOW CREATE DATABASE test;
+    $ SHOW DATABASES;
+    $ GRANT ALL ON test.* TO 'mcastro'@'localhost' IDENTIFIED BY '12345' WITH GRANT OPTION;
+    $ FLUSH PRIVILEGES;
+    $ exit
+	  $ mariadb -u mcastro -p
+	  $ 12345
 
-	GRANT ALL ON test.* TO 'mcastro'@'localhost' IDENTIFIED BY '12345' WITH GRANT OPTION;
-  FLUSH PRIVILEGES;
-	exit
-
-	mariadb -u mcastro -p
-	12345
-
-	• PHP
-	sudo apt install php-cgi php-mysql
-	dpkg -l | grep php
+- PHP
+	$ sudo apt install php-cgi php-mysql
+	$ dpkg -l | grep php
 
 	Enable the fastcgi module and the php configuration with
 
-	sudo lighty-enable-mod fastcgi 
-	sudo lighty-enable-mod fastcgi-php
+	$ sudo lighty-enable-mod fastcgi 
+	$ sudo lighty-enable-mod fastcgi-php
 
 	Reload the lighttpd daemon
-	sudo service lighttpd force-reload
+	$ sudo service lighttpd force-reload
 
 	To test if it's working create the file /var/www/index.php with the following contents:
 	<?php phpinfo(); ?>
-	and check out http://localhost/index.php in your browser.
+	and check out http://{ip}/index.php in your browser.
 
-	• Wordpress
-	sudo apt install wget
+- Wordpress
+  sudo apt install wget
 
 	wget http://wordpress.org/latest.tar.gz -P /var/www/html
 	tar -xzvf /var/www/html/latest.tar.gz
@@ -278,37 +322,9 @@ You must choose as an operating system either the latest stable version of Debia
 	define( 'DB_PASSWORD', '<password-2>' );^M
 
 
-	IP
-	hostname -I
+  {
+    valida senha do sudo de ter parte da senha antiga, e ter nome do usuario na senha
+    validar regras aplicadas p todos os usuarios
+		anotar o q cada comando do scritp faz
+  }
 
-	• Set up a service of your choice that you think is useful (NGINX / Apache2 excluded!). During the defense, you will have to justify your choice.
-	• Can set up extra services. In this case, you may open more ports to suit your needs.
-		Of course, the UFW rules has to be adapted accordingly.
-
-(take a look at wall)
-https://linuxize.com/post/wall-command-in-linux/ - mensagem p todos os usuarios
-
--------
-• You only have to turn in a signature.txt file at the root of your repository. You
-must paste in it the signature of your machine’s virtual disk. Go to Submission and
-peer-evaluation for more information
-
-You only have to turn in a signature.txt file at the root of your Git repository.
-You must paste in it the signature of your machine’s virtual disk. To get this signature, you
-first have to open the default installation folder (it is the folder where your VMs are
-saved):
-
-• Linux: ~/VirtualBox VMs/
-
-Then, retrieve the signature from the ".vdi" file (or ".qcow2 for UTM’users) of your
-virtual machine in sha1 format. Below are 4 command examples for a centos_serv.vdi
-file:
-
-• Linux: sha1sum centos_serv.vdi
-
-This is an example of what kind of output you will get:
-• 6e657c4619944be17df3c31faa030c25e43e40af
-
-Please note that your virtual machine’s signature may be altered
-after your first evaluation. To solve this problem, you can
-duplicate your virtual machine or use save state.
