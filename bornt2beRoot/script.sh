@@ -3,11 +3,11 @@ wall -n \
 '#Architecture: ' `hostnamectl | grep "Operating System" | cut -d ' ' -f5- ` '/' `hostnamectl | grep "Kernel" | cut -d ' ' -f14-`
 '\n#CPU physical: '`grep physical id /proc/cpuinfo  | wc -l` \
 '\n#vCPU:  '`grep processor /proc/cpuinfo | wc -l` \
-'\n'`free -mega | awk 'NR==2{printf "#Memory Usage: %s/%sMB (%.2f%%)", $3,$2,$3*100/$2 }'` \
+'\n'`free --mega | awk 'NR==2{printf "#Memory Usage: %s/%sMB (%.2f%%)", $3,$2,$3*100/$2 }'` \
 '\n'`df -h | awk '$NF=="/"{printf "#Disk Usage: %d/%dGB (%s)", $3,$2,$5}'` \
 $'\n'`top -bn1 | grep load | awk '{printf "#CPU Load: %.2f\n", $(NF-2)}'` \
 $'\n#Last boot: ' `who -b | awk '{print $3" "$4" "$5}'` \
-$'\n#LVM use: ' `lsblk |grep lvm | awk '{if ($1) {print "yes";exit;} else {print "no"} }'` \
+$'\n#LVM use: ' `lsblk | grep lvm | awk '{if ($1) {print "yes";exit;} else {print "no"} }'` \
 $'\n#Connection TCP:' `ss -t | grep ESTAB | wc -l ` 'ESTABLISHED'\
 $'\n#User log: ' `users | wc -w` \
 $'\nNetwork: IP ' `hostname -I | awk `{print $1}`"("`ip a | grep link/ether | awk '{print $2}'`")" \

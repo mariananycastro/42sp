@@ -69,6 +69,8 @@ check acesso
   -M dias max p mudar password
   -I bloqueio do usuario
   -W qtos dias vai ficar enviando warning message depois de expirar
+  ou 
+  $ sudo chage user
 
 - Hostname
     Change hostaname
@@ -114,6 +116,15 @@ check acesso
     @reboot sleep10; /path/to/monitoring.sh
     chmod +r arquivo.sh
 
+  hostnamectl - info sobre pc
+  /proc/cpuinfo
+  free -mega - quantidade de memória livre e utilizada, a área de swap no sistema, a memória compartilhada e os buffers utilizados pelo kernel.
+  df - info sobre espaço, livre e ocupado, das partições do sistema.
+  top - processos que estão sendo executados
+  who - quais os usuários que estão conectados
+  users - lista dos usuários atualmente logados no sistema.
+  lsblk - Descrição Este comando exibe informações sobre as partições do HD e outros dispositivos 
+  https://guialinux.uniriotec.br/awk/
 
 - Lighttpd
 	$ systemctl status lighttpd
@@ -297,7 +308,7 @@ https://pt.stackoverflow.com/questions/132348/qual-a-diferen%C3%A7a-de-usar-o-ph
 	Reload the lighttpd daemon
 	$ sudo service lighttpd force-reload
 
-	To test if it's working create the file /var/www/index.php with the following contents:
+	To test if its working create the file /var/www/index.php with the following contents:
 	<?php phpinfo(); ?>
 	and check out http://{ip}/index.php in your browser.
 
@@ -321,10 +332,47 @@ https://pt.stackoverflow.com/questions/132348/qual-a-diferen%C3%A7a-de-usar-o-ph
 	define( 'DB_USER', '<username-2>' );^M
 	define( 'DB_PASSWORD', '<password-2>' );^M
 
+-  FTP
+  https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-a-user-s-directory-on-ubuntu-18-04
+  $ sudo apt update
+  $ sudo apt upgrade
+  $ sudo apt-get install vsftpd
+  $ sudo service vsftpd status
+  $ sudo service vsftpd enable
+  $ sudo ufw allow ssh
+  $ sudo ufw allow 20/tcp
+  $ sudo ufw allow 21/tcp
+  $ sudo ufw allow 40000:50000/tcp
+  $ sudo ufw enable
+  $ sudo ufw status
+  $ sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.backup-copy
+  $ sudo nano /etc/vsftpd.conf
+    write_enable=YES --> Allow the FTP users to write files to the FTP server.
+    chroot_local_user=YES --> Prevent the FTP users from browsing outside their own home directory.
+    local_enable=YES --> Allow local users to login through FTP.
+    local_umask=022 --> Give the correct permissions to the uploaded files/directories.
+  $ sudo service vsftpd restart
 
-  {
-    valida senha do sudo de ter parte da senha antiga, e ter nome do usuario na senha
-    validar regras aplicadas p todos os usuarios
-		anotar o q cada comando do scritp faz
-  }
-
+  $ sudo mkdir /home/mcastro/ftp
+  $ sudo chown nobody:nogroup /home/mcastro/ftp
+  $ sudo chmod a-w /home/mcastro/ftp
+  $ sudo mkdir /home/mcastro/ftp/files
+  $ sudo chown mcastro:mcastro /home/mcastro/ftp/files
+  $ sudo ls -la /home/mcastro/ftp
+    dr-xr-xr-x 3 nobody nogroup 4096 Aug 26 14:01 .
+    drwxr-xr-x 3 mcastro  mcastro   4096 Aug 26 13:59 ..
+    drwxr-xr-x 2 mcastro  mcastro   4096 Aug 26 14:01 files
+  $ echo "vsftpd test file" | sudo tee /home/mcstro/ftp/files/test.txt
+  $ sudo nano /etc/vsftpd.conf
+    anonymous_enable=NO # Allow anonymous FTP? (Disabled by default).
+    local_enable=YES # Uncomment this to allow local users to log in.
+    user_sub_token=$USER
+    local_root=/home/$USER/ftp
+  $ echo "mcastro" | sudo tee -a /etc/vsftpd.userlist
+  $ sudo systemctl restart vsftpd
+  na maquina local 
+    $ sudo apt-get install ftp
+    $ ftp {ip maquina virtual}
+      mcastro Born2beroot
+      $ ls
+      $ get {file_name.txt}
