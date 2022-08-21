@@ -24,10 +24,10 @@ gcc -Wall -Wextra -Werror  ./src/main.c -lX11 -lXext -lmlx  && ./a.out
 
 Window
 [x] Pressing ESC must close the window and quit the program in a clean way.
-[ ] The management of your window must remain smooth
-  [ ] changing to another window
-  [ ] minimizing
-  [ ] redraw
+[x] The management of your window must remain smooth
+  [x] changing to another window
+  [x] minimizing
+  [x] redraw
 [x] Clicking on the cross on the window’s frame must close the window and quit the
 program in a clean way.
 
