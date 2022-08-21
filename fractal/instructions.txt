@@ -1,0 +1,61 @@
+https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx
+https://aurelienbrabant.fr/blog/managing-events-with-the-minilibx
+https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx
+https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html
+
+dentro de minilibx
+sh ./configure
+
+git clone https://github.com/42Paris/minilibx-linux
+&& cd minilibx-linux
+&& sudo apt-get install libxext-dev libxrandr-dev libx11-dev libbsd-dev libssl-dev
+&& make
+&& sudo mv libmlx.a /usr/local/lib/
+
+&& sudo mv man/man1 /usr/local/man/
+&& sudo mv man/man3 /usr/local/man/man3
+&& sudo mv mlx.h /usr/local/include/
+
+# now go to test/ and run tests and check if things gose well
+cd test/
+./run_tests.sh
+
+gcc -Wall -Wextra -Werror  ./src/main.c -lX11 -lXext -lmlx  && ./a.out
+
+Window
+[x] Pressing ESC must close the window and quit the program in a clean way.
+[ ] The management of your window must remain smooth
+  [ ] changing to another window
+  [ ] minimizing
+  [ ] redraw
+[x] Clicking on the cross on the window’s frame must close the window and quit the
+program in a clean way.
+
+Mapa
+[ ] The map has to be constructed with 3 components: walls, collectibles, and free
+space.
+  0 for an empty space,
+  1 for a wall,
+  C for a collectible,
+  E for a map exit,
+  P for the player’s starting position
+  11111
+  1CEP1
+  10001
+  11111
+[ ] The map must contain at least 1 exit, 1 collectible, and 1 starting position
+[ ] The map must be rectangular.
+[ ] The map must be closed/surrounded by walls. If it’s not, the program must return
+an error.
+[ ] Another example of a minimal .ber map:
+[ ]  If any misconfiguration of any kind is encountered in the file, the program must
+exit in a clean way, and return "Error\n" followed by an explicit error message of
+your choice.
+
+Imagem
+[ ] mostrar imagem do mapa
+
+Bonus
+[ ]Make the player lose when they touch an enemy patrol.
+[ ]Add some sprite animation.
+[ ]Display the movement count directly on screen instead of writing it in the shell.
