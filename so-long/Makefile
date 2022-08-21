@@ -6,7 +6,7 @@
 #    By: mariana <mariana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 20:55:35 by mariana           #+#    #+#              #
-#    Updated: 2022/08/21 09:47:57 by mariana          ###   ########.fr        #
+#    Updated: 2022/08/21 10:20:55 by mariana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,5 +108,4 @@ compi: #make compu name=bla
 # @./a.out ${name}
 
 test:
-	@clang -Wall -Wextra -Werror  ./src/main.c -lX11 -lXext -lmlx  && ./a.out
-	
+	@clang -Wall -Wextra -Werror  ./src/$(file) -lX11 -lXext -lmlx && ./a.out
