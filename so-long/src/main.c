@@ -6,87 +6,12 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/21 16:12:58 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/22 20:38:42 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
-#include <X11/keysym.h>
-#include <X11/X.h>
-#include <unistd.h> // close and open
-#include <fcntl.h> // close and open
-
+#include "so_long.h"
 #include <stdio.h> // printf
-
-#define MLX_ERROR 1
-#define IMG_SIZE 32
-
-typedef struct s_img
-{
-	void	*mlx_img;
-	char	*addr;
-	int		bpp; // bits per pixel
-	int		line_len;
-	int		endian;
-	int		width;
-	int		height;
-}	t_img;
-
-typedef struct s_sprites
-{
-	t_img	player;
-	t_img	wall;
-	t_img	empty_space;
-	t_img	collectible;
-	t_img	exit;
-}	t_sprites;
-
-typedef struct s_map
-{
-	int		width;
-	int		height;
-	char	*matrix;
-}	t_map;
-
-typedef struct s_data
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_sprites	sprites;
-	t_map		map;
-}	t_data;
-
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return ;
-	while (i < n)
-	{
-		*(char *)(s + i) = '\0';
-		i++;
-	}
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*ptr;
-	size_t	max_test;
-
-	max_test = nmemb * size;
-	if (nmemb != 0 && (max_test / nmemb != size))
-		return (NULL);
-	ptr = malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, nmemb * size);
-	return (ptr);
-}
-
-// ===============
 
 int handle_destroy_window(void)
 {
@@ -99,11 +24,6 @@ int	handle_keyrelease(int keysym)
 		exit(0);
 	return (0);
 }
-
-// 65362	up		XK_Up
-// 65364	down	XK_Down
-// 65363	right	XK_Right
-// 65361	left	XK_Left
 
 int	render(t_data *data)
 {
@@ -146,7 +66,7 @@ int	render(t_data *data)
 
 void ft_create_imgs(t_data *data)
 {
-	char	*blueDinoPath = "./sprites/player/BlueDino.xpm";
+	char	*blueDinoPath = "./sprites/player/RedDino.xpm";
 	char	*wallPath = "./sprites/background/wall.xpm";
 	char	*emptySpacePath = "./sprites/background/background.xpm";
 	char	*exitPath = "./sprites/background/window.xpm";
@@ -179,9 +99,8 @@ void ft_create_imgs(t_data *data)
 	data->sprites.collectible = collectibleImg;
 }
 
-void ft_get_map_size(t_data *data)
+void ft_get_map_size(t_data *data, char	*map_file)
 {
-	char	*map_file = "./maps/map1.ber";
 	char	buffer;
 	int		fd;
 	int		lines;
@@ -206,8 +125,9 @@ void ft_get_map_size(t_data *data)
 }
 
 void ft_set_map_matrix(t_data *data)
+
+void ft_set_map_matrix(t_data *data, char *map_file)
 {
-	char	*map_file = "./maps/map1.ber";
 	char	*map_matrix;
 	size_t	matrix_size;
 	char	buffer;
@@ -215,7 +135,7 @@ void ft_set_map_matrix(t_data *data)
 	int		index;
 
 	matrix_size = data->map.height * data->map.width;
-	map_matrix = calloc(matrix_size, sizeof(char));
+	map_matrix = ft_calloc(matrix_size, sizeof(char));
 
 	index = 0;
 	fd = open(map_file, O_RDONLY);
@@ -241,10 +161,74 @@ void ft_set_map_matrix(t_data *data)
 	// }
 }
 
-void ft_create_map(t_data *data)
+int ft_validate_extension(char *map_file)
 {
-	ft_get_map_size(data);
-	ft_set_map_matrix(data);
+	int	extention_size;
+	size_t path_size;
+
+	extention_size = 4;
+	path_size = ft_strlen(map_file);
+	return (ft_memcmp(&map_file[path_size - extention_size], ".ber", extention_size));
+}
+
+int ft_is_wall(char map_title)
+{
+	char wall;
+
+	wall = '1';
+	return (map_title == wall);
+}
+
+int ft_check_map(int width, int height, char *matrix)
+{
+	int index;
+	int has_c;
+	int has_e;
+	int has_p;
+
+	index = 0;
+	has_c = 0;
+	has_e = 0;
+	has_p = 0;
+
+	while(matrix[index])
+	{
+		if (index < width || index >= ((width * height) - width) || index%width == 0 || index%width == width - 1)
+		{
+			if (ft_is_wall(matrix[index]) != 1)
+				return (1);
+		}
+		else
+		{
+			if (matrix[index] == 'C')
+				has_c++;
+			if (matrix[index] == 'E')
+				has_e++;
+			if (matrix[index] == 'P')
+				has_p++;
+		}
+		index++;
+	}
+	if (has_c == 0 || has_e == 0 || has_p == 0)
+		return (1);
+	return(0);
+}
+
+
+void ft_validate_map(t_data *data, char *map_file)
+{
+	if (ft_validate_extension(map_file) != 0)
+		printf("Erro");
+	printf("%s", map_file);
+	if (ft_check_map(data->map.width, data->map.height, data->map.matrix) != 0)
+		printf("Erro");
+}
+
+void ft_create_map(t_data *data, char *map_file)
+{
+	ft_get_map_size(data, map_file);
+	ft_set_map_matrix(data, map_file);
+	ft_validate_map(data, map_file);
 }
 
 int	main(void)
@@ -252,11 +236,12 @@ int	main(void)
 	t_data	data;
 	int		window_width;
 	int		window_height;
+	char	*map_file = "./maps/map1.ber";
 
+	ft_create_map(&data, map_file);
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
 		return (MLX_ERROR);
-	ft_create_map(&data);
 	window_width = data.map.width * IMG_SIZE;
 	window_height = data.map.height * IMG_SIZE;
 	data.win_ptr = mlx_new_window(data.mlx_ptr, window_width, window_height, "So long!");
