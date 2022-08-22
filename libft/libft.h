@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:13:41 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/07 19:08:20 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/22 18:44:30 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
 
 typedef struct	s_list
 {
@@ -42,7 +46,6 @@ int							ft_isupper(int c); // return se é letra maius
 
 char						*ft_itoa(int n); // return uma string de um numero;
 void						*ft_memchr(const void *s, int c, size_t n); // procura em n bytes de s pela primeira ocorrencia de c
-void						*ft_memcpy(void *dest, const void *src, size_t n); // copia n data de *src p *dest
 int							ft_memcmp(const void *s1, const void *s2, size_t n); // compara area de memoria
 void						*ft_memmove(void *dest, const void *src, size_t n); // copia uma src p dest de acordo com posição na memoria
 void						*ft_memset(void *s, int c, size_t n); // preenche memoria com determinado caracter;
@@ -51,19 +54,19 @@ void						ft_putendl_fd(char *s, int fd); // print string s + new line
 void						ft_putnbr_fd(int n, int fd); // print number
 void						ft_putstr_fd(char *s, int fd); // print string s
 char						**ft_split(char const *s, char c); // divide s a cada c, e return array de string
-char						*ft_strchr(const char *s, int c); // localiza c na string e retorna primeira ocorrencia;
-char						*ft_strdup(const char *src); // return copia de src
+char						*ft_strchr(char *s, int c); // localiza c na string e retorna primeira ocorrencia;
+char						*ft_strdup(char *src); // return copia de src
 void						ft_striteri(char *s, void (*f)(unsigned int, char*)); // aplica uma funcão para cada caracter e modifica a string se necessario
-char						*ft_strjoin(char const *s1, char const *s2); // return nova string concatenando s1 e s2
+char						*ft_strjoin(char *s1, char *s2); // return nova string concatenando s1 e s2
 unsigned	int		ft_strlcat(char *dest, char *src, unsigned int size); // concatena strings
-unsigned	int		ft_strlcpy(char *dest, char *src, unsigned int size); ;// copia strings
-int							ft_strlen(char const *str); // retorna tamanho de str
+unsigned	int		ft_strlcpy(char *dest, char *src, unsigned int size);// copia strings
+int							ft_strlen(char *str); // retorna tamanho de str
 char						*ft_strmapi(char const *s, char (*f)(unsigned int, char));// aplica uma função para cada caracter de uma string, passando o index e retornando uma nova string 
 int							ft_strncmp(const char *s1, const char *s2, size_t n); // compara strings
 char						*ft_strnstr(const char	*big, const char *little, size_t len); // localiza uma sub string em uma string
-char						*ft_strrchr(const char *s, int c); // localiza c na string e retorna ultima occurrencia
-char						*ft_strtrim(char const *s1, char const *set); // retorna s1 removendo set no inicio e final de s1 
-char						*ft_substr(char const *s, unsigned int start, size_t len); // returno copia a partir do start a string s, até a len max da copia 
+char						*ft_strrchr(char *s, int c); // localiza c na string e retorna ultima occurrencia
+char						*ft_strtrim(char *s1, char *set); // retorna s1 removendo set no inicio e final de s1 
+char						*ft_substr(char *s, unsigned int start, size_t len); // returno copia a partir do start a string s, até a len max da copia 
 int							ft_tolower(int c);
 int 						ft_toupper(int c);
 t_list					*ft_lstnew(void *content); //cria uma lista
@@ -75,4 +78,6 @@ void						ft_lstiter(t_list *lst, void (*f)(void *)); // aplica função os item
 t_list				  *ft_lstlast(t_list *lst); // retorna ultimo item da lista
 t_list					*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int							ft_lstsize(t_list *lst); // retorna tamanho da lista
+char				*ft_strappend(char *s1, char *s2);
+char				*get_next_line(int fd);
 #endif

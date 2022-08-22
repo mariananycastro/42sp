@@ -6,13 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:15:37 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/03 19:46:56 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/22 18:42:39 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*new_string;
 	size_t	len;

@@ -6,13 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:03:10 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/19 18:14:01 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/22 18:36:01 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	size_t	i;
 	size_t	size;

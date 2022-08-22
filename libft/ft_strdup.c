@@ -6,13 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 00:32:11 by mcastro           #+#    #+#             */
-/*   Updated: 2022/05/07 19:10:07 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/22 18:36:07 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *src)
+char	*ft_strdup(char *src)
 {
 	char	*copy;
 	int		i;

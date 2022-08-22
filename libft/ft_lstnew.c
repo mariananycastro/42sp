@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:11:29 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/01 17:34:58 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/22 18:43:44 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*ft_lstnew(void *content)
 
 	new_content = malloc(sizeof(t_list));
 	if (!new_content)
-		return (NULL);	
+		return (NULL);
 	new_content->content = content;
 	new_content->next = NULL;
 	return (new_content);

@@ -6,13 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:42:48 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/23 20:17:12 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/22 18:42:27 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_search_start(char const *s1, char const *set)
+static int	ft_search_start(char *s1, char *set)
 {
 	int	i;
 	int	z;
@@ -35,7 +35,7 @@ static int	ft_search_start(char const *s1, char const *set)
 	return (i);
 }
 
-static int	ft_search_end(char const *s1, char const *set, int index)
+static int	ft_search_end(char *s1, char *set, int index)
 {
 	int	z;
 
@@ -56,7 +56,7 @@ static int	ft_search_end(char const *s1, char const *set, int index)
 	return (index);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char *s1, char *set)
 {
 	char	*s1_copy;
 	int		start;

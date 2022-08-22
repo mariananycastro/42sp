@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 20:13:46 by mariana           #+#    #+#             */
-/*   Updated: 2022/05/06 21:10:49 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/22 18:43:16 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd((copy_n / 10), fd);
 	ft_putchar_fd((copy_n % 10 + 48), fd);
 }
-

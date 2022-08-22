@@ -6,13 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:01:54 by mariana           #+#    #+#             */
-/*   Updated: 2022/04/24 22:46:03 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/22 18:41:12 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	char			*s_string;
 	unsigned int	sub_len;

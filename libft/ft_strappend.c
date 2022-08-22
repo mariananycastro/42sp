@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strappend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 10:42:49 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/22 18:43:55 by mariana          ###   ########.fr       */
+/*   Created: 2022/05/31 16:10:09 by mariana           #+#    #+#             */
+/*   Updated: 2022/06/12 18:59:10 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strappend(char *s1, char *s2)
 {
-	void	*ptr;
-	size_t	max_test;
+	char	*new_string;
+	size_t	len;
+	size_t	i;
+	size_t	z;
 
-	max_test = nmemb * size;
-	if (nmemb != 0 && (max_test / nmemb != size))
+	if (!s1)
 		return (NULL);
-	ptr = malloc(nmemb * size);
-	if (!ptr)
+	len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	new_string = (char *) malloc((len * sizeof(char)));
+	if (new_string == NULL)
 		return (NULL);
-	ft_bzero(ptr, nmemb * size);
-	return (ptr);
+	i = 0;
+	while (s1[i])
+	{
+		new_string[i] = s1[i];
+		i++;
+	}
+	z = 0;
+	while (s2[z])
+		new_string[i++] = s2[z++];
+	new_string[i] = '\0';
+	free(s1);
+	return (new_string);
 }
