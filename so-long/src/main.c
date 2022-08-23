@@ -6,12 +6,12 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/22 20:38:42 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/22 21:19:09 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h> // printf
+#include <stdio.h> // printf substituir pela minha func
 
 int handle_destroy_window(void)
 {
@@ -23,6 +23,19 @@ int	handle_keyrelease(int keysym)
 	if (keysym == XK_Escape)
 		exit(0);
 	return (0);
+}
+
+void ft_destroy(t_data *data)
+{
+	mlx_destroy_display(data->mlx_ptr);
+	free(data->mlx_ptr);
+	free(data->map.matrix);
+}
+
+void ft_exit(t_data *data)
+{
+	free(data->map.matrix);
+	exit(0);
 }
 
 int	render(t_data *data)
@@ -104,27 +117,42 @@ void ft_get_map_size(t_data *data, char	*map_file)
 	char	buffer;
 	int		fd;
 	int		lines;
+	int 	std_column;
 	int		columns;
 
 	lines = 1;
 	columns = 0;
+	std_column = 0;
 	fd = open(map_file, O_RDONLY);
 	if (fd != -1)
 	{
 		while (read(fd, &buffer, 1) != 0)
 		{
-			if (buffer != '\n' && lines == 1)
+			if (buffer == 'C' || buffer == 'E' || buffer == 'P' || buffer == '1' || buffer == '0')
 				columns++;
-			if (buffer == '\n')
+			else if (buffer == '\n')
+			{
+				if (lines == 1)
+					std_column = columns;
+				else if (columns != std_column)
+				{
+					printf("Not Rec Map Error1\n");
+					exit(0);
+				}
 				lines++;
+				columns = 0;
+			}
+			else
+			{
+				printf("Invalid title Error\n");
+				exit(0);
+			}
 		}
 	}
 	close(fd);
 	data->map.width = columns;
 	data->map.height = lines;
 }
-
-void ft_set_map_matrix(t_data *data)
 
 void ft_set_map_matrix(t_data *data, char *map_file)
 {
@@ -152,13 +180,6 @@ void ft_set_map_matrix(t_data *data, char *map_file)
 	}
 	close(fd);
 	data->map.matrix = map_matrix;
-
-	// size_t x = 0;
-	// while (x < matrix_size)
-	// {
-		// 	printf("%d ", data->map.matrix[x]);
-		// 	x++;
-	// }
 }
 
 int ft_validate_extension(char *map_file)
@@ -218,10 +239,15 @@ int ft_check_map(int width, int height, char *matrix)
 void ft_validate_map(t_data *data, char *map_file)
 {
 	if (ft_validate_extension(map_file) != 0)
-		printf("Erro");
-	printf("%s", map_file);
+	{
+		printf("Invalid extension Error\n");
+		ft_exit(data);
+	}
 	if (ft_check_map(data->map.width, data->map.height, data->map.matrix) != 0)
-		printf("Erro");
+	{
+		printf("Invalid map Error\n");
+		ft_exit(data);
+	}
 }
 
 void ft_create_map(t_data *data, char *map_file)
@@ -256,6 +282,5 @@ int	main(void)
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, NoEventMask, &handle_destroy_window, &data);
 	mlx_loop(data.mlx_ptr);
-	mlx_destroy_display(data.mlx_ptr);
-	free(data.mlx_ptr);
+	ft_destroy(&data);
 }
