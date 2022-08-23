@@ -6,12 +6,11 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/22 21:19:09 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/22 21:35:02 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h> // printf substituir pela minha func
 
 int handle_destroy_window(void)
 {
@@ -59,9 +58,7 @@ int	render(t_data *data)
 			if (data->map.matrix[index] == '1') // wall
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->sprites.wall.mlx_img, x, y);
 			if (data->map.matrix[index] == 'P') // player
-			{
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->sprites.player.mlx_img, x, y);
-			}
 			if (data->map.matrix[index] == '0') // empty_space
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->sprites.empty_space.mlx_img, x, y);
 			if (data->map.matrix[index] == 'C') // collectible
@@ -124,6 +121,7 @@ void ft_get_map_size(t_data *data, char	*map_file)
 	columns = 0;
 	std_column = 0;
 	fd = open(map_file, O_RDONLY);
+
 	if (fd != -1)
 	{
 		while (read(fd, &buffer, 1) != 0)
@@ -136,7 +134,7 @@ void ft_get_map_size(t_data *data, char	*map_file)
 					std_column = columns;
 				else if (columns != std_column)
 				{
-					printf("Not Rec Map Error1\n");
+					ft_printf("Error1\n Not Rec Map\n");
 					exit(0);
 				}
 				lines++;
@@ -144,7 +142,7 @@ void ft_get_map_size(t_data *data, char	*map_file)
 			}
 			else
 			{
-				printf("Invalid title Error\n");
+				ft_printf("Error\nInvalid map titles\n");
 				exit(0);
 			}
 		}
@@ -200,7 +198,7 @@ int ft_is_wall(char map_title)
 	return (map_title == wall);
 }
 
-int ft_check_map(int width, int height, char *matrix)
+int ft_check_map_titles(int width, int height, char *matrix)
 {
 	int index;
 	int has_c;
@@ -235,17 +233,16 @@ int ft_check_map(int width, int height, char *matrix)
 	return(0);
 }
 
-
 void ft_validate_map(t_data *data, char *map_file)
 {
 	if (ft_validate_extension(map_file) != 0)
 	{
-		printf("Invalid extension Error\n");
+		ft_printf("Error\n Invalid extension\n");
 		ft_exit(data);
 	}
-	if (ft_check_map(data->map.width, data->map.height, data->map.matrix) != 0)
+	if (ft_check_map_titles(data->map.width, data->map.height, data->map.matrix) != 0)
 	{
-		printf("Invalid map Error\n");
+		ft_printf("Error\nInvalid map titles\n");
 		ft_exit(data);
 	}
 }
