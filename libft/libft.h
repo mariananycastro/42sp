@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:13:41 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/22 18:44:30 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/22 21:31:53 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
+# include <stdarg.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
@@ -80,4 +81,10 @@ t_list					*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int							ft_lstsize(t_list *lst); // retorna tamanho da lista
 char				*ft_strappend(char *s1, char *s2);
 char				*get_next_line(int fd);
+int	ft_printf(const char *phrase, ...);
+int	ft_decimal(int number);
+int	ft_to_base(unsigned long nbr, unsigned int base_number, char *char_base);
+int	ft_string(char *str);
+int	ft_pointer(unsigned long position);
 #endif
+
