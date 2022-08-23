@@ -6,7 +6,7 @@
 #    By: mariana <mariana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 20:55:35 by mariana           #+#    #+#              #
-#    Updated: 2022/08/21 10:20:55 by mariana          ###   ########.fr        #
+#    Updated: 2022/08/22 12:39:14 by mariana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,8 @@ vpath %.c $(SRC_DIR)
 
 CFLAGS= -Wall -Wextra -Werror -I$(INC) -O3 -I.. -g
 
+MY_LIB_PATH = ../../my_lib/libft.a
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -103,9 +105,17 @@ re: fclean all
 .PHONY: all clean fclean re
 
 compi: #make compu name=bla
-	@gcc $(LFLAGS) src/main.c fractal.a 
+	@clang -Wall -Wextra -Werror  ./src/main.c $(MY_LIB_PATH) -lX11 -lXext -lmlx && ./a.out
+# @gcc $(LFLAGS) src/main.c fractal.a 
 # @gcc -lmlx -L/usr/local/include/ -lXext -lX11 -lm obj/main.o fractal.a 
 # @./a.out ${name}
 
 test:
-	@clang -Wall -Wextra -Werror  ./src/$(file) -lX11 -lXext -lmlx && ./a.out
+	@clang -Wall -Wextra -Werror  ./src/main.c -lX11 -lXext -lmlx && ./a.out
+
+out:
+	@./a.out
+
+run:
+	gcc -c -Wall -Werror -Wextra ./src/main.c -lX11 -lXext -lmlx -I ./include/
+	gcc -o main main.o

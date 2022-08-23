@@ -32,7 +32,7 @@ Window
 program in a clean way.
 
 Mapa
-[ ] The map has to be constructed with 3 components: walls, collectibles, and free
+[x] The map has to be constructed with 3 components: walls, collectibles, and free
 space.
   0 for an empty space,
   1 for a wall,
@@ -43,17 +43,24 @@ space.
   1CEP1
   10001
   11111
-[ ] The map must contain at least 1 exit, 1 collectible, and 1 starting position
-[ ] The map must be rectangular.
-[ ] The map must be closed/surrounded by walls. If it’s not, the program must return
+[ ] Abrir jogo passando nome do mapa
+[x]validações do mapa
+  [x] The map must contain at least 1 exit, 1 collectible, and 1 starting position
+  [x] The map must be rectangular.
+  [x] The map must be closed/surrounded by walls. If it’s not, the program must return
 an error.
-[ ] Another example of a minimal .ber map:
-[ ]  If any misconfiguration of any kind is encountered in the file, the program must
+  [x]  If any misconfiguration of any kind is encountered in the file, the program must
 exit in a clean way, and return "Error\n" followed by an explicit error message of
 your choice.
 
+Jogo
+[ ] Fazer imagem andar
+[ ] Fazer coin sumir qdo for pega
+[ ] Contar pontos ao tocar coin
+
 Imagem
-[ ] mostrar imagem do mapa
+[x] mostrar imagem do mapa
+[ ] refazer imagem do mapa mais bonita
 
 Bonus
 [ ]Make the player lose when they touch an enemy patrol.
