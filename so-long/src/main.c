@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/22 22:28:32 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/24 14:25:22 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void ft_set_map_matrix(t_data *data, char *map_file)
 			if(buffer != '\n')
 			{
 				map_matrix[index] = buffer;
+				if (buffer == 'P')
+					data->map.player_position = index;
 				index++;
 			}
 		}
@@ -84,6 +86,8 @@ int	main(void)
 		return (MLX_ERROR);
 	}
 	ft_create_imgs(&data);
+	data.score = 0;
+	ft_printf("Score: %d\n", data.score);
 
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease, &data);

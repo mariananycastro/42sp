@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:23:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/22 22:27:12 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/24 14:03:17 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_map
 	int		width;
 	int		height;
 	char	*matrix;
+	int		player_position;
 }	t_map;
 
 typedef struct s_data
@@ -58,14 +59,17 @@ typedef struct s_data
 	void		*win_ptr;
 	t_sprites	sprites;
 	t_map		map;
+	int			score;
 }	t_data;
 
-int	handle_keyrelease(int keysym);
+int	handle_keyrelease(int keysym, t_data *data);
 int handle_destroy_window(void);
 void ft_create_map(t_data *data, char *map_file);
 void ft_validate_map(t_data *data, char *map_file);
 int ft_check_map_titles(int width, int height, char *matrix);
 int ft_is_wall(char map_title);
+int ft_is_coin(char map_title);
+int ft_is_exit(char map_title);
 int ft_validate_extension(char *map_file);
 void ft_set_map_matrix(t_data *data, char *map_file);
 void ft_get_map_size(t_data *data, char	*map_file);
