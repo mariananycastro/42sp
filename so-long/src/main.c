@@ -6,13 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/25 10:09:02 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/25 10:36:10 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_set_map_matrix(t_data *data, char *map_file)
+void ft_set_map_matrix(t_data *data, const char *map_file)
 {
 	char	*map_matrix;
 	size_t	matrix_size;
@@ -42,7 +42,7 @@ void ft_set_map_matrix(t_data *data, char *map_file)
 	data->map.matrix = map_matrix;
 }
 
-int ft_validate_extension(char *map_file)
+int ft_validate_extension(const char *map_file)
 {
 	int	extention_size;
 	size_t path_size;
@@ -71,12 +71,11 @@ int	ft_create_window(t_data	*data)
 	return (0);
 }
 
-int	main(void)
+void	ft_create_game(const char *file_name)
 {
 	t_data	data;
-	char	*map_file = "./maps/map1.ber";
 
-	ft_create_map(&data, map_file);
+	ft_create_map(&data, file_name);
 	ft_create_window(&data);
 	ft_create_imgs(&data);
 	data.score = 0;
@@ -97,4 +96,13 @@ int	main(void)
 		);
 	mlx_loop(data.mlx_ptr);
 	ft_destroy(&data);
+}
+
+int	main(int argc, const char *argv[])
+{
+	if (argc == 2)
+		ft_create_game(argv[1]);
+	else
+		ft_printf("Wrong params were given");
+	return (0);
 }

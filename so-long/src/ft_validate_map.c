@@ -6,13 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:13:53 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/24 15:48:47 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/25 10:28:57 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_validate_map(t_data *data, char *map_file)
+void	ft_validate_map(t_data *data, const char *map_file)
 {
 	int		width;
 	int		height;

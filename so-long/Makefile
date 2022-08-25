@@ -6,13 +6,13 @@
 #    By: mariana <mariana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 20:55:35 by mariana           #+#    #+#              #
-#    Updated: 2022/08/24 11:51:00 by mariana          ###   ########.fr        #
+#    Updated: 2022/08/25 11:46:21 by mariana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FILES_PATH = ./src/
 FILES_NAMES = handle_destroy_window.c handle_keyrelease.c ft_create_map.c \
-							ft_validate_map.c ft_check_map_titles.c ft_is_wall.c \
+							ft_validate_map.c ft_check_map_titles.c \
 							ft_validate_extension.c ft_set_map_matrix.c ft_get_map_size.c \
 							render.c ft_create_imgs.c ft_destroy.c ft_exit.c
 FILES = $(FILES_PATH)handle_destroy_window.c \
@@ -20,7 +20,6 @@ FILES = $(FILES_PATH)handle_destroy_window.c \
 				$(FILES_PATH)ft_create_map.c \
 				$(FILES_PATH)ft_validate_map.c \
 				$(FILES_PATH)ft_check_map_titles.c \
-				$(FILES_PATH)ft_is_wall.c \
 				$(FILES_PATH)ft_validate_extension.c \
 				$(FILES_PATH)ft_set_map_matrix.c \
 				$(FILES_PATH)ft_get_map_size.c \
@@ -37,6 +36,7 @@ all: $(NAME)
 $(NAME):
 	gcc -Wall -Wextra -Werror -c $(FILES) -I .
 	ar -rc $(NAME) $(FILES_O)
+	clang -Wall -Wextra -Werror ./src/main.c $(MY_LIB_PATH) $(NAME) -lX11 -lXext -lmlx 
 
 clean:
 	/bin/rm -f *.o
@@ -46,18 +46,32 @@ fclean: clean
 
 re: fclean all
 
-compi:
-	@clang -Wall -Wextra -Werror ./src/main.c $(MY_LIB_PATH) $(NAME) -lX11 -lXext -lmlx && ./a.out
-# @gcc $(LFLAGS) src/main.c so_long.a 
-# @gcc -lmlx -L/usr/local/include/ -lXext -lX11 -lm obj/main.o so_long.a 
-# @./a.out ${name}
-
-test:
-	@clang -Wall -Wextra -Werror  ./src/main.c -lX11 -lXext -lmlx && ./a.out
-
-out:
-	@./a.out
-
 run:
-	gcc -c -Wall -Werror -Wextra ./src/main.c -lX11 -lXext -lmlx -I ./include/
-	gcc -o main main.o
+@./a.out ./maps/map1.ber
+# @./a.out ./maps/map2.ber
+# @./a.out ./maps/map3.ber
+
+# empty first line - not rec
+# @./a.out ./maps/empty.ber
+
+# missing caracter - invalid map tittle
+# @./a.out ./maps/missing_title.ber
+
+# missing wall - invalid map tittle
+# @./a.out ./maps/no_wall.ber
+
+# - not rec
+# @./a.out ./maps/not_rec1.ber
+
+# - invalid map title
+# @./a.out ./maps/not_rec2.ber
+
+# not square, with space in the end - invalid map title
+# @./a.out ./maps/not_rec2.ber
+
+# not right extention 
+# @./a.out ./maps/not_ber.txt
+
+# file does not exist
+# @./a.out ./maps/bolinha.ber
+

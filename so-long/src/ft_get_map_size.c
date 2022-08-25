@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:11:46 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/25 10:03:18 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/25 10:28:28 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_read_file(int fd, t_data *data)
 	}
 }
 
-void	ft_get_map_size(t_data *data, char	*map_file)
+void	ft_get_map_size(t_data *data, const char	*map_file)
 {
 	int		fd;
 

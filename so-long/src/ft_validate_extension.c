@@ -6,13 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:12:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/24 19:03:12 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/25 10:28:49 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_validate_extension(char *map_file)
+int	ft_validate_extension(const char *map_file)
 {
 	int		extention_size;
 	size_t	path_size;

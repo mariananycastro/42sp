@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 21:55:25 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/24 18:43:26 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/25 10:10:38 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ void	ft_move(t_data *data, int new_position)
 int	handle_keyrelease(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
+	{
+		printf("End Game: %d\n", data->score);
 		exit(0);
+	}
 	else if (keysym == UP)
 		ft_move(data, data->map.width * -1);
 	else if (keysym == LEFT)

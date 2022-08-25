@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:23:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/24 21:51:24 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/25 11:42:37 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,14 @@ typedef struct s_data
 }	t_data;
 
 int		handle_keyrelease(int keysym, t_data *data);
-int		handle_destroy_window(void);
-void	ft_create_map(t_data *data, char *map_file);
-void	ft_validate_map(t_data *data, char *map_file);
+int		handle_destroy_window(t_data *data);
+void	ft_create_map(t_data *data, const char *map_file);
+void	ft_validate_map(t_data *data, const char *map_file);
 int		ft_check_map_titles(int width, int height, char *matrix);
 int		ft_is_wall(char map_title);
-int		ft_validate_extension(char *map_file);
-void	ft_set_map_matrix(t_data *data, char *map_file);
-void	ft_get_map_size(t_data *data, char	*map_file);
+int		ft_validate_extension(const char *map_file);
+void	ft_set_map_matrix(t_data *data, const char *map_file);
+void	ft_get_map_size(t_data *data, const char	*map_file);
 int		render(t_data *data);
 void	ft_create_imgs(t_data *data);
 void	ft_destroy(t_data *data);
