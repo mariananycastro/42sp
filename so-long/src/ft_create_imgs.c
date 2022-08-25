@@ -6,43 +6,41 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:11:27 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/22 22:11:29 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/24 18:43:07 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_create_imgs(t_data *data)
+t_img	ft_create_img(t_data *data, char *imgPath)
 {
-	char	*blueDinoPath = "./sprites/player/RedDino.xpm";
-	char	*wallPath = "./sprites/background/wall.xpm";
-	char	*emptySpacePath = "./sprites/background/background.xpm";
-	char	*exitPath = "./sprites/background/window.xpm";
-	char	*diamondPath = "./sprites/coins/diamond.xpm";
-	t_img blueDinoImg;
-	t_img wallImg;
-	t_img emptySpaceImg;
-	t_img exitImg;
-	t_img collectibleImg;
+	t_img	new_img;
 
-	blueDinoImg.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, blueDinoPath, &blueDinoImg.width, &blueDinoImg.height);
-	blueDinoImg.addr = mlx_get_data_addr(blueDinoImg.mlx_img, &blueDinoImg.bpp, &blueDinoImg.line_len, &blueDinoImg.endian);
+	new_img.mlx_img = mlx_xpm_file_to_image(
+			data->mlx_ptr, imgPath, &new_img.width, &new_img.height
+			);
+	new_img.addr = mlx_get_data_addr(
+			new_img.mlx_img, &new_img.bpp, &new_img.line_len, &new_img.endian
+			);
+	return (new_img);
+}
 
-	wallImg.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, wallPath, &wallImg.width, &wallImg.height);
-	wallImg.addr = mlx_get_data_addr(wallImg.mlx_img, &wallImg.bpp, &wallImg.line_len, &wallImg.endian);
+void	ft_create_imgs(t_data *data)
+{
+	t_img	dino_img;
+	t_img	wall_img;
+	t_img	empty_space_img;
+	t_img	exit_img;
+	t_img	collectible_img;
 
-	emptySpaceImg.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, emptySpacePath, &emptySpaceImg.width, &emptySpaceImg.height);
-	emptySpaceImg.addr = mlx_get_data_addr(emptySpaceImg.mlx_img, &emptySpaceImg.bpp, &emptySpaceImg.line_len, &emptySpaceImg.endian);
-
-	exitImg.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, exitPath, &exitImg.width, &exitImg.height);
-	exitImg.addr = mlx_get_data_addr(exitImg.mlx_img, &exitImg.bpp, &exitImg.line_len, &exitImg.endian);
-
-	collectibleImg.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, diamondPath, &collectibleImg.width, &collectibleImg.height);
-	collectibleImg.addr = mlx_get_data_addr(collectibleImg.mlx_img, &collectibleImg.bpp, &collectibleImg.line_len, &collectibleImg.endian);
-
-	data->sprites.player = blueDinoImg;
-	data->sprites.wall = wallImg;
-	data->sprites.empty_space = emptySpaceImg;
-	data->sprites.exit = exitImg;
-	data->sprites.collectible = collectibleImg;
+	dino_img = ft_create_img(data, DINO_PATH);
+	data->sprites.player = dino_img;
+	wall_img = ft_create_img(data, WALL_PATH);
+	data->sprites.wall = wall_img;
+	empty_space_img = ft_create_img(data, EMPTY_SPACE_PATH);
+	data->sprites.empty_space = empty_space_img;
+	exit_img = ft_create_img(data, EXIT_PATH);
+	data->sprites.exit = exit_img;
+	collectible_img = ft_create_img(data, COLLECTIBLE_PATH);
+	data->sprites.collectible = collectible_img;
 }

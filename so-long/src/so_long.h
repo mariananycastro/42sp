@@ -6,30 +6,47 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:23:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/24 14:03:17 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/24 21:51:24 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-#include <stdlib.h>
-#include <X11/keysym.h>
-#include <X11/X.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <mlx.h>
+# include <stdlib.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <mlx.h>
 
 // remove list import
-#include "../../ftprintf/include/ft_printf.h"
+# include "../../ftprintf/include/ft_printf.h"
 
-#define MLX_ERROR 1
-#define IMG_SIZE 32
+# define MLX_ERROR 1
+
+# define IMG_SIZE 32
+# define PLAYER 'P'
+# define EXIT 'E'
+# define EMPTY_SPACE '0'
+# define WALL '1'
+# define COLLECTIBLE 'C'
+
+# define UP 119
+# define LEFT 97
+# define DOWN 115
+# define RIGHT 100
+
+# define DINO_PATH "./sprites/player/RedDino.xpm"
+# define WALL_PATH "./sprites/background/wall.xpm"
+# define EMPTY_SPACE_PATH "./sprites/background/background.xpm"
+# define EXIT_PATH "./sprites/background/window.xpm"
+# define COLLECTIBLE_PATH "./sprites/coins/diamond.xpm"
 
 typedef struct s_img
 {
 	void	*mlx_img;
 	char	*addr;
-	int		bpp; // bits per pixel
+	int		bpp;
 	int		line_len;
 	int		endian;
 	int		width;
@@ -62,19 +79,17 @@ typedef struct s_data
 	int			score;
 }	t_data;
 
-int	handle_keyrelease(int keysym, t_data *data);
-int handle_destroy_window(void);
-void ft_create_map(t_data *data, char *map_file);
-void ft_validate_map(t_data *data, char *map_file);
-int ft_check_map_titles(int width, int height, char *matrix);
-int ft_is_wall(char map_title);
-int ft_is_coin(char map_title);
-int ft_is_exit(char map_title);
-int ft_validate_extension(char *map_file);
-void ft_set_map_matrix(t_data *data, char *map_file);
-void ft_get_map_size(t_data *data, char	*map_file);
-int	render(t_data *data);
-void ft_create_imgs(t_data *data);
-void ft_destroy(t_data *data);
-void ft_exit(t_data *data);
+int		handle_keyrelease(int keysym, t_data *data);
+int		handle_destroy_window(void);
+void	ft_create_map(t_data *data, char *map_file);
+void	ft_validate_map(t_data *data, char *map_file);
+int		ft_check_map_titles(int width, int height, char *matrix);
+int		ft_is_wall(char map_title);
+int		ft_validate_extension(char *map_file);
+void	ft_set_map_matrix(t_data *data, char *map_file);
+void	ft_get_map_size(t_data *data, char	*map_file);
+int		render(t_data *data);
+void	ft_create_imgs(t_data *data);
+void	ft_destroy(t_data *data);
+void	ft_exit(t_data *data);
 #endif

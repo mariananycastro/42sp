@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/24 14:25:22 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/25 10:09:02 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,46 +52,49 @@ int ft_validate_extension(char *map_file)
 	return (ft_memcmp(&map_file[path_size - extention_size], ".ber", extention_size));
 }
 
-void ft_validate_map(t_data *data, char *map_file)
+int	ft_create_window(t_data	*data)
 {
-	if (ft_validate_extension(map_file) != 0)
+	int		width;
+	int		height;
+
+	data->mlx_ptr = mlx_init();
+	if (data->mlx_ptr == NULL)
+		return (MLX_ERROR);
+	width = data->map.width * IMG_SIZE;
+	height = data->map.height * IMG_SIZE;
+	data->win_ptr = mlx_new_window(data->mlx_ptr, width, height, "So long!");
+	if (data->win_ptr == NULL)
 	{
-		ft_printf("Error\n Invalid extension\n");
-		ft_exit(data);
+		free(data->win_ptr);
+		return (MLX_ERROR);
 	}
-	if (ft_check_map_titles(data->map.width, data->map.height, data->map.matrix) != 0)
-	{
-		ft_printf("Error\nInvalid map titles\n");
-		ft_exit(data);
-	}
+	return (0);
 }
 
 int	main(void)
 {
 	t_data	data;
-	int		window_width;
-	int		window_height;
-	char	*map_file = "./maps/map3.ber";
+	char	*map_file = "./maps/map1.ber";
 
 	ft_create_map(&data, map_file);
-	data.mlx_ptr = mlx_init();
-	if (data.mlx_ptr == NULL)
-		return (MLX_ERROR);
-	window_width = data.map.width * IMG_SIZE;
-	window_height = data.map.height * IMG_SIZE;
-	data.win_ptr = mlx_new_window(data.mlx_ptr, window_width, window_height, "So long!");
-	if (data.win_ptr == NULL)
-	{
-		free(data.win_ptr);
-		return (MLX_ERROR);
-	}
+	ft_create_window(&data);
 	ft_create_imgs(&data);
 	data.score = 0;
 	ft_printf("Score: %d\n", data.score);
-
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
-	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease, &data);
-	mlx_hook(data.win_ptr, DestroyNotify, NoEventMask, &handle_destroy_window, &data);
+	mlx_hook(
+		data.win_ptr,
+		KeyRelease, KeyReleaseMask,
+		&handle_keyrelease,
+		&data
+		);
+	mlx_hook(
+		data.win_ptr,
+		DestroyNotify,
+		NoEventMask,
+		&handle_destroy_window,
+		&data
+		);
 	mlx_loop(data.mlx_ptr);
 	ft_destroy(&data);
 }

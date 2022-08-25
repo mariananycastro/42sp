@@ -6,13 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 21:43:37 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/22 21:54:11 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/24 19:03:31 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int handle_destroy_window(void)
+int	handle_destroy_window(void)
 {
 	exit(0);
 }

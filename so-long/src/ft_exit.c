@@ -6,13 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:10:30 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/22 22:10:39 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/24 15:53:22 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_exit(t_data *data)
+void	ft_exit(t_data *data)
 {
 	free(data->map.matrix);
 	exit(0);
