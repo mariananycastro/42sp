@@ -6,7 +6,7 @@
 #    By: mariana <mariana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 20:55:35 by mariana           #+#    #+#              #
-#    Updated: 2022/08/25 11:46:21 by mariana          ###   ########.fr        #
+#    Updated: 2022/08/25 20:43:25 by mariana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,9 @@ MY_LIB_PATH = ../../my_lib/libft.a
 all: $(NAME)
 
 $(NAME):
-	gcc -Wall -Wextra -Werror -c $(FILES) -I .
+	clang -Wall -Wextra -Werror -c $(FILES) -I .
 	ar -rc $(NAME) $(FILES_O)
-	clang -Wall -Wextra -Werror ./src/main.c $(MY_LIB_PATH) $(NAME) -lX11 -lXext -lmlx 
+	clang -Wall -Wextra -Werror -g ./src/main.c $(MY_LIB_PATH) $(NAME) -lX11 -lXext -lmlx 
 
 clean:
 	/bin/rm -f *.o
@@ -47,9 +47,10 @@ fclean: clean
 re: fclean all
 
 run:
-@./a.out ./maps/map1.ber
+# @./a.out ./maps/map1.ber
 # @./a.out ./maps/map2.ber
-# @./a.out ./maps/map3.ber
+	@valgrind --leak-check=full --show-reachable=yes ./a.out ./maps/map1.ber
+# @valgrind --leak-check=full --show-leak-kinds=all ./a.out ./maps/map3.ber
 
 # empty first line - not rec
 # @./a.out ./maps/empty.ber
