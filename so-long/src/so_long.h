@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:23:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 09:45:42 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 14:30:28 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	ft_get_map_size(t_data *data, const char	*map_file);
 int		render(t_data *data);
 void	ft_create_imgs(t_data *data);
 void	ft_destroy(t_data *data);
+void	ft_destroy_window(t_data *data);
 // void	ft_destroy_imgs(t_data *data);
 void	ft_exit(t_data *data);
 // void	ft_error_message(int n);

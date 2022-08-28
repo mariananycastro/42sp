@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 14:21:35 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 14:32:16 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,18 @@ int	ft_create_window(t_data	*data)
 
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
+	{
+		free(data->map.matrix);
 		return (MLX_ERROR);
+	}
 	width = data->map.width * IMG_SIZE;
 	height = data->map.height * IMG_SIZE;
-	// data->win_ptr = mlx_new_window(data->mlx_ptr, width, height, "So long!");
-	// if (data->win_ptr == NULL)
-	// {
-	// 	ft_destroy(data);
-	// 	return (MLX_ERROR);
-	// }
+	data->win_ptr = mlx_new_window(data->mlx_ptr, width, height, "So long!");
+	if (data->win_ptr == NULL)
+	{
+		ft_destroy(data);
+		return (MLX_ERROR);
+	}
 	return (0);
 }
 
@@ -94,8 +97,7 @@ void	ft_create_game(const char *file_name)
 	// 	&data
 	// 	);
 	// mlx_loop(data.mlx_ptr);
-	ft_destroy(&data);
-	// free(data.map.matrix);
+	ft_destroy_window(&data);
 }
 
 int	main(int argc, const char *argv[])
