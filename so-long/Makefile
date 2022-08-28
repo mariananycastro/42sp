@@ -6,27 +6,33 @@
 #    By: mariana <mariana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 20:55:35 by mariana           #+#    #+#              #
-#    Updated: 2022/08/25 20:43:25 by mariana          ###   ########.fr        #
+#    Updated: 2022/08/28 10:11:48 by mariana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FILES_PATH = ./src/
 FILES_NAMES = handle_destroy_window.c handle_keyrelease.c ft_create_map.c \
-							ft_validate_map.c ft_check_map_titles.c \
+							ft_validate_map.c  \
 							ft_validate_extension.c ft_set_map_matrix.c ft_get_map_size.c \
-							render.c ft_create_imgs.c ft_destroy.c ft_exit.c
+							render.c ft_create_imgs.c ft_destroy.c ft_exit.c \
+							ft_check_map_tiles.c
+# ft_error_message.c \
+# ft_message.c ft_destroy_imgs.c
 FILES = $(FILES_PATH)handle_destroy_window.c \
 				$(FILES_PATH)handle_keyrelease.c \
 				$(FILES_PATH)ft_create_map.c \
 				$(FILES_PATH)ft_validate_map.c \
-				$(FILES_PATH)ft_check_map_titles.c \
 				$(FILES_PATH)ft_validate_extension.c \
 				$(FILES_PATH)ft_set_map_matrix.c \
 				$(FILES_PATH)ft_get_map_size.c \
 				$(FILES_PATH)render.c \
 				$(FILES_PATH)ft_create_imgs.c \
 				$(FILES_PATH)ft_destroy.c \
-				$(FILES_PATH)ft_exit.c
+				$(FILES_PATH)ft_exit.c \
+				$(FILES_PATH)ft_check_map_tiles.c
+# $(FILES_PATH)ft_error_message.c \
+$(FILES_PATH)ft_message.c \
+$(FILES_PATH)ft_destroy_imgs.c
 FILES_O 	= $(FILES_NAMES:.c=.o)
 NAME = so_long.a
 MY_LIB_PATH = ../../my_lib/libft.a
@@ -49,7 +55,8 @@ re: fclean all
 run:
 # @./a.out ./maps/map1.ber
 # @./a.out ./maps/map2.ber
-	@valgrind --leak-check=full --show-reachable=yes ./a.out ./maps/map1.ber
+# @./a.out ./maps/map1.ber
+	@valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./a.out ./maps/map1.ber
 # @valgrind --leak-check=full --show-leak-kinds=all ./a.out ./maps/map3.ber
 
 # empty first line - not rec

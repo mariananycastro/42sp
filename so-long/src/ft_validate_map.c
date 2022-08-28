@@ -26,7 +26,7 @@ void	ft_validate_map(t_data *data, const char *map_file)
 		ft_printf("Error\n Invalid extension\n");
 		ft_exit(data);
 	}
-	if (ft_check_map_titles(width, height, matrix) != 0)
+	if (ft_check_map_tiles(width, height, matrix) != 0)
 	{
 		ft_printf("Error\nInvalid map titles\n");
 		ft_exit(data);

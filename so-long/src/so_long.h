@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:23:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/25 11:42:37 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 09:45:42 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 // remove list import
 # include "../../ftprintf/include/ft_printf.h"
 
-# define MLX_ERROR 1
+# define MLX_ERROR 1 
+// should return a message?
 
 # define IMG_SIZE 32
 # define PLAYER 'P'
@@ -83,7 +84,7 @@ int		handle_keyrelease(int keysym, t_data *data);
 int		handle_destroy_window(t_data *data);
 void	ft_create_map(t_data *data, const char *map_file);
 void	ft_validate_map(t_data *data, const char *map_file);
-int		ft_check_map_titles(int width, int height, char *matrix);
+int		ft_check_map_tiles(int width, int height, char *matrix);
 int		ft_is_wall(char map_title);
 int		ft_validate_extension(const char *map_file);
 void	ft_set_map_matrix(t_data *data, const char *map_file);
@@ -91,5 +92,9 @@ void	ft_get_map_size(t_data *data, const char	*map_file);
 int		render(t_data *data);
 void	ft_create_imgs(t_data *data);
 void	ft_destroy(t_data *data);
+// void	ft_destroy_imgs(t_data *data);
 void	ft_exit(t_data *data);
+// void	ft_error_message(int n);
+// void	ft_message(int n, t_data *data);
+// void	ft_destroy_imgs(t_data *data);
 #endif

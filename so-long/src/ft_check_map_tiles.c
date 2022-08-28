@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_map_titles.c                              :+:      :+:    :+:   */
+/*   ft_check_map_tiles.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/24 17:57:02 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 10:13:37 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_check_map_titles(int width, int height, char *matrix)
+int	ft_check_map_tiles(int width, int height, char *matrix)
 {
 	int	i;
 	int	has_c;
@@ -28,11 +28,11 @@ int	ft_check_map_titles(int width, int height, char *matrix)
 		if ((i < width || i % width == 0 || i % width == (width - 1)
 				|| i >= ((width * height) - width)) && matrix[i] != WALL)
 			return (1);
-		if (matrix[i] == 'C')
+		if (matrix[i] == COLLECTIBLE)
 			has_c++;
-		if (matrix[i] == 'E')
+		if (matrix[i] == EXIT)
 			has_e++;
-		if (matrix[i] == 'P')
+		if (matrix[i] == PLAYER)
 			has_p++;
 		i++;
 	}
