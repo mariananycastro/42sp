@@ -6,11 +6,39 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 21:55:25 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 15:03:29 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 16:53:06 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
+
+void	ft_change_tile(t_data *data, int index)
+{
+	data->map.matrix[data->map.player_position] = EMPTY_SPACE;
+	data->map.player_position = index;
+	data->map.matrix[data->map.player_position] = PLAYER;
+}
+
+void	ft_collectible_movement(t_data *data, int index)
+{
+	data->score++;
+	ft_message(2, data);
+	ft_change_tile(data, index);
+	if (data->collectibles == data->score)
+		ft_message(4, data);
+}
+
+void	ft_exit_movement(t_data *data)
+{
+	if (data->collectibles == data->score)
+	{
+		ft_message(1, data);
+		ft_exit(data);
+	}
+	else
+		ft_message(3, data);
+}
 
 void	ft_move(t_data *data, int new_position)
 {
@@ -22,18 +50,11 @@ void	ft_move(t_data *data, int new_position)
 	if (*matrix_position != WALL)
 	{
 		if (*matrix_position == COLLECTIBLE)
-		{
-			data->score++;
-			ft_message(2, data);
-		}
+			ft_collectible_movement(data, index);
 		if (*matrix_position == EXIT)
-		{
-			ft_message(1, data);
-			ft_exit(data);
-		}
-		data->map.matrix[data->map.player_position] = EMPTY_SPACE;
-		data->map.player_position = index;
-		data->map.matrix[data->map.player_position] = PLAYER;
+			ft_exit_movement(data);
+		else
+			ft_change_tile(data, index);
 	}
 }
 

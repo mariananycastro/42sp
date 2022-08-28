@@ -6,7 +6,7 @@
 #    By: mariana <mariana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 20:55:35 by mariana           #+#    #+#              #
-#    Updated: 2022/08/28 15:41:03 by mariana          ###   ########.fr        #
+#    Updated: 2022/08/28 16:40:00 by mariana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ FILES_PATH = ./src/
 FILES_NAMES = handle_destroy_window.c handle_keyrelease.c ft_create_map.c \
 							ft_validate_map.c  \
 							ft_validate_extension.c ft_set_map_matrix.c ft_get_map_size.c \
-							render.c ft_create_imgs.c ft_destroy.c ft_exit.c \
+							render.c ft_create_imgs.c ft_destroy_display.c ft_exit.c \
 							ft_check_map_tiles.c ft_destroy_window.c ft_message.c \
 							ft_destroy_imgs.c ft_error_message.c ft_destroy_matrix.c
 FILES = $(FILES_PATH)handle_destroy_window.c \
@@ -26,7 +26,7 @@ FILES = $(FILES_PATH)handle_destroy_window.c \
 				$(FILES_PATH)ft_get_map_size.c \
 				$(FILES_PATH)render.c \
 				$(FILES_PATH)ft_create_imgs.c \
-				$(FILES_PATH)ft_destroy.c \
+				$(FILES_PATH)ft_destroy_display.c \
 				$(FILES_PATH)ft_exit.c \
 				$(FILES_PATH)ft_check_map_tiles.c \
 				$(FILES_PATH)ft_destroy_window.c \
@@ -54,12 +54,9 @@ fclean: clean
 re: fclean all
 
 run:
-# @./a.out ./maps/map1.ber
-# @./a.out ./maps/map2.ber
-# @./a.out ./maps/map1.ber
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map1.ber
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./a.out ./maps/map2.ber
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./a.out ./maps/map3.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map2.ber
+	@valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map3.ber
 # @valgrind --leak-check=full --show-leak-kinds=all ./a.out ./maps/map3.ber
 
 # empty first line - not rec ok
