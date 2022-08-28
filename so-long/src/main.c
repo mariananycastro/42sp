@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 14:54:33 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:01:45 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,21 +81,21 @@ void	ft_create_game(const char *file_name)
 	ft_create_imgs(&data);
 	data.score = 0;
 	ft_message(2, &data);
-	// mlx_loop_hook(data.mlx_ptr, &render, &data);
-	// mlx_hook(
-	// 	data.win_ptr,
-	// 	KeyRelease, KeyReleaseMask,
-	// 	&handle_keyrelease,
-	// 	&data
-	// 	);
-	// mlx_hook(
-	// 	data.win_ptr,
-	// 	DestroyNotify,
-	// 	NoEventMask,
-	// 	&handle_destroy_window,
-	// 	&data
-	// 	);
-	// mlx_loop(data.mlx_ptr);
+	mlx_loop_hook(data.mlx_ptr, &render, &data);
+	mlx_hook(
+		data.win_ptr,
+		KeyRelease, KeyReleaseMask,
+		&handle_keyrelease,
+		&data
+		);
+	mlx_hook(
+		data.win_ptr,
+		DestroyNotify,
+		NoEventMask,
+		&handle_destroy_window,
+		&data
+		);
+	mlx_loop(data.mlx_ptr);
 	ft_destroy_imgs(&data);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:10:30 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/24 15:53:22 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:03:33 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_exit(t_data *data)
 {
-	free(data->map.matrix);
+	ft_destroy_imgs(data);
 	exit(0);
 }

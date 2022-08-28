@@ -6,13 +6,11 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 21:55:25 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 14:57:20 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:03:29 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-#include <stdio.h> // deletar
 
 void	ft_move(t_data *data, int new_position)
 {
@@ -44,6 +42,7 @@ int	handle_keyrelease(int keysym, t_data *data)
 	if (keysym == XK_Escape)
 	{
 		ft_message(1, data);
+		ft_destroy_imgs(data);
 		exit(0);
 	}
 	else if (keysym == UP)
