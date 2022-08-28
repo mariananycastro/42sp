@@ -6,7 +6,7 @@
 #    By: mariana <mariana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 20:55:35 by mariana           #+#    #+#              #
-#    Updated: 2022/08/28 14:31:18 by mariana          ###   ########.fr        #
+#    Updated: 2022/08/28 14:51:58 by mariana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ FILES_NAMES = handle_destroy_window.c handle_keyrelease.c ft_create_map.c \
 							ft_validate_map.c  \
 							ft_validate_extension.c ft_set_map_matrix.c ft_get_map_size.c \
 							render.c ft_create_imgs.c ft_destroy.c ft_exit.c \
-							ft_check_map_tiles.c ft_destroy_window
-# ft_error_message.c \
-# ft_message.c ft_destroy_imgs.c
+							ft_check_map_tiles.c ft_destroy_window.c ft_message.c \
+							ft_destroy_imgs.c
+# ft_error_message.c 
 FILES = $(FILES_PATH)handle_destroy_window.c \
 				$(FILES_PATH)handle_keyrelease.c \
 				$(FILES_PATH)ft_create_map.c \
@@ -30,10 +30,10 @@ FILES = $(FILES_PATH)handle_destroy_window.c \
 				$(FILES_PATH)ft_destroy.c \
 				$(FILES_PATH)ft_exit.c \
 				$(FILES_PATH)ft_check_map_tiles.c \
-				$(FILES_PATH)ft_destroy_window.c
+				$(FILES_PATH)ft_destroy_window.c \
+				$(FILES_PATH)ft_message.c \
+				$(FILES_PATH)ft_destroy_imgs.c
 # $(FILES_PATH)ft_error_message.c
-# $(FILES_PATH)ft_destroy_imgs.c
-# $(FILES_PATH)ft_message.c 
 FILES_O 	= $(FILES_NAMES:.c=.o)
 NAME = so_long.a
 MY_LIB_PATH = ../../my_lib/libft.a
