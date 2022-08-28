@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 16:00:58 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 16:06:20 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_set_map_matrix(t_data *data, const char *map_file)
 	close(fd);
 }
 
-int ft_validate_extension(const char *map_file)
+int	ft_validate_extension(const char *map_file)
 {
 	int	extention_size;
 	size_t path_size;
