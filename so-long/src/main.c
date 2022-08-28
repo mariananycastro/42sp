@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 15:45:38 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 16:00:58 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,3 @@ int	main(int argc, const char *argv[])
 		ft_error_message(4);
 	return (0);
 }
-
-// validar extensao antes de todas as validacoes
-// ao criar images add error se img não for valida, ex extensao invalida

@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:11:27 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 15:32:11 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:59:56 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_img	ft_create_img(t_data *data, char *imgPath)
 	new_img.mlx_img = mlx_xpm_file_to_image(
 			data->mlx_ptr, imgPath, &new_img.width, &new_img.height
 			);
+	if (new_img.mlx_img == NULL)
+		ft_destroy_window(data);
 	new_img.addr = mlx_get_data_addr(
 			new_img.mlx_img, &new_img.bpp, &new_img.line_len, &new_img.endian
 			);
