@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_destroy_window.c                            :+:      :+:    :+:   */
+/*   ft_message.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 21:43:37 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 14:57:58 by mariana          ###   ########.fr       */
+/*   Created: 2022/08/28 14:35:54 by mariana           #+#    #+#             */
+/*   Updated: 2022/08/28 14:55:56 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	handle_destroy_window(t_data *data)
+# include <stdio.h>
+
+void    ft_message(int n, t_data *data)
 {
-	ft_message(1, data);
-	exit(0);
+    if (n == 1)
+        printf("End Game: %d\n", data->score);
+    if (n == 2)
+        printf("Score: %d\n", data->score);
 }

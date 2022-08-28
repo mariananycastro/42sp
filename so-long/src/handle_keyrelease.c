@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 21:55:25 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/25 10:10:38 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 14:57:20 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	ft_move(t_data *data, int new_position)
 		if (*matrix_position == COLLECTIBLE)
 		{
 			data->score++;
-			printf("Score: %d\n", data->score);
+			ft_message(2, data);
 		}
 		if (*matrix_position == EXIT)
 		{
-			printf("End Game: %d\n", data->score);
+			ft_message(1, data);
 			ft_exit(data);
 		}
 		data->map.matrix[data->map.player_position] = EMPTY_SPACE;
@@ -43,7 +43,7 @@ int	handle_keyrelease(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 	{
-		printf("End Game: %d\n", data->score);
+		ft_message(1, data);
 		exit(0);
 	}
 	else if (keysym == UP)
