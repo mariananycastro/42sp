@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:23:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 14:51:35 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:43:36 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ void	ft_set_map_matrix(t_data *data, const char *map_file);
 void	ft_get_map_size(t_data *data, const char	*map_file);
 int		render(t_data *data);
 void	ft_create_imgs(t_data *data);
-void	ft_destroy(t_data *data);
+void	ft_destroy_display(t_data *data);
 void	ft_destroy_window(t_data *data);
-// void	ft_destroy_imgs(t_data *data);
 void	ft_exit(t_data *data);
-// void	ft_error_message(int n);
+void	ft_error_message(int n);
 void	ft_message(int n, t_data *data);
 void	ft_destroy_imgs(t_data *data);
+void	ft_destroy_matrix(t_data *data);
 #endif

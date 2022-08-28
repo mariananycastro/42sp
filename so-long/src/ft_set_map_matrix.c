@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:12:15 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/25 10:28:38 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:26:26 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_set_map_matrix(t_data *data, const char *map_file)
 			if (buffer != '\n')
 			{
 				map_matrix[index] = buffer;
-				if (buffer == 'P')
+				if (buffer == PLAYER)
 					data->map.player_position = index;
 				index++;
 			}

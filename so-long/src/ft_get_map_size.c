@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:11:46 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/25 10:28:28 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:11:45 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	ft_not_rec_error(void)
 {
-	ft_printf("Error1\n Not Rec Map\n");
+	ft_error_message(1);
 	exit(0);
 }
 
 void	ft_invalid_title_error(void)
 {
-	ft_printf("Error\nInvalid map titles\n");
+	ft_error_message(2);
 	exit(0);
 }
 

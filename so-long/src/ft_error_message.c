@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_destroy.c                                       :+:      :+:    :+:   */
+/*   ft_error_message.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 22:10:42 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/24 18:41:10 by mariana          ###   ########.fr       */
+/*   Created: 2022/08/28 14:35:54 by mariana           #+#    #+#             */
+/*   Updated: 2022/08/28 15:22:56 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_destroy(t_data *data)
+# include <stdio.h>
+
+void    ft_error_message(int n)
 {
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
-	free(data->map.matrix);
+    if (n == 1)
+        printf("Error1\n Not Rec Map\n");
+    if (n == 2)
+        printf("Error\nInvalid map titles\n");
+    if (n == 3)
+        printf("Error\n Invalid extension\n");
+    if (n == 4)
+        printf("Error\nWrong params were given");
+    if (n == 5)
+        printf("Error\nOps something went wrong");
 }

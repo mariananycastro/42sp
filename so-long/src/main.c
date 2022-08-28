@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 15:01:45 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:45:38 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ int	ft_create_window(t_data	*data)
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
 	{
-		free(data->map.matrix);
-		return (MLX_ERROR);
+		ft_error_message(5);
+		ft_destroy_matrix(data);
 	}
 	width = data->map.width * IMG_SIZE;
 	height = data->map.height * IMG_SIZE;
 	data->win_ptr = mlx_new_window(data->mlx_ptr, width, height, "So long!");
 	if (data->win_ptr == NULL)
 	{
-		ft_destroy(data);
-		return (MLX_ERROR);
+		ft_error_message(5);
+		ft_destroy_display(data);
 	}
 	return (0);
 }
@@ -96,7 +96,7 @@ void	ft_create_game(const char *file_name)
 		&data
 		);
 	mlx_loop(data.mlx_ptr);
-	ft_destroy_imgs(&data);
+	ft_exit(&data);
 }
 
 int	main(int argc, const char *argv[])
@@ -104,7 +104,9 @@ int	main(int argc, const char *argv[])
 	if (argc == 2)
 		ft_create_game(argv[1]);
 	else
-		ft_printf("Wrong params were given");
-	// ft_error_message(4);
+		ft_error_message(4);
 	return (0);
 }
+
+// validar extensao antes de todas as validacoes
+// ao criar images add error se img não for valida, ex extensao invalida
