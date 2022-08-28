@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:11:27 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 15:59:56 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 17:49:28 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	ft_create_imgs(t_data *data)
 	data->sprites.empty_space = ft_create_img(data, EMPTY_SPACE_PATH);
 	data->sprites.exit = ft_create_img(data, EXIT_PATH);
 	data->sprites.collectible = ft_create_img(data, COLLECTIBLE_PATH);
+	data->sprites.monster = ft_create_img(data, MONSTER_PATH);
 }

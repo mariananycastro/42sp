@@ -6,12 +6,11 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 21:55:25 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 16:53:06 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 18:07:29 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 void	ft_change_tile(t_data *data, int index)
 {
@@ -51,7 +50,12 @@ void	ft_move(t_data *data, int new_position)
 	{
 		if (*matrix_position == COLLECTIBLE)
 			ft_collectible_movement(data, index);
-		if (*matrix_position == EXIT)
+		else if (*matrix_position == MONSTER)
+		{
+			ft_message(5, data);
+			ft_exit(data);
+		}
+		else if (*matrix_position == EXIT)
 			ft_exit_movement(data);
 		else
 			ft_change_tile(data, index);

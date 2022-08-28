@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:23:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 16:24:11 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 18:08:26 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,20 @@
 # define EMPTY_SPACE '0'
 # define WALL '1'
 # define COLLECTIBLE 'C'
+# define MONSTER 'M'
 
 # define UP 119
 # define LEFT 97
 # define DOWN 115
 # define RIGHT 100
 
-# define DINO_PATH "./sprites/player/RedDino.xpm"
+# define DINO_PATH "./sprites/player/BlueDino.xpm"
 # define WALL_PATH "./sprites/background/wall.xpm"
 # define EMPTY_SPACE_PATH "./sprites/background/background.xpm"
 # define EXIT_PATH "./sprites/background/window.xpm"
 # define COLLECTIBLE_PATH "./sprites/coins/diamond.xpm"
+// # define MONSTER_PATH "./sprites/monster/enemy.xpm"
+# define MONSTER_PATH "./sprites/monster/enemy2.xpm"
 
 typedef struct s_img
 {
@@ -60,6 +63,7 @@ typedef struct s_sprites
 	t_img	wall;
 	t_img	empty_space;
 	t_img	collectible;
+	t_img	monster;
 	t_img	exit;
 }	t_sprites;
 

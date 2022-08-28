@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:35:54 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 16:45:17 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/28 17:02:12 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,6 @@ void	ft_message(int n, t_data *data)
 		printf("Missing %d coins, can't exit game\n", missing_coins);
 	if (n == 4)
 		printf("Got all coins, go to exit\n");
+	if (n == 5)
+		printf("You died! Touched a monster\n");
 }

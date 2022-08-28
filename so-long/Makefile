@@ -6,7 +6,7 @@
 #    By: mariana <mariana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 20:55:35 by mariana           #+#    #+#              #
-#    Updated: 2022/08/28 16:40:00 by mariana          ###   ########.fr        #
+#    Updated: 2022/08/28 17:14:06 by mariana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ re: fclean all
 run:
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map1.ber
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map2.ber
-	@valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map3.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map3.ber
+	@valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map_with_enemy.ber
 # @valgrind --leak-check=full --show-leak-kinds=all ./a.out ./maps/map3.ber
 
 # empty first line - not rec ok
