@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_destroy_window.c                                :+:      :+:    :+:   */
+/*   ft_create_img.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 22:10:42 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 15:59:39 by mariana          ###   ########.fr       */
+/*   Created: 2022/08/29 23:02:38 by mariana           #+#    #+#             */
+/*   Updated: 2022/08/29 23:05:04 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_destroy_window(t_data *data)
+t_img	ft_create_img(t_data *data, char *imgPath)
 {
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	ft_destroy_display(data);
-	exit(0);
+	t_img	new_img;
+
+	new_img.mlx_img = mlx_xpm_file_to_image(
+			data->mlx_ptr, imgPath, &new_img.width, &new_img.height
+			);
+	new_img.addr = mlx_get_data_addr(
+			new_img.mlx_img, &new_img.bpp, &new_img.line_len, &new_img.endian
+			);
+	return (new_img);
 }

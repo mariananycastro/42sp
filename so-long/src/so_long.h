@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:23:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 18:08:26 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/29 23:30:44 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@
 # define DOWN 115
 # define RIGHT 100
 
-# define DINO_PATH "./sprites/player/BlueDino.xpm"
+# define DINO_RIGHT_PATH "./sprites/player/BlueDinoRight.xpm"
+# define DINO_LEFT_PATH "./sprites/player/BlueDinoLeft.xpm"
 # define WALL_PATH "./sprites/background/wall.xpm"
 # define EMPTY_SPACE_PATH "./sprites/background/background.xpm"
-# define EXIT_PATH "./sprites/background/window.xpm"
-# define COLLECTIBLE_PATH "./sprites/coins/diamond.xpm"
-// # define MONSTER_PATH "./sprites/monster/enemy.xpm"
-# define MONSTER_PATH "./sprites/monster/enemy2.xpm"
+# define CLOSED_DOOR_PATH "./sprites/background/door_closed.xpm"
+# define OPENED_DOOR_PATH "./sprites/background/door_opened.xpm"
+# define COLLECTIBLE_PATH "./sprites/coins/egg.xpm"
+# define MONSTER_PATH "./sprites/monster/enemy.xpm"
 
 typedef struct s_img
 {
@@ -97,10 +98,10 @@ void	ft_get_map_size(t_data *data, const char	*map_file);
 int		render(t_data *data);
 void	ft_create_imgs(t_data *data);
 void	ft_destroy_display(t_data *data);
-void	ft_destroy_window(t_data *data);
 void	ft_exit(t_data *data);
 void	ft_error_message(int n);
 void	ft_message(int n, t_data *data);
 void	ft_destroy_imgs(t_data *data);
 void	ft_destroy_matrix(t_data *data);
+t_img	ft_create_img(t_data *data, char *imgPath);
 #endif

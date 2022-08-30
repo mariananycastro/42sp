@@ -6,11 +6,12 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 21:55:25 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 18:07:29 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/29 23:29:37 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
 
 void	ft_change_tile(t_data *data, int index)
 {
@@ -25,7 +26,11 @@ void	ft_collectible_movement(t_data *data, int index)
 	ft_message(2, data);
 	ft_change_tile(data, index);
 	if (data->collectibles == data->score)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->sprites.exit.mlx_img);
+		data->sprites.exit = ft_create_img(data, OPENED_DOOR_PATH);
 		ft_message(4, data);
+	}
 }
 
 void	ft_exit_movement(t_data *data)
@@ -73,10 +78,18 @@ int	handle_keyrelease(int keysym, t_data *data)
 	else if (keysym == UP)
 		ft_move(data, data->map.width * -1);
 	else if (keysym == LEFT)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->sprites.player.mlx_img);
+		data->sprites.player = ft_create_img(data, DINO_LEFT_PATH);
 		ft_move(data, -1);
+	}
 	else if (keysym == DOWN)
 		ft_move(data, data->map.width);
 	else if (keysym == RIGHT)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->sprites.player.mlx_img);
+		data->sprites.player = ft_create_img(data, DINO_RIGHT_PATH);
 		ft_move(data, 1);
+	}
 	return (0);
 }
