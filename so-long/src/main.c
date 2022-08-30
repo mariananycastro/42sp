@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 16:06:20 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/29 23:48:50 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	ft_create_game(const char *file_name)
 
 int	main(int argc, const char *argv[])
 {
+	ft_thanks_msg();
 	if (argc == 2)
 		ft_create_game(argv[1]);
 	else

@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:23:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/29 23:30:44 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/29 23:55:54 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,5 @@ void	ft_message(int n, t_data *data);
 void	ft_destroy_imgs(t_data *data);
 void	ft_destroy_matrix(t_data *data);
 t_img	ft_create_img(t_data *data, char *imgPath);
+void	ft_thanks_msg(void);
 #endif

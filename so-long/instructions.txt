@@ -43,7 +43,7 @@ space.
   1CEP1
   10001
   11111
-[ ] Abrir jogo passando nome do mapa
+[x] Abrir jogo passando nome do mapa
 [x]validações do mapa
   [x] The map must contain at least 1 exit, 1 collectible, and 1 starting position
   [x] The map must be rectangular.
@@ -54,15 +54,21 @@ exit in a clean way, and return "Error\n" followed by an explicit error message 
 your choice.
 
 Jogo
-[ ] Fazer imagem andar
-[ ] Fazer coin sumir qdo for pega
-[ ] Contar pontos ao tocar coin
+[x] Fazer imagem andar
+[x] Fazer coin sumir qdo for pega
+[x] Contar pontos ao tocar coin
 
 Imagem
 [x] mostrar imagem do mapa
-[ ] refazer imagem do mapa mais bonita
+[x] refazer imagem do mapa mais bonita
+[x] Dino mudar de posição qdo for p frente e p tras
 
 Bonus
-[ ]Make the player lose when they touch an enemy patrol.
-[ ]Add some sprite animation.
-[ ]Display the movement count directly on screen instead of writing it in the shell.
+[x] Make the player lose when they touch an enemy patrol.
+[x] Add some sprite animation.
+[ ] Display the movement count directly on screen instead of writing it in the shell.
+
+[ ] sem relink
+[ ] check files name e header
+[ ] check if changed prinft
+[x] adicionar creditos p criadores da sprites
