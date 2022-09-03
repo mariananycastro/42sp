@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_message.c                                       :+:      :+:    :+:   */
+/*   ft_create_window.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/28 14:35:54 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/03 16:15:43 by mariana          ###   ########.fr       */
+/*   Created: 2022/09/03 15:10:34 by mariana           #+#    #+#             */
+/*   Updated: 2022/09/03 16:00:30 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_message(int n, t_data *data)
+int	ft_create_window(t_data	*data)
 {
-	int	missing_coins;
+	int		width;
+	int		height;
 
-	missing_coins = data->collectibles - data->score;
-	if (n == 1)
-		ft_printf("End Game: %d\n", data->score);
-	if (n == 2)
-		ft_printf("Score: %d\n", data->score);
-	if (n == 3)
-		ft_printf("Missing %d coins, can't exit game\n", missing_coins);
-	if (n == 4)
-		ft_printf("Got all coins, go to exit\n");
-	if (n == 5)
-		ft_printf("You died! Touched a monster\n");
+	data->mlx_ptr = mlx_init();
+	if (data->mlx_ptr == NULL)
+	{
+		ft_error_message(5);
+		ft_destroy_matrix(data);
+	}
+	width = data->map.width * IMG_SIZE;
+	height = data->map.height * IMG_SIZE;
+	data->win_ptr = mlx_new_window(data->mlx_ptr, width, height, "So long!");
+	if (data->win_ptr == NULL)
+	{
+		ft_error_message(5);
+		ft_destroy_display(data);
+	}
+	return (0);
 }

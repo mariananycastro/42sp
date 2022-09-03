@@ -6,71 +6,11 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/29 23:48:50 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/03 16:00:37 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	ft_set_map_matrix(t_data *data, const char *map_file)
-{
-	size_t	matrix_size;
-	char	buffer;
-	int		fd;
-	int		index;
-
-	matrix_size = (data->map.height * data->map.width) + 1;
-	data->map.matrix = ft_calloc(matrix_size, sizeof(char));
-	index = 0;
-	fd = open(map_file, O_RDONLY);
-	if (fd != -1)
-	{
-		while (read(fd, &buffer, 1) != 0)
-		{
-			if (buffer != '\n')
-			{
-				data->map.matrix[index] = buffer;
-				if (buffer == PLAYER)
-					data->map.player_position = index;
-				index++;
-			}
-		}
-	}
-	data->map.matrix[index] = '\0';
-	close(fd);
-}
-
-int	ft_validate_extension(const char *map_file)
-{
-	int	extention_size;
-	size_t path_size;
-
-	extention_size = 4;
-	path_size = ft_strlen(map_file);
-	return (ft_memcmp(&map_file[path_size - extention_size], ".ber", extention_size));
-}
-
-int	ft_create_window(t_data	*data)
-{
-	int		width;
-	int		height;
-
-	data->mlx_ptr = mlx_init();
-	if (data->mlx_ptr == NULL)
-	{
-		ft_error_message(5);
-		ft_destroy_matrix(data);
-	}
-	width = data->map.width * IMG_SIZE;
-	height = data->map.height * IMG_SIZE;
-	data->win_ptr = mlx_new_window(data->mlx_ptr, width, height, "So long!");
-	if (data->win_ptr == NULL)
-	{
-		ft_error_message(5);
-		ft_destroy_display(data);
-	}
-	return (0);
-}
 
 void	ft_create_game(const char *file_name)
 {

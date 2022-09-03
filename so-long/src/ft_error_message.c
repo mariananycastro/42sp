@@ -6,24 +6,22 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:35:54 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 16:03:39 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/03 16:15:32 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-#include <stdio.h> // remover!!!!
-
 void	ft_error_message(int n)
 {
 	if (n == 1)
-		printf("Error1\n Not Rec Map\n");
+		ft_printf("Error1\n Not Rec Map\n");
 	if (n == 2)
-		printf("Error\nInvalid map titles\n");
+		ft_printf("Error\nInvalid map titles\n");
 	if (n == 3)
-		printf("Error\n Invalid extension\n");
+		ft_printf("Error\n Invalid extension\n");
 	if (n == 4)
-		printf("Error\nWrong params were given");
+		ft_printf("Error\nWrong params were given");
 	if (n == 5)
-		printf("Error\nOps something went wrong");
+		ft_printf("Error\nOps something went wrong");
 }

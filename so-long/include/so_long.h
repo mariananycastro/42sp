@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:23:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/29 23:55:54 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/03 16:05:11 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <mlx.h>
-
-// remove list import
-# include "../../ftprintf/include/ft_printf.h"
-
-# define MLX_ERROR 1 
-// should return a message?
+# include "libft.h"
 
 # define IMG_SIZE 32
 # define PLAYER 'P'
@@ -105,4 +100,5 @@ void	ft_destroy_imgs(t_data *data);
 void	ft_destroy_matrix(t_data *data);
 t_img	ft_create_img(t_data *data, char *imgPath);
 void	ft_thanks_msg(void);
+int		ft_create_window(t_data	*data);
 #endif
