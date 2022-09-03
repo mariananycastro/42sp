@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:23:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/03 16:24:57 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/03 17:00:06 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_data
 	t_map		map;
 	int			score;
 	int			collectibles;
+	int			movements;
 }	t_data;
 
 int		handle_keyrelease(int keysym, t_data *data);
@@ -101,4 +102,6 @@ void	ft_destroy_matrix(t_data *data);
 t_img	ft_create_img(t_data *data, char *imgPath);
 void	ft_thanks_msg(void);
 int		ft_create_window(t_data	*data);
+int		ft_valid_tiles(char buffer);
+void	ft_move(t_data *data, int new_position);
 #endif

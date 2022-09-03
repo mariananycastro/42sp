@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:13:34 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/03 16:00:37 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/03 16:31:32 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	ft_create_game(const char *file_name)
 	ft_create_window(&data);
 	ft_create_imgs(&data);
 	data.score = 0;
+	data.movements = 0;
 	ft_message(2, &data);
+	ft_message(6, &data);
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
 	mlx_hook(
 		data.win_ptr,

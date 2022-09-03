@@ -6,7 +6,7 @@
 #    By: mariana <mariana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 20:55:35 by mariana           #+#    #+#              #
-#    Updated: 2022/09/03 16:23:15 by mariana          ###   ########.fr        #
+#    Updated: 2022/09/03 17:00:48 by mariana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,9 @@ FILES 		 			= $(FILES_PATH)handle_destroy_window.c \
 						 			$(FILES_PATH)ft_destroy_matrix.c \
 						 			$(FILES_PATH)ft_create_img.c \
 						 			$(FILES_PATH)ft_thanks_msg.c \
-                  $(FILES_PATH)ft_create_window.c
+                  $(FILES_PATH)ft_create_window.c \
+                  $(FILES_PATH)ft_valid_tiles.c \
+                  $(FILES_PATH)ft_move.c
 FILES_O 	 			= $(FILES:.c=.o)
 MAIN_FILE 						= ./src/main.c
 

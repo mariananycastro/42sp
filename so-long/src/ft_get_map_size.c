@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:11:46 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/28 17:01:42 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/03 16:50:23 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ void	ft_read_file(int fd, t_data *data)
 	columns = 0;
 	while (read(fd, &buffer, 1) != 0)
 	{
-		if (buffer == COLLECTIBLE || buffer == EXIT || buffer == PLAYER
-			|| buffer == WALL || buffer == EMPTY_SPACE || buffer == MONSTER)
+		if (ft_valid_tiles(buffer))
 			columns++;
 		else if (buffer == '\n')
 		{
