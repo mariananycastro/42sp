@@ -6,7 +6,7 @@
 #    By: mariana <mariana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 20:55:35 by mariana           #+#    #+#              #
-#    Updated: 2022/09/03 16:09:33 by mariana          ###   ########.fr        #
+#    Updated: 2022/09/03 16:20:54 by mariana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ FILES 		 			= $(FILES_PATH)handle_destroy_window.c \
 						 			$(FILES_PATH)ft_thanks_msg.c \
 						 			$(FILES_PATH)ft_create_window.c
 FILES_O 	 			= $(FILES:.c=.o)
-MAIN 						= ./src/main.c
+MAIN_FILE 						= ./src/main.c
 
 all: $(NAME)
 
@@ -47,8 +47,8 @@ $(NAME): linklib
 	ar -rc $(NAME) $(FILES_O)
 
 compi:
-# $(CC) $(CFLAGS) -g $(MAIN) -I $(C_INCLUDE_PATH) -I $(LIBRARY_PATH) $(NAME) $(LIBFT_FILE) -lmlx -lX11 -lXext 
-	gcc $(CFLAGS) -g $(MAIN) -I $(C_INCLUDE_PATH) -I $(LIBRARY_PATH) $(NAME) $(LIBFT_FILE) -lmlx -lX11 -lXext 
+# $(CC) $(CFLAGS) -g $(MAIN_FILE) -I $(C_INCLUDE_PATH) -I $(LIBRARY_PATH) $(NAME) $(LIBFT_FILE) -lmlx -lX11 -lXext 
+	gcc $(CFLAGS) -g $(MAIN_FILE) -I $(C_INCLUDE_PATH) -I $(LIBRARY_PATH) $(NAME) $(LIBFT_FILE) -lmlx -lX11 -lXext 
 
 clean:
 	/bin/rm -f $(FILES_PATH)*.o

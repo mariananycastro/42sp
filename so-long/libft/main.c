@@ -6,11 +6,10 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 19:04:46 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/03 11:27:19 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/03 16:17:35 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <limits.h>
 #include "libft.h"
 

@@ -6,12 +6,11 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 21:55:25 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/29 23:29:37 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/03 16:17:39 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 void	ft_change_tile(t_data *data, int index)
 {
