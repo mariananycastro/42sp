@@ -1,0 +1,18 @@
+# To run this project you must follow the steps above:
+
+```
+$ git clone https://github.com/42Paris/minilibx-linux
+$ cd minilibx-linux
+$ sh ./configure
+
+$ sudo apt-get install libxext-dev libxrandr-dev libx11-dev libbsd-dev libssl-dev
+&& make
+&& sudo mv libmlx.a /usr/local/lib/
+&& sudo mv mlx.h /usr/local/include/
+```
+
+# To check if everything is ok run minilibx tests
+```
+$ cd test/
+$ ./run_tests.sh
+```

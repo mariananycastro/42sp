@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:11:46 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/03 17:52:45 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/04 20:01:48 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_not_rec_error(void)
 	exit(0);
 }
 
-void	ft_invalid_title_error(void)
+void	ft_invalid_tile_error(void)
 {
 	ft_error_message(2);
 	exit(0);
@@ -44,7 +44,7 @@ void	ft_read_file(int fd, t_data *data)
 			columns = 0;
 		}
 		else
-			ft_invalid_title_error();
+			ft_invalid_tile_error();
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:23:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/03 17:00:06 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/04 20:01:36 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int		handle_destroy_window(t_data *data);
 void	ft_create_map(t_data *data, const char *map_file);
 void	ft_validate_map(t_data *data);
 int		ft_check_map_tiles(int width, int height, char *matrix, t_data *data);
-int		ft_is_wall(char map_title);
+int		ft_is_wall(char map_tile);
 int		ft_validate_extension(const char *map_file);
 void	ft_set_map_matrix(t_data *data, const char *map_file);
 void	ft_get_map_size(t_data *data, const char	*map_file);

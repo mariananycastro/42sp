@@ -6,7 +6,7 @@
 #    By: mariana <mariana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 20:55:35 by mariana           #+#    #+#              #
-#    Updated: 2022/09/04 17:23:16 by mariana          ###   ########.fr        #
+#    Updated: 2022/09/04 20:01:32 by mariana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,22 +20,6 @@ C_INCLUDE_PATH 	= include
 BONUS_INCLUDE_PATH 	= bonus
 FILES_PATH 			= ./src/
 BONUS_PATH 			= ./bonus/
-
-BOLINHA 		 			= handle_destroy_window.c \
-						 			handle_keyrelease.c \
-						 			ft_create_map.c \
-						 			ft_validate_map.c \
-						 			ft_validate_extension.c \
-						 			ft_set_map_matrix.c \
-						 			ft_get_map_size.c \
-						 			ft_destroy_display.c \
-						 			ft_exit.c \
-						 			ft_check_map_tiles.c \
-						 			ft_error_message.c \
-						 			ft_destroy_matrix.c \
-						 			ft_create_img.c \
-						 			ft_thanks_msg.c \
-                  ft_create_window.c
 
 FILES 		 			= $(FILES_PATH)handle_destroy_window.c \
 						 			$(FILES_PATH)handle_keyrelease.c \
@@ -123,14 +107,14 @@ libre:
 run:
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map1.ber
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map2.ber
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map3.ber
-	@valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map_with_enemy.ber
+	@valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map3.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map_with_enemy.ber
 
 # empty first line - not rec ok
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/empty.ber
 
 # missing caracter - invalid map tittle ok
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/missing_title.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/missing_tile.ber
 
 # missing wall - invalid map tittle ok
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/no_wall.ber
@@ -138,15 +122,15 @@ run:
 # - not rec ok
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/not_rec1.ber
 
-# - invalid map title ok
+# - invalid map tile ok
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./a.out ./maps/not_rec2.ber
 
-# not square, with space in the end - invalid map title ok
+# not square, with space in the end - invalid map tile ok
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./a.out ./maps/not_rec2.ber
 
 # not right extention ok
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./a.out ./maps/not_ber.txt
 
-# file does not exist - invalid map titles ok
+# file does not exist - invalid map tiles ok
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./a.out ./maps/bolinha.ber
 
