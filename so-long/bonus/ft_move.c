@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 16:57:13 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/04 16:38:00 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/04 16:37:37 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ void	ft_move(t_data *data, int new_position)
 		{
 			ft_collectible_movement(data, index);
 			ft_count_moves(data);
+		}
+		else if (*matrix_position == MONSTER)
+		{
+			ft_message(6, data);
+			ft_exit(data);
 		}
 		else if (*matrix_position == EXIT)
 			ft_exit_movement(data);

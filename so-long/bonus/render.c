@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:11:04 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/04 16:36:21 by mariana          ###   ########.fr       */
+/*   Updated: 2022/08/29 22:59:39 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void	ft_put_img(t_data *data, char position, int x, int y)
 	if (position == EXIT)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->sprites.exit.mlx_img, x, y);
+	if (position == MONSTER)
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->sprites.monster.mlx_img, x, y);
 }
 
 int	render(t_data *data)

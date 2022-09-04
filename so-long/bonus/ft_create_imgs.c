@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_tiles.c                                   :+:      :+:    :+:   */
+/*   ft_create_imgs.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 20:15:30 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/03 20:16:42 by mariana          ###   ########.fr       */
+/*   Created: 2022/08/22 22:11:27 by mariana           #+#    #+#             */
+/*   Updated: 2022/08/29 23:26:13 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_valid_tiles(char buffer)
+void	ft_create_imgs(t_data *data)
 {
-	if (buffer == COLLECTIBLE || buffer == EXIT || buffer == PLAYER
-		|| buffer == WALL || buffer == EMPTY_SPACE)
-		return (1);
-	return (0);
+	data->sprites.player = ft_create_img(data, DINO_RIGHT_PATH);
+	data->sprites.wall = ft_create_img(data, WALL_PATH);
+	data->sprites.empty_space = ft_create_img(data, EMPTY_SPACE_PATH);
+	data->sprites.exit = ft_create_img(data, CLOSED_DOOR_PATH);
+	data->sprites.collectible = ft_create_img(data, COLLECTIBLE_PATH);
+	data->sprites.monster = ft_create_img(data, MONSTER_PATH);
 }

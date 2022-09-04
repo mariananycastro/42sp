@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:23:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/04 16:39:03 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/03 17:00:06 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define EMPTY_SPACE '0'
 # define WALL '1'
 # define COLLECTIBLE 'C'
+# define MONSTER 'M'
 
 # define UP 119
 # define LEFT 97
@@ -39,6 +40,7 @@
 # define CLOSED_DOOR_PATH "./sprites/background/door_closed.xpm"
 # define OPENED_DOOR_PATH "./sprites/background/door_opened.xpm"
 # define COLLECTIBLE_PATH "./sprites/coins/egg.xpm"
+# define MONSTER_PATH "./sprites/monster/enemy.xpm"
 
 typedef struct s_img
 {
@@ -57,6 +59,7 @@ typedef struct s_sprites
 	t_img	wall;
 	t_img	empty_space;
 	t_img	collectible;
+	t_img	monster;
 	t_img	exit;
 }	t_sprites;
 

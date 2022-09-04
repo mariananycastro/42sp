@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:35:54 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/04 16:36:54 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/04 17:19:55 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ void	ft_got_all_coins_msg(void)
 	ft_printf("--------------------------------\n");
 }
 
+void	ft_died_msg(void)
+{
+	ft_printf("--------------------------------\n");
+	ft_printf("You died! Touched a monster\n");
+	ft_printf("--------------------------------\n");
+}
+
 void	ft_message(int n, t_data *data)
 {
 	if (n == 1)
@@ -49,4 +56,6 @@ void	ft_message(int n, t_data *data)
 		ft_got_all_coins_msg();
 	if (n == 5)
 		ft_printf("Movements counter %d\n", data->movements);
+	if (n == 6)
+		ft_died_msg();
 }
