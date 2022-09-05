@@ -6,7 +6,7 @@
 #    By: mariana <mariana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 20:55:35 by mariana           #+#    #+#              #
-#    Updated: 2022/09/05 13:48:05 by mariana          ###   ########.fr        #
+#    Updated: 2022/09/05 14:05:37 by mariana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,6 +132,7 @@ libclean:
 
 libfclean:
 	$(MAKE) fclean -C $(LIBRARY_PATH)
+	rm -f $(LIB_NAME)
 
 libre:
 	$(MAKE) re -C $(LIBRARY_PATH)
