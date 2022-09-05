@@ -6,7 +6,7 @@
 #    By: mariana <mariana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 20:55:35 by mariana           #+#    #+#              #
-#    Updated: 2022/09/05 14:05:37 by mariana          ###   ########.fr        #
+#    Updated: 2022/09/05 20:53:39 by mariana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,8 +65,11 @@ BONUS_OBJ_DIR = bonus/obj/
 OBJ 			= $(FILES_NAMES:%.c=$(OBJ_DIR)%.o)
 BONUS_OBJ = $(BONUS_FILES_NAMES:%.c=$(BONUS_OBJ_DIR)%.o)
 
-NAME 				= so_long.a
-NAME_BONUS 	= bonus.a
+NAME 				= so_long
+NAME_BONUS 	= so_long_bonus
+
+NAME_LIB 				= so_long.a
+NAME_BONUS_LIB 	= bonus.a
 
 vpath %.c $(SRC_DIR)
 vpath %.c $(BONUS_DIR)
@@ -83,8 +86,11 @@ BONUS_FILE 			= $(BONUS_DIR)bonus.c
 
 all: $(NAME)
 
-$(NAME): $(LIB_NAME) $(OBJ)
-		ar -rc $(NAME) $(OBJ)
+$(NAME): $(NAME_LIB)
+	$(CC) $(CFLAGS) -g $(MAIN_FILE) -I $(INCLUDE_PATH) -I $(LIBRARY_PATH) $(NAME_LIB) $(LIBFT_FILE) -lmlx -lX11 -lXext -o $(NAME)
+
+$(NAME_LIB): $(LIB_NAME) $(OBJ)
+		ar -rc $(NAME_LIB) $(OBJ)
 
 $(OBJ_DIR)%.o: %.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -I $(INCLUDE_PATH) -I $(LIBRARY_PATH) -o $@ 
@@ -92,22 +98,20 @@ $(OBJ_DIR)%.o: %.c | $(OBJ_DIR)
 $(OBJ_DIR):
 	mkdir -p $@
 
-mcompi:
-	$(CC) $(CFLAGS) -g $(MAIN_FILE) -I $(INCLUDE_PATH) -I $(LIBRARY_PATH) $(NAME) $(LIBFT_FILE) -lmlx -lX11 -lXext
-
-bcompi:
-	$(CC) $(CFLAGS) -g $(BONUS_FILE) -I $(BONUS_INCLUDE_PATH) -I $(LIBRARY_PATH) $(NAME_BONUS) $(LIBFT_FILE) -lmlx -lX11 -lXext
-
 clean:
-	/bin/rm -f $(OBJ_DIR)*.o
+	rm -f $(OBJ_DIR)*.o
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	rm -f $(NAME_LIB)
+	rm $(NAME)
 
 re: fclean all
 
-$(NAME_BONUS): $(LIB_NAME) $(BONUS_OBJ)
-	ar -rc $(NAME_BONUS) $(BONUS_OBJ)
+$(NAME_BONUS): $(NAME_BONUS_LIB)
+	$(CC) $(CFLAGS) -g $(BONUS_FILE) -I $(BONUS_INCLUDE_PATH) -I $(LIBRARY_PATH) $(NAME_BONUS_LIB) $(LIBFT_FILE) -lmlx -lX11 -lXext -o $(NAME_BONUS)
+
+$(NAME_BONUS_LIB): $(LIB_NAME) $(BONUS_OBJ)
+	ar -rc $(NAME_BONUS_LIB) $(BONUS_OBJ)
 
 $(BONUS_OBJ_DIR)%.o: %.c | $(BONUS_OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -I $(BONUS_INCLUDE_PATH) -I $(LIBRARY_PATH) -o $@ 
@@ -116,10 +120,11 @@ $(BONUS_OBJ_DIR):
 	mkdir -p $@
 
 bclean:
-	/bin/rm -f $(BONUS_OBJ_DIR)*.o
+	rm -f $(BONUS_OBJ_DIR)*.o
 
 bfclean: bclean
-	/bin/rm -f $(NAME_BONUS)
+	rm -f $(NAME_BONUS)
+	rm -f $(NAME_BONUS_LIB)
 
 bre: bfclean all
 
@@ -137,45 +142,45 @@ libfclean:
 libre:
 	$(MAKE) re -C $(LIBRARY_PATH)
 
-run:
-# @./a.out ./maps/map_with_enemy_bonus.ber
-# @./a.out ./maps/bolinha.ber
-	@./a.out ./maps/map1.ber
-#	@./a.out ./maps/map2.ber
-# @./a.out ./maps/map3.ber
-# @./a.out ./maps/empty.ber
-# @./a.out ./maps/missing_tile.ber
-# @./a.out ./maps/no_wall.ber
-# @./a.out ./maps/not_rec1.ber
-# @./a.out ./maps/not_rec2.ber
-# @./a.out ./maps/not_rec2.ber
-# @./a.out ./maps/not_ber.txt
+run: so_long
+# @./so_long ./maps/map_with_enemy.ber
+# @./so_long ./maps/bolinha.ber
+	@./so_long ./maps/map1.ber
+#	@./so_long ./maps/map2.ber
+# @./so_long ./maps/map3.ber
+# @./so_long ./maps/empty.ber
+# @./so_long ./maps/missing_tile.ber
+# @./so_long ./maps/no_wall.ber
+# @./so_long ./maps/not_rec1.ber
+# @./so_long ./maps/not_rec2.ber
+# @./so_long ./maps/not_rec2.ber
+# @./so_long ./maps/not_ber.txt
 
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map1.ber
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map2.ber
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map3.ber
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/map_with_enemy_bonus.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./so_long ./maps/map1.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./so_long ./maps/map2.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./so_long ./maps/map3.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./so_long ./maps/map_with_enemy_bonus.ber
 
 # empty first line - not rec ok
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/empty.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./so_long ./maps/empty.ber
 
 # missing caracter - invalid map tile ok
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/missing_tile.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./so_long ./maps/missing_tile.ber
 
 # missing wall - invalid map tile ok
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/no_wall.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./so_long ./maps/no_wall.ber
 
 # - not rec ok
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/not_rec1.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./so_long ./maps/not_rec1.ber
 
 # - invalid map tile ok
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./a.out ./maps/not_rec2.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./so_long ./maps/not_rec2.ber
 
 # not square, with space in the end - invalid map tile ok
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./a.out ./maps/not_rec2.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./so_long ./maps/not_rec2.ber
 
 # not right extention ok
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./a.out ./maps/not_ber.txt
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./so_long ./maps/not_ber.txt
 
 # file does not exist - invalid map tiles ok
-# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./a.out ./maps/bolinha.ber
+# @valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./so_long ./maps/bolinha.ber
