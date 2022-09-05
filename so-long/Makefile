@@ -6,7 +6,7 @@
 #    By: mariana <mariana@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/30 20:55:35 by mariana           #+#    #+#              #
-#    Updated: 2022/09/05 10:31:46 by mariana          ###   ########.fr        #
+#    Updated: 2022/09/05 13:48:05 by mariana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,14 +116,14 @@ $(BONUS_OBJ_DIR):
 	mkdir -p $@
 
 bclean:
-	/bin/rm -f $(BONUS_OBJ)*.o
+	/bin/rm -f $(BONUS_OBJ_DIR)*.o
 
 bfclean: bclean
 	/bin/rm -f $(NAME_BONUS)
 
 bre: bfclean all
 
-$(LIBFT_FILE):
+$(LIB_NAME):
 	$(MAKE) all -C $(LIBRARY_PATH)
 	cp $(LIBFT_FILE) $(LIB_NAME)
 
@@ -158,10 +158,10 @@ run:
 # empty first line - not rec ok
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/empty.ber
 
-# missing caracter - invalid map tittle ok
+# missing caracter - invalid map tile ok
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/missing_tile.ber
 
-# missing wall - invalid map tittle ok
+# missing wall - invalid map tile ok
 # @valgrind --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./a.out ./maps/no_wall.ber
 
 # - not rec ok
