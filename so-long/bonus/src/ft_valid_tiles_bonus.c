@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_message.c                                 :+:      :+:    :+:   */
+/*   ft_valid_tiles_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/28 14:35:54 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/04 18:53:14 by mariana          ###   ########.fr       */
+/*   Created: 2022/09/03 20:15:57 by mariana           #+#    #+#             */
+/*   Updated: 2022/09/04 19:17:57 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-void	ft_error_message(int n)
+int	ft_valid_tiles_bonus(char buffer)
 {
-	if (n == 1)
-		ft_printf("Error1\n Not Rec Map\n");
-	if (n == 2)
-		ft_printf("Error\nInvalid map tiles\n");
-	if (n == 3)
-		ft_printf("Error\n Invalid extension\n");
-	if (n == 4)
-		ft_printf("Error\nWrong params were given");
-	if (n == 5)
-		ft_printf("Error\nOps something went wrong");
+	if (buffer == COLLECTIBLE || buffer == EXIT || buffer == PLAYER
+		|| buffer == WALL || buffer == EMPTY_SPACE || buffer == MONSTER)
+		return (1);
+	return (0);
 }

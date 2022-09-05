@@ -68,13 +68,11 @@ Bonus
 [x] Add some sprite animation.
 [ ] Display the movement count directly on screen instead of writing it in the shell.
 
-[ ] sem relink
-[ ] check files name e header
-[ ] check if changed prinft
+[x] sem relink
+[x] check files name e header
+[x] check if changed prinft
 [x] adicionar creditos p criadores da sprites
 
-
-ct, you must include a rule bonus to your Makefile,
-which will add all the various headers, librairies or functions that are forbidden on
-the main part of the project
-. Bonuses must be in a different file _bonus.{c/h}
+[x] Rule for bonus
+  Bonuses must be in a different file _bonus.{c/h}
+[x] Movement counter

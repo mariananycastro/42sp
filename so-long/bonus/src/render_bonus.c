@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:11:04 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/29 22:59:39 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/04 19:28:52 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_put_img(t_data *data, char position, int x, int y)
 {
@@ -34,7 +34,7 @@ void	ft_put_img(t_data *data, char position, int x, int y)
 			data->sprites.monster.mlx_img, x, y);
 }
 
-int	render(t_data *data)
+int	render_bonus(t_data *data)
 {
 	int	index;
 	int	x;

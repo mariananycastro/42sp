@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_map_size.c                                  :+:      :+:    :+:   */
+/*   ft_get_map_size_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:11:46 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/04 18:53:14 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/04 19:23:18 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_not_rec_error(void)
 {
-	ft_error_message(1);
+	ft_error_message_bonus(1);
 	exit(0);
 }
 
 void	ft_invalid_tile_error(void)
 {
-	ft_error_message(2);
+	ft_error_message_bonus(2);
 	exit(0);
 }
 
@@ -32,7 +32,7 @@ void	ft_read_file(int fd, t_data *data)
 	columns = 0;
 	while (read(fd, &buffer, 1) != 0)
 	{
-		if (ft_valid_tiles(buffer) == 1)
+		if (ft_valid_tiles_bonus(buffer) == 1)
 			columns++;
 		else if (buffer == '\n')
 		{
@@ -48,7 +48,7 @@ void	ft_read_file(int fd, t_data *data)
 	}
 }
 
-void	ft_get_map_size(t_data *data, const char	*map_file)
+void	ft_get_map_size_bonus(t_data *data, const char	*map_file)
 {
 	int		fd;
 

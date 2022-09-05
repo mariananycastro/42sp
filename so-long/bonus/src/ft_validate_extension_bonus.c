@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_message.c                                 :+:      :+:    :+:   */
+/*   ft_validate_extension_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/28 14:35:54 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/04 18:53:14 by mariana          ###   ########.fr       */
+/*   Created: 2022/08/22 22:12:39 by mariana           #+#    #+#             */
+/*   Updated: 2022/09/04 19:18:00 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-void	ft_error_message(int n)
+int	ft_validate_extension_bonus(const char *map_file)
 {
-	if (n == 1)
-		ft_printf("Error1\n Not Rec Map\n");
-	if (n == 2)
-		ft_printf("Error\nInvalid map tiles\n");
-	if (n == 3)
-		ft_printf("Error\n Invalid extension\n");
-	if (n == 4)
-		ft_printf("Error\nWrong params were given");
-	if (n == 5)
-		ft_printf("Error\nOps something went wrong");
+	int		extention_size;
+	size_t	path_size;
+	size_t	index;
+
+	extention_size = 4;
+	path_size = ft_strlen(map_file);
+	index = path_size - extention_size;
+	return (ft_memcmp(&map_file[index], ".ber", extention_size));
 }

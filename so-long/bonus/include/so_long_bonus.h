@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 16:23:39 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/04 20:01:36 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/05 10:24:28 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 # include <stdlib.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
@@ -40,7 +40,7 @@
 # define CLOSED_DOOR_PATH "./sprites/background/door_closed.xpm"
 # define OPENED_DOOR_PATH "./sprites/background/door_opened.xpm"
 # define COLLECTIBLE_PATH "./sprites/coins/egg.xpm"
-# define MONSTER_PATH "./sprites/monster/enemy.xpm"
+# define MONSTER_PATH "./bonus/sprites/monster/enemy_bonus.xpm"
 
 typedef struct s_img
 {
@@ -82,26 +82,27 @@ typedef struct s_data
 	int			movements;
 }	t_data;
 
-int		handle_keyrelease(int keysym, t_data *data);
-int		handle_destroy_window(t_data *data);
-void	ft_create_map(t_data *data, const char *map_file);
-void	ft_validate_map(t_data *data);
-int		ft_check_map_tiles(int width, int height, char *matrix, t_data *data);
-int		ft_is_wall(char map_tile);
-int		ft_validate_extension(const char *map_file);
-void	ft_set_map_matrix(t_data *data, const char *map_file);
-void	ft_get_map_size(t_data *data, const char	*map_file);
-int		render(t_data *data);
-void	ft_create_imgs(t_data *data);
-void	ft_destroy_display(t_data *data);
-void	ft_exit(t_data *data);
-void	ft_error_message(int n);
-void	ft_message(int n, t_data *data);
-void	ft_destroy_imgs(t_data *data);
-void	ft_destroy_matrix(t_data *data);
-t_img	ft_create_img(t_data *data, char *imgPath);
-void	ft_thanks_msg(void);
-int		ft_create_window(t_data	*data);
-int		ft_valid_tiles(char buffer);
-void	ft_move(t_data *data, int new_position);
+int		handle_keyrelease_bonus(int keysym, t_data *data);
+int		handle_destroy_window_bonus(t_data *data);
+void	ft_create_map_bonus(t_data *data, const char *map_file);
+void	ft_validate_map_bonus(t_data *data);
+int		ft_check_map_tiles_bonus(
+			int width, int height, char *matrix, t_data *data);
+int		ft_is_wall_bonus(char map_tile);
+int		ft_validate_extension_bonus(const char *map_file);
+void	ft_set_map_matrix_bonus(t_data *data, const char *map_file);
+void	ft_get_map_size_bonus(t_data *data, const char	*map_file);
+int		render_bonus(t_data *data);
+void	ft_create_imgs_bonus(t_data *data);
+void	ft_destroy_display_bonus(t_data *data);
+void	ft_exit_bonus(t_data *data);
+void	ft_error_message_bonus(int n);
+void	ft_message_bonus(int n, t_data *data);
+void	ft_destroy_imgs_bonus(t_data *data);
+void	ft_destroy_matrix_bonus(t_data *data);
+t_img	ft_create_img_bonus(t_data *data, char *imgPath);
+void	ft_thanks_msg_bonus(void);
+int		ft_create_window_bonus(t_data	*data);
+int		ft_valid_tiles_bonus(char buffer);
+void	ft_move_bonus(t_data *data, int new_position);
 #endif

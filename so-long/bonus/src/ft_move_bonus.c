@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move.c                                          :+:      :+:    :+:   */
+/*   ft_move_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 16:57:13 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/04 16:37:37 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/04 19:20:21 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_change_tile(t_data *data, int index)
 {
@@ -22,13 +22,13 @@ void	ft_change_tile(t_data *data, int index)
 void	ft_collectible_movement(t_data *data, int index)
 {
 	data->score++;
-	ft_message(2, data);
+	ft_message_bonus(2, data);
 	ft_change_tile(data, index);
 	if (data->collectibles == data->score)
 	{
 		mlx_destroy_image(data->mlx_ptr, data->sprites.exit.mlx_img);
-		data->sprites.exit = ft_create_img(data, OPENED_DOOR_PATH);
-		ft_message(4, data);
+		data->sprites.exit = ft_create_img_bonus(data, OPENED_DOOR_PATH);
+		ft_message_bonus(4, data);
 	}
 }
 
@@ -36,20 +36,20 @@ void	ft_exit_movement(t_data *data)
 {
 	if (data->collectibles == data->score)
 	{
-		ft_message(1, data);
-		ft_exit(data);
+		ft_message_bonus(1, data);
+		ft_exit_bonus(data);
 	}
 	else
-		ft_message(3, data);
+		ft_message_bonus(3, data);
 }
 
 void	ft_count_moves(t_data *data)
 {
 	data->movements++;
-	ft_message(5, data);
+	ft_message_bonus(5, data);
 }
 
-void	ft_move(t_data *data, int new_position)
+void	ft_move_bonus(t_data *data, int new_position)
 {
 	char	*matrix_position;
 	int		index;
@@ -65,8 +65,8 @@ void	ft_move(t_data *data, int new_position)
 		}
 		else if (*matrix_position == MONSTER)
 		{
-			ft_message(6, data);
-			ft_exit(data);
+			ft_message_bonus(6, data);
+			ft_exit_bonus(data);
 		}
 		else if (*matrix_position == EXIT)
 			ft_exit_movement(data);

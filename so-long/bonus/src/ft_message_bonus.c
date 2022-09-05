@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_message.c                                       :+:      :+:    :+:   */
+/*   ft_message_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:35:54 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/04 17:19:55 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/04 19:17:40 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_end_msg(t_data *data)
 {
@@ -44,7 +44,7 @@ void	ft_died_msg(void)
 	ft_printf("--------------------------------\n");
 }
 
-void	ft_message(int n, t_data *data)
+void	ft_message_bonus(int n, t_data *data)
 {
 	if (n == 1)
 		ft_end_msg(data);

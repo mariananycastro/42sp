@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_tiles.c                                   :+:      :+:    :+:   */
+/*   ft_exit_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 20:15:57 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/04 16:26:44 by mariana          ###   ########.fr       */
+/*   Created: 2022/08/22 22:10:30 by mariana           #+#    #+#             */
+/*   Updated: 2022/09/04 19:21:46 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-int	ft_valid_tiles(char buffer)
+void	ft_exit_bonus(t_data *data)
 {
-	if (buffer == COLLECTIBLE || buffer == EXIT || buffer == PLAYER
-		|| buffer == WALL || buffer == EMPTY_SPACE || buffer == MONSTER)
-		return (1);
-	return (0);
+	ft_destroy_imgs_bonus(data);
+	exit(0);
 }
