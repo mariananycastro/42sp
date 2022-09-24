@@ -1,0 +1,382 @@
+execution
+
+create 2 process
+int id = fork();
+childId  = 0
+parentId != 0
+
+---
+
+*WAIT
+
+wait () => wait for child process to finish execution
+if does not have child will keep waiting
+
+int resp =  wait(NULL) == -1 -> raised error
+resp -> process if returned from wait
+
+-----
+=> ex wait
+
+int id = fork();
+int n;
+
+if (id == 0) {
+  n = 1
+} else {
+  n = 6;
+}
+if (id != 0) { wait (); }
+
+int i;
+for (i = n; i < n + 5; i++) {
+  do(sth)
+}
+
+------
+
+getpid() -> get current process id (int)
+getppid() -> get parent process id (int)
+
+parent 78, current 84, 
+parent 72, current 78, 
+
+----
+*PIPE
+
+comunicate between process -> pipe()
+in memory file - where you want to read and write data
+
+int fd[2];
+// fd[0] - read
+// fd[1] - write
+if (pipe(fd) == -1){ raise error and return }
+
+int id = fork()
+if (id == -1) { raise error }
+// because fork creates 2 process fd are inherited, so you if you
+  opened the fd you need to close in both process
+
+if (id == 0){
+  close(fd[0]);
+
+  int x = sth;
+  if (write(  [1], &x, sizeof(x)) == -1){
+    raise error;
+  }
+  close(fd[1]);
+} else {
+  close(fd[0]);
+
+  int y; // store inf you fd in y
+  if (read(fd[0], &y, sizeof(y)) != -1){
+    raise error;
+  }
+  close(fd[0]);
+}
+
+----
+=> ex pipe
+
+int arr[] = { 1, 2, 3, 4, 1, 2 }
+int arrSize = sizeof(arr) / sizeof(int);
+int star, end;
+int fd[2];
+
+if(pipe(fd) == -1) { raise error }
+int id = fork();
+if (id == -1) { raise error }
+
+if (id == 0){
+  start = 0
+  end = arrSize / 2;
+} else {
+  start = arrSize / 2;
+  end = arrSize;
+}
+
+int sum = 0;
+int i;
+for (i == start; i < end; i++) {
+  sum += arr[i];
+}
+
+// sum = sum partial sum of array
+
+if (id == 0){
+  close(fd[0]);
+  write(fd[1], &sum, sizeof(sum));
+  close(fd[1]);
+} else {
+  int sumFromChild;
+
+  close(fd[1]);
+  read(fd[0], &sumFromChild, sizeof(sumFromChild));
+  close(fd[0]);
+  
+  int totalSum = sum + sumFromChild;
+  wait(NULL); // wait for child to finish
+}
+
+----
+
+* FIFOs -> needs to be opened, write AND read, otherwise it 
+  keeps waiting
+sys/stat.h
+sys/types.h
+
+process in diff hierarchy, read and write from any process
+
+mkfifo("fifo1", 0777); // (path to the file, access)
+
+// can also run mkfifo fifo1 on terminal to create file 
+
+if (mkfifo("fifo1", 0777) == -1) { raise error }
+// will raise error if file already exists
+
+----
+
+//errno.h list of error
+
+if (mkfifo("fifo1", 0777) == -1) {
+  if (errno != EEXIST) { raise could not create file }
+}
+
+// fcnt.h -> open file
+
+int fd = open("fifo1", O_WRONLY); // open file to only write
+int fd = open("fifo1", O_RDWR); // to fix problem, fifo keeps waiting
+  both process
+int x = 97
+write(fd, &x, sizeof(x));
+close(fd);
+
+----
+Two way communication between processes 
+
+ex: it breaks because have data sent from one pipe to another
+without telling the right order
+
+int p1[2];
+if (pipe(p1) == -1) { raise error }
+int pid = fork()
+if (pid == -1) { raise error }
+
+if (pid == 0){
+  // child
+  int x;
+  if (read(p1[0], &x, sizeof(x)) == -1) { raise error }
+
+  x *= 4;
+  if (write(p1[1], &x, sizeof(x)) == -1) { raise error }
+} else {
+  // parent
+  srand(time(NULL));
+  int y = rand() % 10;
+  if (write(p1[1], &y, sizeof(y)) == -1) { raise error }
+    //send to child
+
+  if (read(p1[0], &y, sizeof(y)) == -1) { raise error }
+  wait(NULL);
+}
+close(p1[0]);
+close(p1[1]);
+
+--
+
+ex: fixing the error
+
+int p1[2]; // child to parent
+int p2[2]; // parent to child
+
+if (pipe(p1) == -1) { raise error }
+if (pipe(p2) == -1) { raise error }
+
+int pid = fork()
+if (pid == -1) { raise error }
+
+if (pid == 0){
+  // child
+  close(p1[0]); // dont need to read from this pipe, 
+    because it will only write
+  close(p2[1]); // dont need to write from this pipe,
+    because it will only read from it
+
+  int x;
+  // reading from p2
+  if (read(p2[0], &x, sizeof(x)) == -1) { raise error }
+
+  x *= 4;
+  // writing from p1
+  if (write(p1[1], &x, sizeof(x)) == -1) { raise error }
+
+  close(p1[1]);
+  close(p2[0]);
+
+} else {
+  // parent
+  close(p1[1]); // dont need to write
+  close(p2[0]); // dont need to read
+
+  srand(time(NULL));
+  int y = rand() % 10;
+  if (write(p2[1], &y, sizeof(y)) == -1) { raise error }
+    //send to child
+
+  if (read(p1[0], &y, sizeof(y)) == -1) { raise error }
+
+  close(p1[0]);
+  close(p2[1]);
+
+  wait(NULL);
+}
+
+----
+
+execution programs -> when executing a program, the process
+overwrite the process of my function
+
+ing pid = fork();
+if (pid == -1) { raise error }
+if (pid == 0) {
+  execlp("ping", "ping", "-c", "3", "google.com", NULL);
+  // exec can return an error when does not execute or when 
+    executing raises error 
+} else {
+  wait(NULL);
+  do(sth)
+}
+
+Raising error with exec
+
+ing pid = fork();
+if (pid == -1) { raise error }
+if (pid == 0) {
+  int err = execlp("ping", "ping", "-c", "3", "google.com", NULL);
+  if (err == -1) { raise error } // could not execute
+} else {
+  int wstatus;
+  wait(&wstatus);
+  if (WIFEXITED(wstatus)) { // if process terminated normally
+    int statusCode = WIFEXITED(wstatus);
+    if (statusCode != 0 ) { raise error }
+  }
+   do(sth)
+}
+
+---
+EXEC
+  execlp => l == list of arguments
+  execlp => p == path of variables, with p dont need to give full path to "ping" ($ whereis ping)
+  execvp => v =  array of arguments
+     char *arr[] = { "ping", "google.com", NULL }
+     execvp("ping", arr);
+
+  execve => environment
+    char *env[] = { "TEST=sth", NULL }
+    execve("ping", arr, env);
+
+    int err = errno;
+    // check err in the list of errors in errno.h
+
+  or 
+
+    int main(int argc, char* argv[], char* envp[]){
+      execve("ping", arr, envp);
+    }
+
+--
+
+=> ex with opening file
+fifo and pipe are also file descriptors - number across a process
+0 => STDIN == scanf
+1 => STDOUT == output on terminal
+2 => STDERR
+when openig a file or using fifo or pipe it creates another fd
+
+To change STDOUT from terminal to a file created in the function use "dup"
+which creates another fd to the file created ("pingResults.txt")
+In ex below:
+3 => open(file) == pingResults.txt
+4 => dup(file) == pingResults.txt
+
+And with dup2(file, 1) ==> or use a the variable dup2(file, STDOUT_FILENO)
+  int file = open("pingResults.txt", O_WRONLY | O_CREAT, 0777) // only write if exist and creat if doesnt exist
+  if (file == -1) { raise error }
+  int file2 = dup(file);
+
+  it changes fd of 1:
+  0 => STDIN == scanf
+  1 => close STDOUT and open(file) == pingResults.txt
+  2 => STDERR
+  3 => open(file) == pingResults.txt
+
+=> ex dup2
+
+ing pid = fork();
+if (pid == -1) { raise error }
+
+if (pid == 0) {
+  int file = open("pingResults.txt", O_WRONLY | O_CREAT, 0777) // only write if exist and creat if doesnt exist
+  if (file == -1) { raise error }
+
+  dup2(file, STDOUT_FILENO);
+  close(file);
+
+  int err = execlp("ping", "ping", "-c", "3", "google.com", NULL);
+  if (err == -1) { raise error } // could not execute
+} else {
+  int wstatus;
+  wait(&wstatus);
+  if (WIFEXITED(wstatus)) { // if process terminated normally
+    int statusCode = WIFEXITED(wstatus);
+    if (statusCode != 0 ) { raise error }
+  }
+   do(sth)
+}
+
+---
+Kill process
+kill(pid, [signal])
+
+Ex of signal
+- SIGKILL
+- SIGSTOP stop process, and have to use SIGCONT to continue the process
+- SIGCHLD - stop or terminate child process
+
+---
+=> ex pipe on terminal
+    int fd[2];
+    if (pipe(fd) == -1) { return 1; }
+
+    int pid1 = fork()
+    if (pid1 < 0) { return 2; }
+
+    if (pid == 0) {
+        dup2(fd[1], STDOUT_FILENO);
+        close(fd[0]);
+        close(fd[1]);
+        execlp("ping", "ping", "-c", "5", "google.com", NULL);
+    }
+    int pid2 = fork()
+    if (pid2 < 0) { return 3; }
+    if (pid2 == 0) {
+        dup2(fd[0], STDIN_FILENO);
+        close(fd[0]);
+        close(fd[1]);
+        execlp("grep", "grep", "rtt", NULL);
+    }
+    close(fd[0]);
+    close(fd[1]);
+    wait(pid1, NULL, 0);
+    wait(pid2, NULL, 0);
+
+----
+
+$ < infile > outfile
+  ==> receives infile as STDIN and copy to outfile
+  same as cat infile > outfile
+
+$ < infile << DELIMITER > outfile
+  copies infile and what every is writting in terminal
+  before writting "DELIMITER" into outfile

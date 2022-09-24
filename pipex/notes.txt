@@ -1,0 +1,42 @@
+Unix Processes in C (playlist)
+https://www.youtube.com/playlist?list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY
+
+Unix terminals and shells (playlist)
+https://www.youtube.com/playlist?list=PLFAC320731F539902
+
+The fork() function in C (playlist)
+https://www.youtube.com/watch?v=cex9XrZCU14&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY
+
+Simulating the pipe "|" operator in C
+https://www.youtube.com/watch?v=6xbLgZpOBi8
+
+Why you should Close Your Files | bin 0x02
+https://www.youtube.com/watch?v=6SA6S9Ca5-U
+
+TESTERS:
+https://github.com/vfurmane/pipex-tester
+https://github.com/gsilva-v/PipexTester
+https://github.com/mariadaan/PIPEXaminator
+https://github.com/gmarcha/pipexMedic 
+
+DICAS: 
+https://bumpy-truffle-c97.notion.site/Pipex-587aa7c3ee554d0097a62e7866f15957
+
+https://www.programacaoprogressiva.net/2014/09/Pipes-em-C-Comunicao-entre-Processos-IPC-Interprocess-Communication.html
+
+https://thehackernews.com/2022/03/researchers-warn-of-linux-kernel-dirty.html
+
+https://unix.stackexchange.com/questions/37508/in-what-order-do-piped-commands-run
+
+https://stackoverflow.com/questions/16315089/how-to-get-exit-status-of-a-shell-command-used-in-gnu-makefile
+
+https://cs61.seas.harvard.edu/site/2021/ProcessControl/
+
+https://stackoverflow.com/questions/27306764/capturing-exit-status-code-of-child-process 
+
+
+	# open, close, read, write,
+malloc, free, perror,
+strerror, access, dup, dup2,
+execve, exit, fork, pipe,
+unlink, wait, waitpid
