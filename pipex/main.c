@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 17:00:04 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/24 17:11:18 by mariana          ###   ########.fr       */
+/*   Updated: 2022/09/24 23:29:31 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,55 @@
 // #include <string.h>
 #include "pipex.h"
 
-int	main(int argc, char *argv[], char *envp[])
+int	ft_set_stdin(char *file1)
 {
 	int		infile;
+
+	infile = open(file1, O_RDONLY);
+	// ou criar arquivo p nao dar erro 
+	if (infile == -1)
+		return (1);
+	dup2(infile, STDIN_FILENO);
+	close(infile);
+	return (0);
+}
+
+int	ft_set_stdout(char *file2)
+{
 	int		outfile;
+
+	outfile = open(file2, O_WRONLY);
+	// apagar tudo o q estiver no arquivo ou criar arquivo
+	if (outfile == -1)
+		return (1);
+	dup2(outfile, STDOUT_FILENO);
+	close(outfile);
+	return (0);
+}
+
+int	main(int argc, char *argv[], char *envp[])
+{
 	int		i;
-	int		last_arg_index;
-	char	**array;
+	char	**array_arg_cmd;
+	char	*p_args;
 	int		process;
 
 	if (argc < 4)
 		return (ERRARG);
-	infile = open(argv[1], O_RDONLY);
-	if (infile == -1)
+	if (ft_set_stdin(argv[1]) != 0)
 		return (ERRMISSINFILE);
-	dup2(infile, STDIN_FILENO);
-	close(infile);
-	outfile = open(argv[argc - 1], O_WRONLY);
-	if (outfile == -1)
+	if (ft_set_stdout(argv[argc - 1]) != 0)
 		return (ERRMISSOUTFILE);
-	dup2(outfile, STDOUT_FILENO);
-	close(outfile);
+
 	i = 2;
-	last_arg_index = argc - 2;
-	// separa aqui
-	array = ft_split(argv[i], ' ');
-	if (!array)
-		return (ERRARGS);
-	process = execlp(array[0], *array, NULL);
+	array_arg_cmd = ft_split(argv[i], ' ');
+	p_args = ft_strjoin("/bin/", array_arg_cmd[0]);
+	process = execve(p_args, array_arg_cmd, envp);
 	if (process < 0)
 		return (ERRPROCESS);
 	return (0);
 }
+
+// < file1 grep a1 | wc -w > file2 
+// < file1 grep a1 > file2 
+// < file1 ls -l > file2 
