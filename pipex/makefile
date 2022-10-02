@@ -11,10 +11,25 @@ all: $(NAME)
 
 $(NAME): $(LIB_NAME)
 # $(CC) $(CFLAGS) -g main.c -o $(NAME)
-	@$(CC) -g main.c -I $(LIBRARY_PATH) $(LIBFT_FILE) -o $(NAME)
+	@$(CC) $(CFLAGS) -g main.c -I $(LIBRARY_PATH) $(LIBFT_FILE) -o $(NAME)
 
 run:
-	@./pipex file1 " ls  -l " "wc -l" file2
+# @valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./pipex file " ls  -l " "wc -l" file2
+# @./pipex file1 "ls -l" "wc -z" file2
+# @./pipex file1 "ls -z" "wc -l" file2
+# @./pipex file1 "ls -z" "wc -z" file2
+# @./pipex file1 "ls -l" "wc -l" file2
+# @./pipex file1 "grep a1" "wc -w" file2
+
+ex:
+# @< file1 ls -l | wc -l > file2
+# @< file1 ls -l | wc -z > file2
+# @< file1 ls -z | wc -l > file2
+# @< file1 ls -z | wc -z > file2
+# @< file1 grep a1 | wc -l > file2
+# @< file1 grep a1 | wc -z > file2
+# @< file1 grep | wc -l > file2
+# @< file1 grep | wc -z > file2
 
 fclean:
 	@rm -f pipex

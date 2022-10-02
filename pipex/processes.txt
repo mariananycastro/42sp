@@ -352,7 +352,7 @@ Ex of signal
     int pid1 = fork()
     if (pid1 < 0) { return 2; }
 
-    if (pid == 0) {
+    if (pid1 == 0) {
         dup2(fd[1], STDOUT_FILENO);
         close(fd[0]);
         close(fd[1]);
@@ -368,8 +368,8 @@ Ex of signal
     }
     close(fd[0]);
     close(fd[1]);
-    wait(pid1, NULL, 0);
-    wait(pid2, NULL, 0);
+    waitpid(pid1, NULL, 0);
+    waitpid(pid2, NULL, 0);
 
 ----
 
@@ -380,3 +380,92 @@ $ < infile > outfile
 $ < infile << DELIMITER > outfile
   copies infile and what every is writting in terminal
   before writting "DELIMITER" into outfile
+
+---
+problem: main creates a int sends to child to add 5
+than sends to another process to add 5 and retorn to main
+
+main -> p1 -> p2 -> main ==> 3 pipes (3 arrows)
+fd[0]
+fd[1]
+fd[2]
+
+main needs to
+fd[0][1] write on its p to pass to p1
+fd[2][0] read from fd p2
+
+p1 needs to
+fd[0][0] read from fd main
+fd[1][1] write on its fd to pass to p2
+
+p2 needs to
+fd[1][0] read from fd p1
+fd[2][1] write on its fd to pass to main
+
+==
+int fd[3][2]; // 3 process, each have read and write
+int i;
+
+for (i = 0; i < 3; i++) {
+  if (pipe(fd[i]) < 0) { raise error }
+}
+
+int pid1 = fork();
+if (pid1 < 0) { raise error }
+
+if (pid1 == 0){
+  //child
+  close(f[0][1]);
+  close(f[1][0]);
+  close(f[2][0]);
+  close(f[2][1]);
+
+  int x;
+  if (read(fd[0][0], &x, sizeof(int)) < 0) { raise error };
+  x += 5;
+  if (write(fd[1][1], &x, sizeof(int)) < 0) { raise error };
+  close(fd[0][0]);
+  close(fd[1][1]);
+  return 0;
+}
+
+int pid2 = fork();
+if (pid2 < 0) { raise error }
+
+if (pid2 == 0){
+  //child
+  close(f[0][0]);
+  close(f[0][1]);
+  close(f[1][1]);
+  close(f[2][0]);
+
+  int x;
+  if (read(fd[1][0], &x, sizeof(int)) < 0) { raise error };
+  x += 5;
+  if (write(fd[2][1], &x, sizeof(int)) < 0) { raise error };
+  close(fd[1][0]);
+  close(fd[2][1]);
+  return 0; // because code below will be executed only by parent
+            // finishs execution of child here
+}
+  close(f[0][0]);
+  close(f[1][0]);
+  close(f[1][1]);
+  close(f[2][1]);
+
+  int x;
+  // first needs to write to send to p1
+  if (write(fd[0][1], &x, sizeof(int)) < 0) { raise error };
+  if (read(fd[2][0], &x, sizeof(int)) < 0) { raise error };
+  
+  printf("Result %d\n", x);
+
+  close(fd[0][1]);
+  close(fd[2][0]);
+
+  // before run have to wait process to end
+  waitpid(pid1, NULL, 0);
+  waitpid(pid2, NULL, 0);
+  return 0; 
+
+----
