@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_exec_p2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 17:02:32 by mariana           #+#    #+#             */
-/*   Updated: 2022/09/25 00:25:32 by mariana          ###   ########.fr       */
+/*   Created: 2022/10/02 21:33:31 by mariana           #+#    #+#             */
+/*   Updated: 2022/10/02 22:15:55 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
-# include <sys/types.h>
-# include <sys/wait.h>
-# include "libft.h"
+#include "pipex.h"
 
-# define ERRARG 1
-# define ERRINFILE 2
-# define ERROUTFILE 3
-# define ERRARGS 4
-# define ERRPROCESS 5
-# define ERRPIPE 6
-# define ERRFORK 7
-# define ERRPROCESSARGS 8
-#endif
+void	ft_exec_p2(char *argv[], int *fd, char *envp[], int argc)
+{
+	dup2(fd[0], STDIN_FILENO);
+	ft_set_stdout(argv[argc - 1]);
+	ft_set_stderr(argv[argc - 1]);
+	ft_close_fd(fd);
+	ft_exec_cmd(argv[3], envp);
+}
