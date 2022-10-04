@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 17:02:32 by mariana           #+#    #+#             */
-/*   Updated: 2022/10/02 21:37:40 by mariana          ###   ########.fr       */
+/*   Updated: 2022/10/04 14:21:47 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ void	ft_error(char *file2, char *message);
 void	ft_check_error(char *message);
 void	ft_error_fork(char *argv[], int *fd, int argc, char *message);
 void	ft_close_fd(int *fd);
-void	ft_exec_p1(char *argv[], int *fd, char *envp[], int argc);
+void	ft_exec_p1(char *argv[], int *fd, char *envp[]);
 void	ft_set_stdin(char *file, int *fd);
 void	ft_exec_cmd(char *cmd, char *envp[]);
-void	ft_set_stderr(char *file2);
 void	ft_exec_p2(char *argv[], int *fd, char *envp[], int argc);
 #endif

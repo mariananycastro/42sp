@@ -8,7 +8,7 @@ CFLAGS     			= -Wall -Wextra -Werror
 NAME						= pipex
 FILES_NAMES			= ft_error.c ft_set_stdout.c ft_check_error.c ft_error_fork.c \
 									ft_error_fork.c ft_close_fd.c ft_exec_p1.c ft_set_stdin.c \
-									ft_exec_cmd.c ft_set_stderr.c ft_exec_p2.c
+									ft_exec_cmd.c ft_exec_p2.c
 
 SRC_DIR 	= src/
 OBJ_DIR 	= obj/
@@ -40,19 +40,24 @@ $(OBJ_DIR):
 	@mkdir -p $@
 
 run:
-# @valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./pipex file " ls  -l " "wc -l" file2
-# @./pipex file1 "ls -l" "wc -z" file2
-	@./pipex file1 "ls -l" "wc -l" file2
-# @./pipex file1 "ls -z" "wc -z" file2
+# @valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./pipex file1 " ls  -l " "wc -l" file2
+	@./pipex file " ls  -l " "wc -l" file2
 # @./pipex file1 "ls -l" "wc -l" file2
-# @./pipex file1 "grep a1" "wc -w" file2
+# @./pipex file1 "ls -l" "wc -z" file2 ==> ok no file 2 tem q tirar, se tira nao funfa
+# @./pipex file1 "ls -z" "wc -z" file2 ==> deveria printar os dois erros
+# @./pipex file1 "ls -z" "wc -l" file2 ==> file 0, terminal erro, so printa no file2 o erro
+# @./pipex file1 "grep a1" "wc -w" file2 ==> num funfa
+# @./pipex file1 "grep a1" "wc -z" file2 ==> num funfa
+# @./pipex file1 "grep" "wc -l" file2 ==> num funfa
+# @./pipex file1 "grep" "wc -z" file2 ==> num funfa
+
 
 ex:
 # @< file1 ls -l | wc -l > file2
 # @< file1 ls -l | wc -z > file2
-# @< file1 ls -z | wc -l > file2
 # @< file1 ls -z | wc -z > file2
-# @< file1 grep a1 | wc -l > file2
+# @< file1 ls -z | wc -l > file2
+# @< file1 grep a1 | wc -w > file2
 # @< file1 grep a1 | wc -z > file2
 # @< file1 grep | wc -l > file2
 # @< file1 grep | wc -z > file2
