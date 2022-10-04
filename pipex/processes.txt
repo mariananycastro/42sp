@@ -61,7 +61,7 @@ if (id == 0){
   close(fd[0]);
 
   int x = sth;
-  if (write(  [1], &x, sizeof(x)) == -1){
+  if (write(fd[1], &x, sizeof(x)) == -1){
     raise error;
   }
   close(fd[1]);

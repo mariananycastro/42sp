@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 21:31:12 by mariana           #+#    #+#             */
-/*   Updated: 2022/10/04 14:23:20 by mariana          ###   ########.fr       */
+/*   Updated: 2022/10/04 14:35:23 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_free_split(char **args)
 	free(args);
 }
 
-char *ft_get_path(char *cmd, char *envp[])
+char	*ft_get_path(char *cmd, char *envp[])
 {
 	char	**paths;
 	int		i;

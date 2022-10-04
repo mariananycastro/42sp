@@ -41,7 +41,9 @@ $(OBJ_DIR):
 
 run:
 # @valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./pipex file1 " ls  -l " "wc -l" file2
-	@./pipex file " ls  -l " "wc -l" file2
+# @./pipex no_file "ls -l" "wc -l" file2
+# @./pipex file1 "ls  -l " "wc -l" no_file
+# @./pipex file1 " ls  -l " "wc -l" file2
 # @./pipex file1 "ls -l" "wc -l" file2
 # @./pipex file1 "ls -l" "wc -z" file2 ==> ok no file 2 tem q tirar, se tira nao funfa
 # @./pipex file1 "ls -z" "wc -z" file2 ==> deveria printar os dois erros
@@ -53,6 +55,8 @@ run:
 
 
 ex:
+# @< file1 ls -l | wc -l > no_file
+# @< no_file ls -l | wc -l > file2
 # @< file1 ls -l | wc -l > file2
 # @< file1 ls -l | wc -z > file2
 # @< file1 ls -z | wc -z > file2

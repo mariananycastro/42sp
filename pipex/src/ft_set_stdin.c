@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 21:30:12 by mariana           #+#    #+#             */
-/*   Updated: 2022/10/02 21:30:24 by mariana          ###   ########.fr       */
+/*   Updated: 2022/10/04 14:24:34 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_set_stdin(char *file, int *fd)
 	if (errno != 0)
 	{
 		ft_close_fd(fd);
-		ft_check_error("Error File stdin");
+		ft_check_error(file);
 	}
 	dup2(infile, STDIN_FILENO);
 	close(infile);
