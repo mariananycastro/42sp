@@ -6,15 +6,14 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 19:51:26 by mariana           #+#    #+#             */
-/*   Updated: 2022/10/02 21:34:55 by mariana          ###   ########.fr       */
+/*   Updated: 2022/10/09 20:42:52 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_error(char *file2, char *message)
+void	ft_error(char *message)
 {
-	ft_set_stdout(file2);
 	ft_printf(message);
-	exit(1);
+	exit(0);
 }

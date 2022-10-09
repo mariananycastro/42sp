@@ -5,9 +5,9 @@ LIBFT_FILE 		 	= $(LIBRARY_PATH)/libft.a
 CC         			= clang
 CFLAGS     			= -Wall -Wextra -Werror
 NAME						= pipex
-FILES_NAMES			= ft_error.c ft_set_stdout.c ft_check_error.c ft_error_fork.c \
-									ft_error_fork.c ft_close_fd.c ft_exec_p1.c ft_set_stdin.c \
-									ft_exec_cmd.c ft_exec_p2.c
+FILES_NAMES			= ft_check_error.c ft_close_fd.c ft_error.c ft_error_fork.c \
+									ft_exec_cmd.c  ft_exec_p1.c ft_exec_p2.c  ft_set_stdout.c \
+									ft_set_stdin.c
 
 OBJ_DIR 	= obj/
 OBJ 			= $(FILES_NAMES:%.c=$(OBJ_DIR)%.o)
@@ -15,6 +15,9 @@ LIST 			= pipex.a
 
 INCLUDE_PATH 	= include
 MAIN_FILE 		= $(addprefix src/, main.c)
+
+SRC_DIR 	= src/
+vpath %.c $(SRC_DIR)
 
 all: $(NAME)
 
@@ -32,21 +35,21 @@ $(OBJ_DIR):
 
 run:
 # @valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./pipex file1 " ls  -l " "wc -l" file2
-	@./pipex no_file "ls -l" "wc -l" file2
+# @./pipex no_file "ls -l" "wc -l" file2
 # @./pipex file1 "ls  -l " "wc -l" no_file
 # @./pipex file1 " ls  -l " "wc -l" file2
 # @./pipex file1 "ls -l" "wc -l" file2
-# @./pipex file1 "ls -l" "wc -z" file2 ==> ok no file 2 tem q tirar, se tira nao funfa
-# @./pipex file1 "ls -z" "wc -z" file2 ==> deveria printar os dois erros
-# @./pipex file1 "ls -z" "wc -l" file2 ==> file 0, terminal erro, so printa no file2 o erro
-# @./pipex file1 "grep a1" "wc -w" file2 ==> num funfa
-# @./pipex file1 "grep a1" "wc -z" file2 ==> num funfa
-# @./pipex file1 "grep" "wc -l" file2 ==> num funfa
-# @./pipex file1 "grep" "wc -z" file2 ==> num funfa
+# @./pipex file1 "ls -l" "wc -z" file2
+# @./pipex file1 "ls -z" "wc -z" file2
+# @./pipex file1 "ls -z" "wc -l" file2
+# @./pipex file1 "grep a1" "wc -w" file2
+# @./pipex file1 "grep a1" "wc -z" file2
+# @./pipex file1 "grep" "wc -l" file2
+# @./pipex file1 "grep" "wc -z" file2
 
 ex:
-# @< file1 ls -l | wc -l > no_file
 # @< no_file ls -l | wc -l > file2
+# @< file1 ls -l | wc -l > no_file
 # @< file1 ls -l | wc -l > file2
 # @< file1 ls -l | wc -z > file2
 # @< file1 ls -z | wc -z > file2
@@ -57,9 +60,9 @@ ex:
 # @< file1 grep | wc -z > file2
 
 clean:
-	rm -f $(OBJ_DIR)*.o
+	@rm -f $(OBJ_DIR)*.o
 
-fclean:
+fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all run
