@@ -5,9 +5,9 @@ LIBFT_FILE 		 	= $(LIBRARY_PATH)/libft.a
 CC         			= clang
 CFLAGS     			= -Wall -Wextra -Werror
 NAME						= pipex
-FILES_NAMES			= ft_check_error.c ft_close_fd.c ft_error.c ft_error_fork.c \
-									ft_exec_cmd.c  ft_exec_p1.c ft_exec_p2.c  ft_set_stdout.c \
-									ft_set_stdin.c
+FILES_NAMES			= ft_check_error.c ft_close_fd.c ft_get_file.c ft_error.c \
+									ft_error_fork.c ft_exec_cmd.c  ft_exec_p1.c ft_exec_p2.c  \
+									ft_set_stdout.c ft_set_stdin.c
 
 OBJ_DIR 	= obj/
 OBJ 			= $(FILES_NAMES:%.c=$(OBJ_DIR)%.o)
@@ -46,6 +46,7 @@ run:
 # @./pipex file1 "grep a1" "wc -z" file2
 # @./pipex file1 "grep" "wc -l" file2
 # @./pipex file1 "grep" "wc -z" file2
+# @./pipex file1 "ping -c 3 www.google.com" "wc -z" file2
 
 ex:
 # @< no_file ls -l | wc -l > file2
@@ -58,6 +59,7 @@ ex:
 # @< file1 grep a1 | wc -z > file2
 # @< file1 grep | wc -l > file2
 # @< file1 grep | wc -z > file2
+# @< file1 ping -c 3 www.google.com | wc -l > file2
 
 clean:
 	@rm -f $(OBJ_DIR)*.o

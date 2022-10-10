@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 17:02:32 by mariana           #+#    #+#             */
-/*   Updated: 2022/10/09 20:39:35 by mariana          ###   ########.fr       */
+/*   Updated: 2022/10/09 21:51:32 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 void	ft_check_error(char *message);
 void	ft_close_fd(int *fd);
+char	*ft_get_file(char *file_name, char *envp[]);
 void	ft_error(char *message);
 void	ft_error_fork(int *fd, char *message);
 void	ft_exec_cmd(char *cmd, char *envp[]);
