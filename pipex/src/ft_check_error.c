@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 20:24:57 by mariana           #+#    #+#             */
-/*   Updated: 2022/10/02 21:43:03 by mariana          ###   ########.fr       */
+/*   Updated: 2022/10/23 16:30:46 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_check_error(char *message)
 	if (errno != 0)
 	{
 		perror(message);
+		free(message);
 		exit(0);
 	}
 }

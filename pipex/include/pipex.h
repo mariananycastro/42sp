@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 17:02:32 by mariana           #+#    #+#             */
-/*   Updated: 2022/10/09 21:51:32 by mariana          ###   ########.fr       */
+/*   Updated: 2022/10/23 14:49:39 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,6 @@
 # include <stdio.h>
 # include <sys/wait.h>
 # include "libft.h"
-
-# define ERRARG 1
-# define ERRINFILE 2
-# define ERROUTFILE 3
-# define ERRARGS 4
-# define ERRPROCESS 5
-# define ERRPIPE 6
-# define ERRFORK 7
-# define ERRPROCESSARGS 8
 
 void	ft_check_error(char *message);
 void	ft_close_fd(int *fd);

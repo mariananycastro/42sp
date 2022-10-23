@@ -33,20 +33,23 @@ $(OBJ_DIR)%.o: %.c | $(OBJ_DIR)
 $(OBJ_DIR):
 	@mkdir -p $@
 
+VALGRIND = valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all 
 run:
-# @valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all ./pipex file1 " ls  -l " "wc -l" file2
-# @./pipex no_file "ls -l" "wc -l" file2
-# @./pipex file1 "ls  -l " "wc -l" no_file
-# @./pipex file1 " ls  -l " "wc -l" file2
-# @./pipex file1 "ls -l" "wc -l" file2
-# @./pipex file1 "ls -l" "wc -z" file2
-# @./pipex file1 "ls -z" "wc -z" file2
-# @./pipex file1 "ls -z" "wc -l" file2
-# @./pipex file1 "grep a1" "wc -w" file2
-# @./pipex file1 "grep a1" "wc -z" file2
-# @./pipex file1 "grep" "wc -l" file2
-# @./pipex file1 "grep" "wc -z" file2
-# @./pipex file1 "ping -c 3 www.google.com" "wc -z" file2
+	@$(VALGRIND) ./pipex file1 " ls  -l " "wc -l" file2
+# PATH=$PWD/assets:$PATH VAR1="hello" VAR2="world" pipex_test ../pipex/pipex file1 "env_var" "cat" "outs/test-$num.txt" > outs/test-$num-tty.txt
+# @$(VALGRIND) ./pipex no_file "ls -l" "wc -l" file2
+# @$(VALGRIND) ./pipex file1 "ls  -l " "wc -l" no_file
+# @$(VALGRIND) ./pipex file1 " ls  -l " "wc -l" file2
+# @$(VALGRIND) ./pipex file1 "ls -l" "wc -l" file2
+# @$(VALGRIND) ./pipex file1 "ls -l" "wc -z" file2
+# @$(VALGRIND) ./pipex file1 "ls -z" "wc -z" file2
+# @$(VALGRIND) ./pipex file1 "ls -z" "wc -l" file2
+# @$(VALGRIND) ./pipex file1 "grep a1" "wc -w" file2
+# @$(VALGRIND) ./pipex file1 "grep a1" "wc -z" file2
+# @$(VALGRIND) ./pipex file1 "grep" "wc -l" file2
+# @$(VALGRIND) ./pipex file1 "grep" "wc -z" file2
+# @$(VALGRIND) ./pipex file1 "ping -c 3 www.google.com" "wc -z" file2
+# @$(VALGRIND) ./pipex file1 "env_var" "cat" file2
 
 ex:
 # @< no_file ls -l | wc -l > file2
@@ -60,6 +63,10 @@ ex:
 # @< file1 grep | wc -l > file2
 # @< file1 grep | wc -z > file2
 # @< file1 ping -c 3 www.google.com | wc -l > file2
+# @< file1 env_var | cat > file2
+
+add_path: 
+	@PATH=$PWD/${path}:$PATH
 
 clean:
 	@rm -f $(OBJ_DIR)*.o
