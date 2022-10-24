@@ -35,8 +35,8 @@ $(OBJ_DIR):
 
 VALGRIND = valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all 
 run:
-	@$(VALGRIND) ./pipex file1 " ls  -l " "wc -l" file2
-# PATH=$PWD/assets:$PATH VAR1="hello" VAR2="world" pipex_test ../pipex/pipex file1 "env_var" "cat" "outs/test-$num.txt" > outs/test-$num-tty.txt
+# @$(VALGRIND) ./pipex file1 " ls  -l " "wc -l" file2
+	./pipex  file1 "ls  -l"  file2 "wc -l"
 # @$(VALGRIND) ./pipex no_file "ls -l" "wc -l" file2
 # @$(VALGRIND) ./pipex file1 "ls  -l " "wc -l" no_file
 # @$(VALGRIND) ./pipex file1 " ls  -l " "wc -l" file2

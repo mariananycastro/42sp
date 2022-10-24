@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 17:00:04 by mariana           #+#    #+#             */
-/*   Updated: 2022/10/09 20:43:02 by mariana          ###   ########.fr       */
+/*   Updated: 2022/10/23 18:28:38 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char *argv[], char *envp[])
 	int		pid;
 
 	errno = 0;
-	if (argc <= 4)
+	if (argc != 5)
 		ft_error("Usage: ./pipex [file] [cmd1] [cmd2] [file2]\n");
 	else
 	{

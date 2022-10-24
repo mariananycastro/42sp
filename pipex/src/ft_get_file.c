@@ -6,13 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:44:33 by mariana           #+#    #+#             */
-/*   Updated: 2022/10/23 16:31:43 by mariana          ###   ########.fr       */
+/*   Updated: 2022/10/23 16:40:15 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char *ft_copy_str(char *src)
+char	*ft_copy_str(char *src)
 {
 	int		size;
 	int		i;
