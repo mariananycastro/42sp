@@ -6,23 +6,20 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 17:00:04 by mariana           #+#    #+#             */
-/*   Updated: 2022/10/24 16:30:40 by mariana          ###   ########.fr       */
+/*   Updated: 2022/10/24 17:19:10 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_free_split(char **args)
+char **ft_get_var_path(char *envp[])
 {
-	int	i;
+	int i;
 
 	i = 0;
-	while (args[i])
-	{
-		free(args[i]);
+	while (!ft_strnstr(envp[i], "PATH", 4))
 		i++;
-	}
-	free(args);
+	return (ft_split(envp[i] + 5, ':'));
 }
 
 char	*ft_get_path(char *cmd, char *envp[])
@@ -32,10 +29,7 @@ char	*ft_get_path(char *cmd, char *envp[])
 	char	*path;
 	char	*partial_path;
 
-	i = 0;
-	while (!ft_strnstr(envp[i], "PATH", 4))
-		i++;
-	paths = ft_split(envp[i] + 5, ':');
+	paths = ft_get_var_path(envp);
 	i = 0;
 	while (paths[++i])
 	{

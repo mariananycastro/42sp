@@ -7,7 +7,8 @@ CFLAGS     			= -Wall -Wextra -Werror
 NAME						= pipex
 FILES_NAMES			= ft_check_error.c ft_close_fd.c ft_get_file.c ft_error.c \
 									ft_error_fork.c ft_exec_cmd.c  ft_exec_p1.c ft_exec_p2.c  \
-									ft_set_stdout.c ft_set_stdin.c ft_get_path.c ft_copy_str.c
+									ft_set_stdout.c ft_set_stdin.c ft_get_path.c ft_copy_str.c \
+									ft_free_array.c
 
 OBJ_DIR 	= obj/
 OBJ 			= $(FILES_NAMES:%.c=$(OBJ_DIR)%.o)
@@ -35,14 +36,29 @@ $(OBJ_DIR):
 
 VALGRIND = valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all 
 
-run:
-# @$(VALGRIND) ./pipex file1 " ls  -l " "wc -l" file2
-	@$(VALGRIND) ./pipex  file1 "ls  -l"  file2 "wc -l"
-# @$(VALGRIND) ./pipex no_file "ls -l" "wc -l" file2
-# @$(VALGRIND) ./pipex file1 "ls  -l " "wc -l" no_file
-# @$(VALGRIND) ./pipex file1 " ls  -l " "wc -l" file2
-# @$(VALGRIND) ./pipex file1 "ls -l" "wc -l" file2
-# @$(VALGRIND) ./pipex file1 "ls -l" "wc -z" file2
+run1:
+	@$(VALGRIND) ./pipex file1 "ls -l" "wc -l" file2
+
+run2:
+	@$(VALGRIND) ./pipex no_file "ls -l" "wc -l" file2
+
+run3:
+	@$(VALGRIND) ./pipex file1 "ls  -l " "wc -l" no_file
+
+run4:
+	@$(VALGRIND) ./pipex file1 "ls -l" "wc -z" file2
+
+run5:
+	@$(VALGRIND) ./pipex file1 "ls -z" "wc -l" file2
+
+run6:
+	@$(VALGRIND) ./pipex file1 "ls -z" "wc -z" file2
+
+run7:
+		@$(VALGRIND) ./pipex file1 "ls  -l" file2 "wc"
+
+run8:
+		@$(VALGRIND) ./pipex file1 file1 "wc" file2
 # @$(VALGRIND) ./pipex file1 "ls -z" "wc -z" file2
 # @$(VALGRIND) ./pipex file1 "ls -z" "wc -l" file2
 # @$(VALGRIND) ./pipex file1 "grep a1" "wc -w" file2
@@ -65,6 +81,7 @@ ex:
 # @< file1 grep | wc -z > file2
 # @< file1 ping -c 3 www.google.com | wc -l > file2
 # @< file1 env_var | cat > file2
+# @< file1 ls -l | bolinha > file2
 
 add_path: 
 	@PATH=$PWD/${path}:$PATH
@@ -75,7 +92,7 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 
-re: fclean all run
+re: fclean all
 
 # libft
 $(LIBRARY):

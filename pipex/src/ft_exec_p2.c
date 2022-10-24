@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 21:33:31 by mariana           #+#    #+#             */
-/*   Updated: 2022/10/09 21:46:15 by mariana          ###   ########.fr       */
+/*   Updated: 2022/10/24 17:18:53 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ void	ft_exec_p2(char *argv[], int *fd, char *envp[], int argc)
 	dup2(fd[0], STDIN_FILENO);
 	ft_set_stdout(file_out);
 	ft_close_fd(fd);
+	free(file_out);
 	ft_exec_cmd(argv[3], envp);
 }
