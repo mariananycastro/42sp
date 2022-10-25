@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 21:31:12 by mariana           #+#    #+#             */
-/*   Updated: 2022/10/24 17:28:12 by mariana          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:14:28 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ void	ft_exec_cmd(char *cmd, char *envp[])
 	if (!path)
 	{
 		ft_free_array(array_arg_cmd);
-		ft_printf("nao achei");
-		// ft_check_error("not found");
+		write(2, "command not found: ", 19);
+		write(2, cmd, ft_strlen(cmd));
+		write(2, "\n", 1);
 		exit(0);
 	}
 	execve(path, array_arg_cmd, envp);

@@ -6,15 +6,15 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 17:00:04 by mariana           #+#    #+#             */
-/*   Updated: 2022/10/24 17:19:10 by mariana          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:13:48 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char **ft_get_var_path(char *envp[])
+char	**ft_get_var_path(char *envp[])
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (!ft_strnstr(envp[i], "PATH", 4))

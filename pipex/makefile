@@ -5,10 +5,10 @@ LIBFT_FILE 		 	= $(LIBRARY_PATH)/libft.a
 CC         			= clang
 CFLAGS     			= -Wall -Wextra -Werror
 NAME						= pipex
-FILES_NAMES			= ft_check_error.c ft_close_fd.c ft_get_file.c ft_error.c \
-									ft_error_fork.c ft_exec_cmd.c  ft_exec_p1.c ft_exec_p2.c  \
-									ft_set_stdout.c ft_set_stdin.c ft_get_path.c ft_copy_str.c \
-									ft_free_array.c
+FILES_NAMES			= ft_check_error.c ft_close_fd.c ft_copy_str.c ft_error_fork.c \
+ 							 		ft_error.c ft_exec_cmd.c ft_exec_p1.c ft_exec_p2.c \
+									ft_free_array.c ft_get_file.c ft_get_path.c \
+									ft_set_stdin.c ft_set_stdout.c
 
 OBJ_DIR 	= obj/
 OBJ 			= $(FILES_NAMES:%.c=$(OBJ_DIR)%.o)
@@ -38,50 +38,63 @@ VALGRIND = valgrind -s --leak-check=full --show-reachable=yes --track-origins=ye
 
 run1:
 	@$(VALGRIND) ./pipex file1 "ls -l" "wc -l" file2
+#< file1 ls -l | wc -l > file2
 
 run2:
 	@$(VALGRIND) ./pipex no_file "ls -l" "wc -l" file2
+#< no_file ls -l | wc -l > file2
 
 run3:
 	@$(VALGRIND) ./pipex file1 "ls  -l " "wc -l" no_file
+#< file1 ls -l | wc -l > no_file
 
 run4:
 	@$(VALGRIND) ./pipex file1 "ls -l" "wc -z" file2
+#< file1 ls -l | wc -z > file2
 
 run5:
 	@$(VALGRIND) ./pipex file1 "ls -z" "wc -l" file2
+#< file1 ls -z | wc -l > file2
 
 run6:
 	@$(VALGRIND) ./pipex file1 "ls -z" "wc -z" file2
+#< file1 ls -z | wc -z > file2
 
 run7:
-		@$(VALGRIND) ./pipex file1 "ls  -l" file2 "wc"
+	@$(VALGRIND) ./pipex file1 "ls -l" "wc -l" "grep 1" file2
+#Usage: ./pipex [file] [cmd1] [cmd2] [file2]
 
 run8:
-		@$(VALGRIND) ./pipex file1 file1 "wc" file2
-# @$(VALGRIND) ./pipex file1 "ls -z" "wc -z" file2
-# @$(VALGRIND) ./pipex file1 "ls -z" "wc -l" file2
-# @$(VALGRIND) ./pipex file1 "grep a1" "wc -w" file2
-# @$(VALGRIND) ./pipex file1 "grep a1" "wc -z" file2
-# @$(VALGRIND) ./pipex file1 "grep" "wc -l" file2
-# @$(VALGRIND) ./pipex file1 "grep" "wc -z" file2
-# @$(VALGRIND) ./pipex file1 "ping -c 3 www.google.com" "wc -z" file2
-# @$(VALGRIND) ./pipex file1 "env_var" "cat" file2
+	@$(VALGRIND) ./pipex file1 "ls  -l" file2 "wc"
+#< file1 ls -l | file2 > wc -z
 
-ex:
-# @< no_file ls -l | wc -l > file2
-# @< file1 ls -l | wc -l > no_file
-# @< file1 ls -l | wc -l > file2
-# @< file1 ls -l | wc -z > file2
-# @< file1 ls -z | wc -z > file2
-# @< file1 ls -z | wc -l > file2
-# @< file1 grep a1 | wc -w > file2
-# @< file1 grep a1 | wc -z > file2
-# @< file1 grep | wc -l > file2
-# @< file1 grep | wc -z > file2
-# @< file1 ping -c 3 www.google.com | wc -l > file2
-# @< file1 env_var | cat > file2
-# @< file1 ls -l | bolinha > file2
+run9:
+		@$(VALGRIND) ./pipex file1 file1 "wc -l" file2
+#< file1 file1 | wc -l > file2
+
+run10:
+	@$(VALGRIND) ./pipex file1 "ls -l" file2
+#Usage: ./pipex [file] [cmd1] [cmd2] [file2]
+
+run11:
+	@$(VALGRIND) ./pipex file1 "grep a1" "wc -l" file2
+#< file1 grep a1 | wc  > file2
+
+run12:
+	@$(VALGRIND) ./pipex  file1 "grep a1" "wc -z" file2
+#< file1 grep a1 | wc -z > file2
+
+run13:
+	@$(VALGRIND) ./pipex file1 "grep" "wc -l" file2
+#< file1 grep | wc -l > file2
+
+run14:
+	@$(VALGRIND) ./pipex file1 "grep" "wc -z" file2
+#< file1 grep | wc -z > file2
+
+run15:
+	@$(VALGRIND) ./pipex file1 "ping -c 10 www.google.com" "wc -l" file2
+#< file1 ping -c 10 www.google.com | wc -l > file2
 
 add_path: 
 	@PATH=$PWD/${path}:$PATH
