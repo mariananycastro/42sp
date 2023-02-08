@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:13:41 by mariana           #+#    #+#             */
-/*   Updated: 2022/08/22 21:31:53 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/07 18:25:07 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_list					*ft_lstnew(void *content); //cria uma lista
 void						ft_lstadd_front(t_list **lst, t_list *new); //adiciona um item na frente da lista
 void						ft_lstadd_back(t_list **lst, t_list *new); //adiciona um item no final da lista
 void						ft_lstclear(t_list **lst, void (*del)(void*)); //apaga lista
-void						ft_lstdelone(t_list *lst, void (*del)(void*)); //
+void						ft_lstdelone(t_list *lst, void (*del)(void*)); //apga um item
 void						ft_lstiter(t_list *lst, void (*f)(void *)); // aplica função os items de uma lista
 t_list				  *ft_lstlast(t_list *lst); // retorna ultimo item da lista
 t_list					*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
