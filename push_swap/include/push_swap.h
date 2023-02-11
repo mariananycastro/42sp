@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 17:21:23 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/07 21:03:44 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/11 15:35:11 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 
 typedef struct s_index_list
 {
-	void			          *content;
-  int                 index;
-	struct s_index_list *previous;
-	struct s_index_list *next;
+	void				*content;
+	int					index;
+	struct s_index_list	*previous;
+	struct s_index_list	*next;
 }	t_index_list;
 
 #endif
