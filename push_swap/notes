@@ -50,3 +50,11 @@ rr : ra and rb at the same time.
 rra (reverse rotate a): Shift down all elements of stack a by 1. The last element becomes the first one.
 rrb (reverse rotate b): Shift down all elements of stack b by 1. The last element becomes the first one.
 rrr : rra and rrb at the same time.
+
+list = ft_reverse_rotate(list);
+list = ft_rotate(list);
+ft_swap(list);
+ft_delete_node(&list);
+ft_delete_list(&list);
+
+printf("%p - %p\n", &(list->next), list->next);
