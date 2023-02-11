@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:31:48 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/11 18:47:09 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/11 19:55:23 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void	ft_delete_list(t_index_list **node)
 	}
 }
 
-t_index_list	*ft_reindex(t_index_list **node)
+t_index_list	*ft_removed_node(t_index_list **node)
 {
 	t_index_list	*node_copy;
 	t_index_list	*next_node;
@@ -155,14 +155,39 @@ t_index_list	*ft_reindex(t_index_list **node)
 	return(node_copy);
 }
 
-t_index_list	*ft_first_push(t_index_list **node)
+t_index_list	*ft_new_list(t_index_list **node)
 {
-	t_index_list	*node_copy;
+	t_index_list	*new_list;
 
-	node_copy = ft_reindex(node);
-	node_copy->next = node_copy;
-	node_copy->previous = node_copy;
-	return(node_copy);
+	new_list = ft_removed_node(node);
+	new_list->next = new_list;
+	new_list->previous = new_list;
+	new_list->index = 0;
+	return(new_list);
+}
+
+t_index_list	*ft_push(t_index_list **list_from, t_index_list *list_to)
+{
+	t_index_list	*new_node;
+	t_index_list	*next_node;
+	int				i;
+	int				end;
+
+	new_node = ft_removed_node(list_from);
+	end = list_to->previous->index + 1;
+	list_to->previous->next = new_node;
+	new_node->previous = list_to->previous;
+	new_node->next = list_to;
+	list_to->previous = new_node;
+	next_node = new_node;
+	i = 0;
+	while(new_node && i <= end)
+	{
+		next_node->index = i;
+		next_node = next_node->next;
+		i++;
+	}
+	return(new_node);
 }
 
 // int	main(int argc, char *argv[], char *envp[])
@@ -180,13 +205,12 @@ int	main(int argc, char *argv[])
 		ft_add_to_lst(list_a, argv[i]);
 	}
 
-	list_b = ft_first_push(&list_a);
-	ft_push(&list_a);
+	list_b = ft_new_list(&list_a);
+	list_b = ft_push(&list_a, list_b);
 
     printf("argc %d\n", argc);
 	printf("---------\n");
 	printf("list_a\n");
-	printf("%p - %p\n", &list_a, list_a);
     printf("%d - %s\n", list_a->index, list_a->content);
     printf("%d - %s\n", list_a->next->index, list_a->next->content);
     printf("%d - %s\n", list_a->next->next->index, list_a->next->next->content);
@@ -198,12 +222,28 @@ int	main(int argc, char *argv[])
 
 	printf("---------\n");
 	printf("list_b\n");
-	printf("%p - %p\n", &list_b, list_b);
-    printf("%d - %s\n", list_b->index, list_b->content);
+	printf("%d - %s\n", list_b->index, list_b->content);
     printf("%d - %s\n", list_b->next->index, list_b->next->content);
     printf("%d - %s\n", list_b->next->next->index, list_b->next->next->content);
+    printf("%d - %s\n", list_b->next->next->next->index, list_b->next->next->next->content);
+    printf("%d - %s\n", list_b->next->next->next->next->index, list_b->next->next->next->next->content);
+    printf("%d - %s\n", list_b->next->next->next->next->next->index, list_b->next->next->next->next->next->content);
+    printf("%d - %s\n", list_b->next->next->next->next->next->next->index, list_b->next->next->next->next->next->next->content);
+    printf("%d - %s\n", list_b->next->next->next->next->next->next->next->index, list_b->next->next->next->next->next->next->next->content);
+
+	list_b = ft_push(&list_a, list_b);
+
+	printf("list_b\n");
+	printf("%d - %s\n", list_b->index, list_b->content);
+    printf("%d - %s\n", list_b->next->index, list_b->next->content);
+    printf("%d - %s\n", list_b->next->next->index, list_b->next->next->content);
+    printf("%d - %s\n", list_b->next->next->next->index, list_b->next->next->next->content);
+    printf("%d - %s\n", list_b->next->next->next->next->index, list_b->next->next->next->next->content);
+    printf("%d - %s\n", list_b->next->next->next->next->next->index, list_b->next->next->next->next->next->content);
+    printf("%d - %s\n", list_b->next->next->next->next->next->next->index, list_b->next->next->next->next->next->next->content);
+    printf("%d - %s\n", list_b->next->next->next->next->next->next->next->index, list_b->next->next->next->next->next->next->next->content);
+
 	ft_delete_list(&list_a);
 	ft_delete_list(&list_b);
-	// push
     return 0;
 }
