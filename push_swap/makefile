@@ -5,7 +5,16 @@ LIBFT_FILE 		 	= $(LIBRARY_PATH)/libft.a
 CC         			= clang
 CFLAGS     			= -Wall -Wextra -Werror
 NAME						= push_swap
-FILES_NAMES			= 
+FILES_NAMES			= ft_add_to_lst.c \
+									ft_create_lst.c \
+									ft_create_node.c \
+									ft_delete_list.c \
+									ft_new_list.c \
+									ft_push.c \
+									ft_removed_node.c \
+									ft_reverse_rotate.c \
+									ft_rotate.c \
+									ft_swap.c \
 
 OBJ_DIR 				= obj/
 OBJ 						= $(FILES_NAMES:%.c=$(OBJ_DIR)%.o)
@@ -34,7 +43,7 @@ $(OBJ_DIR):
 VALGRIND = valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all 
 
 run:
-	@$(VALGRIND) ./push_swap 1 3 5 4 7 2
+	@$(VALGRIND) ./push_swap 1 3 5 2
 
 ordered10:
 	@$(VALGRIND) ./push_swap 1 2 3 4 5 6 7 8 9 10
