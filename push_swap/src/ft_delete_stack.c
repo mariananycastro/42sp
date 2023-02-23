@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_to_lst.c                                    :+:      :+:    :+:   */
+/*   ft_delete_stack.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 20:03:05 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/11 20:07:37 by mariana          ###   ########.fr       */
+/*   Created: 2023/02/11 20:04:35 by mariana           #+#    #+#             */
+/*   Updated: 2023/02/15 19:30:45 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_add_to_lst(t_index_list *first_of_lst, void *new_content)
+void	ft_delete_stack(t_index_stack **node)
 {
-	t_index_list	*new_node;
+	t_index_stack	*current;
+	t_index_stack	*next;
+	int				i;
+	int				end;
 
-	if (!first_of_lst || !new_content)
+	current = *node;
+	if (!node)
 		return ;
-	new_node = ft_create_node();
-	if (!new_node)
-		return ;
-	new_node->content = new_content;
-	new_node->index = first_of_lst->previous->index + 1;
-	new_node->next = first_of_lst;
-	new_node->previous = first_of_lst->previous;
-	first_of_lst->previous->next = new_node;
-	first_of_lst->previous = new_node;
+	i = 0;
+	end = current->previous->index;
+	while (current && i <= end)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+		i++;
+	}
 }

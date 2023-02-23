@@ -6,16 +6,16 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:04:54 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/11 20:08:27 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/15 19:27:42 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_index_list	*ft_removed_node(t_index_list **node)
+t_index_stack	*ft_removed_node(t_index_stack **node)
 {
-	t_index_list	*node_copy;
-	t_index_list	*next_node;
+	t_index_stack	*node_copy;
+	t_index_stack	*next_node;
 	int				i;
 
 	if (!*node)

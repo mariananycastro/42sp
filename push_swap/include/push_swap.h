@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 17:21:23 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/11 20:09:05 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/23 11:42:31 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,25 @@
 # define PUSH_SWAP_H
 # include "libft.h"
 
-typedef struct s_index_list
+typedef struct s_index_stack
 {
 	void				*content;
 	int					index;
-	struct s_index_list	*previous;
-	struct s_index_list	*next;
-}	t_index_list;
+	struct s_index_stack	*previous;
+	struct s_index_stack	*next;
+}	t_index_stack;
 
-t_index_list	*ft_create_node(void);
-t_index_list	*ft_create_lst(void *content);
-void			ft_add_to_lst(t_index_list *first_of_lst, void *new_content);
-t_index_list	*ft_rotate(t_index_list *first_node);
-t_index_list	*ft_reverse_rotate(t_index_list *first_node);
-void			ft_swap(t_index_list *first_node);
-void			ft_delete_list(t_index_list **node);
-t_index_list	*ft_removed_node(t_index_list **node);
-t_index_list	*ft_new_list(t_index_list **node);
-t_index_list	*ft_push(t_index_list **list_from, t_index_list *list_to);
+t_index_stack	*ft_create_node(void);
+t_index_stack	*ft_create_lst(void *content);
+void			ft_add_to_lst(t_index_stack *first_of_lst, void *new_content);
+t_index_stack	*ft_rotate(t_index_stack *first_node);
+t_index_stack	*ft_reverse_rotate(t_index_stack *first_node);
+void			ft_swap(t_index_stack *first_node);
+void			ft_delete_stack(t_index_stack **node);
+t_index_stack	*ft_removed_node(t_index_stack **node);
+t_index_stack	*ft_new_stack(t_index_stack **node);
+t_index_stack	*ft_push(t_index_stack **stack_from, t_index_stack *stack_to);
+int				ft_push_swap_valid_args(int argc, char **argv);
+int				ft_repeated_input(int current_number, char **argv, int i);
+int				ft_isnum(int number, char *arg);
 #endif

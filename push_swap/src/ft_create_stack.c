@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_list.c                                      :+:      :+:    :+:   */
+/*   ft_create_stack.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 20:05:27 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/11 20:08:09 by mariana          ###   ########.fr       */
+/*   Created: 2023/02/15 19:30:17 by mariana           #+#    #+#             */
+/*   Updated: 2023/02/15 19:30:27 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_index_list	*ft_new_list(t_index_list **node)
+t_index_stack	*ft_create_stack(void *content)
 {
-	t_index_list	*new_list;
+	t_index_stack	*first_item;
 
-	new_list = ft_removed_node(node);
-	new_list->next = new_list;
-	new_list->previous = new_list;
-	new_list->index = 0;
-	return (new_list);
+	if (!content)
+		return (NULL);
+	first_item = ft_create_node();
+	if (!first_item)
+		return (NULL);
+	first_item->content = content;
+	first_item->index = 0;
+	first_item->previous = first_item;
+	first_item->next = first_item;
+	return (first_item);
 }

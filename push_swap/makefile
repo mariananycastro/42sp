@@ -5,23 +5,24 @@ LIBFT_FILE 		 	= $(LIBRARY_PATH)/libft.a
 CC         			= clang
 CFLAGS     			= -Wall -Wextra -Werror
 NAME						= push_swap
-FILES_NAMES			= ft_add_to_lst.c \
-									ft_create_lst.c \
+FILES_NAMES			= ft_add_to_stack.c \
 									ft_create_node.c \
-									ft_delete_list.c \
-									ft_new_list.c \
+									ft_create_stack.c \
+									ft_delete_stack.c \
+									ft_new_stack.c \
 									ft_push.c \
+									ft_push_swap_valid_args.c \
 									ft_removed_node.c \
 									ft_reverse_rotate.c \
 									ft_rotate.c \
-									ft_swap.c \
+									ft_swap.c
 
 OBJ_DIR 				= obj/
 OBJ 						= $(FILES_NAMES:%.c=$(OBJ_DIR)%.o)
 FILES_LIST 			= push_swap.a
 
 INCLUDE_PATH 		= include
-MAIN_FILE 			= $(addprefix src/, main.c)
+MAIN_FILE 			= $(addprefix src/, push_swap.c)
 
 SRC_DIR 				= src/
 vpath %.c $(SRC_DIR)
@@ -43,7 +44,16 @@ $(OBJ_DIR):
 VALGRIND = valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all 
 
 run:
-	@$(VALGRIND) ./push_swap 1 3 5 2
+	@$(VALGRIND) ./push_swap 2 3 4 -2 1 0 -2147483648
+
+run1:
+	@$(VALGRIND) ./push_swap 2 3 4 -2 5 0 -2147483649
+
+run2:
+	@$(VALGRIND) ./push_swap 2 3 4 -2 5 0 2147483647
+
+run3:
+	@$(VALGRIND) ./push_swap 2 3 4 -2 5 0 2147483648
 
 ordered10:
 	@$(VALGRIND) ./push_swap 1 2 3 4 5 6 7 8 9 10
