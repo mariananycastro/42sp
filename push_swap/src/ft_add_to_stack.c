@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:29:45 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/23 15:55:39 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/24 14:31:33 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_add_to_stack(t_index_stack *stack, int new_value)
 		return ;
 	new_node->value = new_value;
 	new_node->index = stack->previous->index + 1;
+	new_node->position = 0;
 	new_node->next = stack;
 	new_node->previous = stack->previous;
 	stack->previous->next = new_node;

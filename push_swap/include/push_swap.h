@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 17:21:23 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/23 15:43:22 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/24 14:07:46 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_index_stack
 {
 	int						value;
 	int						index;
+	int						position;
 	struct s_index_stack	*previous;
 	struct s_index_stack	*next;
 }	t_index_stack;
