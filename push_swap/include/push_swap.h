@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 17:21:23 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/23 11:42:31 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/23 15:43:22 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 
 typedef struct s_index_stack
 {
-	void				*content;
-	int					index;
+	int						value;
+	int						index;
 	struct s_index_stack	*previous;
 	struct s_index_stack	*next;
 }	t_index_stack;
 
 t_index_stack	*ft_create_node(void);
-t_index_stack	*ft_create_lst(void *content);
-void			ft_add_to_lst(t_index_stack *first_of_lst, void *new_content);
+t_index_stack	*ft_create_stack(int value);
+void			ft_add_to_stack(t_index_stack *first_of_lst, int new_content);
 t_index_stack	*ft_rotate(t_index_stack *first_node);
 t_index_stack	*ft_reverse_rotate(t_index_stack *first_node);
 void			ft_swap(t_index_stack *first_node);
