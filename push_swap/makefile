@@ -15,7 +15,9 @@ FILES_NAMES			= ft_add_to_stack.c \
 									ft_removed_node.c \
 									ft_reverse_rotate.c \
 									ft_rotate.c \
-									ft_swap.c
+									ft_swap.c \
+									ft_get_max_bits.c \
+									ft_set_order.c
 
 OBJ_DIR 				= obj/
 OBJ 						= $(FILES_NAMES:%.c=$(OBJ_DIR)%.o)
@@ -44,7 +46,7 @@ $(OBJ_DIR):
 VALGRIND = valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all 
 
 run:
-	@$(VALGRIND) ./push_swap 2 3 4 -2 1 0 -2147483648
+	@$(VALGRIND) ./push_swap 7 2 3 4 1 5 6
 
 run1:
 	@$(VALGRIND) ./push_swap 2 3 4 -2 5 0 -2147483649
@@ -54,6 +56,9 @@ run2:
 
 run3:
 	@$(VALGRIND) ./push_swap 2 3 4 -2 5 0 2147483648
+
+run4:
+	@$(VALGRIND) ./push_swap 1 2 3 7 5 6 11 12 13 30 27 28 8 9 10
 
 ordered10:
 	@$(VALGRIND) ./push_swap 1 2 3 4 5 6 7 8 9 10

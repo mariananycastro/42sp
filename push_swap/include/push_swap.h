@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 17:21:23 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/24 14:07:46 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/24 15:30:00 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,6 @@ t_index_stack	*ft_push(t_index_stack **stack_from, t_index_stack *stack_to);
 int				ft_push_swap_valid_args(int argc, char **argv);
 int				ft_repeated_input(int current_number, char **argv, int i);
 int				ft_isnum(int number, char *arg);
+int				ft_get_max_bits(int n);
+int				ft_set_order(t_index_stack **stack_a);
 #endif

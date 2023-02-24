@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:30:17 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/24 14:08:00 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/24 15:28:34 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_index_stack	*ft_create_stack(int new_value)
 		return (NULL);
 	first_item->value = new_value;
 	first_item->index = 0;
-	first_item->position = 0;
+	first_item->position = 1;
 	first_item->previous = first_item;
 	first_item->next = first_item;
 	return (first_item);

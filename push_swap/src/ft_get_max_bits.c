@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_to_stack.c                                  :+:      :+:    :+:   */
+/*   ft_get_max_bits.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 19:29:45 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/24 15:28:27 by mariana          ###   ########.fr       */
+/*   Created: 2023/02/24 15:19:51 by mariana           #+#    #+#             */
+/*   Updated: 2023/02/24 15:22:23 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_add_to_stack(t_index_stack *stack, int new_value)
+int	ft_get_max_bits(int n)
 {
-	t_index_stack	*new_node;
+	int	max_bits;
 
-	if (!stack || !new_value)
-		return ;
-	new_node = ft_create_node();
-	if (!new_node)
-		return ;
-	new_node->value = new_value;
-	new_node->index = stack->previous->index + 1;
-	new_node->position = 1;
-	new_node->next = stack;
-	new_node->previous = stack->previous;
-	stack->previous->next = new_node;
-	stack->previous = new_node;
+	max_bits = 0;
+	while (n)
+	{
+		max_bits++;
+		n >>= 1;
+	}
+	return (max_bits);
 }

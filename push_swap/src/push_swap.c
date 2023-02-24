@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:31:48 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/24 14:56:55 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/24 15:36:23 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,52 +93,12 @@ void	ft_order_stack(t_index_stack **stack_a, int stack_size)
 }
 
 
-void ft_set_item_position(t_index_stack **stack_a)
-{
-	t_index_stack	*tmp1;
-	t_index_stack	*tmp2;
-	int				i;
-	int				ii;
-	int last;
-	int				bigger;
-	int				position;
-
-	tmp1 = (*stack_a);
-	tmp2 = (*stack_a);
-	bigger = tmp1->value;
-
-	i = 0;
-	ii = 0;
-	// printf("last %d\n", (*stack_a)->previous->index);
-
-	last = (*stack_a)->previous->index;
-	while(i <= last)
-	{
-		position = 1;
-		if (tmp1->value < tmp1->next->value)
-			bigger = tmp1->next->value;
-		while(ii <= last)
-		{
-			if (tmp1->value > tmp2->value )
-				position++;
-			tmp2 = tmp2->next;
-			ii++;
-			// printf("1 v%d, i%d, p%d\n", tmp1->value, tmp1->index, tmp1->position);
-			// printf("2 v%d, i%d, p%d\n", tmp2->value, tmp2->index, tmp2->position);
-			// printf("-----------------------\n");
-		}
-		ii = 0;
-		tmp1->position = position;
-		tmp1 = tmp1->next;
-		i++;
-	}
-}
-
-
 int	main(int argc, char *argv[])
 {
 	t_index_stack	*stack_a;
 	int				i;
+	int				biggest_number;
+	int				max_bits;
 
 	ft_push_swap_valid_args(argc, argv);
 	i = 1;
@@ -150,26 +110,10 @@ int	main(int argc, char *argv[])
 		ft_add_to_stack(stack_a, ft_atoi(argv[i]));
 		i++;
 	}
-	ft_set_item_position(&stack_a);
+	biggest_number = ft_set_order(&stack_a);
+	max_bits = ft_get_max_bits(biggest_number);
 
-	printf("-----------------------\n");
-	printf("node value %d, index %d, position %d\n", stack_a->value, stack_a->index, stack_a->position);
-	printf("node value %d, index %d, position %d\n", stack_a->next->value, stack_a->next->index, stack_a->next->position);
-	printf("node value %d, index %d, position %d\n", stack_a->next->next->value, stack_a->next->next->index, stack_a->next->next->position);
-	printf("node value %d, index %d, position %d\n", stack_a->next->next->next->value, stack_a->next->next->next->index, stack_a->next->next->next->position);
-	printf("node value %d, index %d, position %d\n", stack_a->next->next->next->next->value, stack_a->next->next->next->next->index, stack_a->next->next->next->next->position);
-	printf("node value %d, index %d, position %d\n", stack_a->next->next->next->next->next->value, stack_a->next->next->next->next->next->index, stack_a->next->next->next->next->next->position);
-	printf("node value %d, index %d, position %d\n", stack_a->next->next->next->next->next->next->value, stack_a->next->next->next->next->next->next->index, stack_a->next->next->next->next->next->next->position);
-	printf("node value %d, index %d, position %d\n", stack_a->next->next->next->next->next->next->next->value, stack_a->next->next->next->next->next->next->next->index, stack_a->next->next->next->next->next->next->next->position);
-
-
-// printf("%d\n", 3>>1);
-// printf("%d\n", 2>>1);
-// 1001
-// 100100
-// printf("%d\n", 000100100>>2);
-// printf("%d\n", 0000100100>>2);
-// printf("%d\n", 100100>>2);
+	// printf("%d, %d\n", biggest_number, max_bits);
 
 	ft_delete_stack(&stack_a);
 	return (0);
@@ -179,11 +123,3 @@ int	main(int argc, char *argv[])
 // ft se a menor ou b menor push todo o resto
 
 // to do remove ft_create_stack and use only add to stack
-// node value 7, index 0, position 0
-// node value 2, index 1, position 0
-// node value 3, index 2, position 0
-// node value 4, index 3, position 0
-// node value 1, index 4, position 0
-// node value 5, index 5, position 0
-// node value 6, index 6, position 0
-// node value 7, index 0, position 0
