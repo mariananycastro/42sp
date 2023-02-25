@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 17:21:23 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 10:24:28 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/25 12:14:23 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void			ft_swap(t_index_stack *first_node);
 void			ft_delete_stack(t_index_stack **node);
 t_index_stack	*ft_removed_node(t_index_stack **node);
 t_index_stack	*ft_new_stack(t_index_stack **node);
-t_index_stack	*ft_push(t_index_stack **stack_from, t_index_stack **stack_to);
+void			ft_push(t_index_stack **stack_from, t_index_stack **stack_to);
 int				ft_push_swap_valid_args(int argc, char **argv);
 int				ft_repeated_input(int current_number, char **argv, int i);
 int				ft_isnum(int number, char *arg);

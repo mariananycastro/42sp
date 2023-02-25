@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:04:54 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 11:32:06 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/25 12:20:45 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_index_stack	*ft_removed_node(t_index_stack **node)
 	max_index = (*node)->previous->index;
 	new_index = 0;
 	i_node = (*node);
-
 	while (new_index < max_index)
 	{
 		i_node->index = new_index;

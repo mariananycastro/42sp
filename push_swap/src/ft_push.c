@@ -6,13 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:05:48 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 12:12:05 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/25 12:14:15 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_index_stack	*ft_push(t_index_stack **stack_from, t_index_stack **stack_to)
+void	ft_push(t_index_stack **stack_from, t_index_stack **stack_to)
 {
 	t_index_stack	*new_node;
 	t_index_stack	*copy_to;
@@ -38,7 +38,5 @@ t_index_stack	*ft_push(t_index_stack **stack_from, t_index_stack **stack_to)
 			next_node = next_node->next;
 			i++;
 		}
-		return (new_node);
 	}
-	return (NULL);
 }
