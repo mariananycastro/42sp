@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:04:54 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/15 19:27:42 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/25 11:32:06 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 t_index_stack	*ft_removed_node(t_index_stack **node)
 {
 	t_index_stack	*node_copy;
-	t_index_stack	*next_node;
-	int				i;
+	t_index_stack	*i_node;
+	int				new_index;
+	int				max_index;
 
 	if (!*node)
 		return (NULL);
@@ -26,13 +27,15 @@ t_index_stack	*ft_removed_node(t_index_stack **node)
 	node_copy->previous->next = node_copy->next;
 	node_copy->next->previous = node_copy->previous;
 	*node = node_copy->next;
-	next_node = node_copy->next;
-	i = 0;
-	while (node_copy && i < next_node->index)
+	max_index = (*node)->previous->index;
+	new_index = 0;
+	i_node = (*node);
+
+	while (new_index < max_index)
 	{
-		next_node->index = i;
-		next_node = next_node->next;
-		i++;
+		i_node->index = new_index;
+		i_node = i_node->next;
+		new_index++;
 	}
 	return (node_copy);
 }

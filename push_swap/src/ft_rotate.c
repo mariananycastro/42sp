@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:03:29 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/15 19:27:42 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/24 18:06:52 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ t_index_stack	*ft_rotate(t_index_stack *first_node)
 		next_node = next_node->next;
 		i++;
 	}
-	ft_printf("r");
 	return (first_node->previous);
 }
