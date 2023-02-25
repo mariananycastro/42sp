@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:31:48 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 14:56:27 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/25 15:29:52 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,17 +89,14 @@ int	main(int argc, char *argv[])
 	}
 	biggest_number = ft_set_order(&stack_a);
 	max_bits = ft_get_max_bits(biggest_number);
-
 	int final;
 	int z;
 	stack_b = NULL;
-	// tmp = stack_a;
-// t_index_stack	*tmp;
 	i = 0;
 	z = 0;
 	final = stack_a->previous->index;
-	// while (i < max_bits)
-	// {
+	while (i < max_bits)
+	{
 		while(z <= final)
 		{
 			if (!((stack_a->position >> i) & 1))
@@ -113,16 +110,13 @@ int	main(int argc, char *argv[])
 				stack_a = ft_reverse_rotate_a(stack_a);
 			z++;
 		}
-		i = 0;
-		while(stack_b && i < 5)
+		while(stack_b)
 		{
 			ft_push_a(&stack_b, &stack_a);
-			i++;
 		}
-		// push back
-	// 	z = 0;
-	// 	i++;
-	// }
+		z = 0;
+		i++;
+	}
 printf("-----------------------\n");
 printf("node a value %d, index %d, position %d\n", stack_a->value, stack_a->index, stack_a->position);
 printf("node a value %d, index %d, position %d\n", stack_a->next->value, stack_a->next->index, stack_a->next->position);
@@ -134,18 +128,9 @@ printf("node a value %d, index %d, position %d\n", stack_a->next->next->next->ne
 printf("node a value %d, index %d, position %d\n", stack_a->next->next->next->next->next->next->next->value, stack_a->next->next->next->next->next->next->next->index, stack_a->next->next->next->next->next->next->next->position);
 
 
-if (stack_b){
-printf("-----------------------\n");
-printf("node b value %d, index %d, position %d\n", stack_b->value, stack_b->index, stack_b->position);
-printf("node b value %d, index %d, position %d\n", stack_b->next->value, stack_b->next->index, stack_b->next->position);
-printf("node b value %d, index %d, position %d\n", stack_b->next->next->value, stack_b->next->next->index, stack_b->next->next->position);
-printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->value, stack_b->next->next->next->index, stack_b->next->next->next->position);
-printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->value, stack_b->next->next->next->next->index, stack_b->next->next->next->next->position);
-printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->next->value, stack_b->next->next->next->next->next->index, stack_b->next->next->next->next->next->position);
-printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->next->next->value, stack_b->next->next->next->next->next->next->index, stack_b->next->next->next->next->next->next->position);
-printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->next->next->next->value, stack_b->next->next->next->next->next->next->next->index, stack_b->next->next->next->next->next->next->next->position);
-	ft_delete_stack(&stack_b);
-}
+	// if (stack_b){
+	// 	ft_delete_stack(&stack_b);
+	// }
 
 	ft_delete_stack(&stack_a);
 	return (0);

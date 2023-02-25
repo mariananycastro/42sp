@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:24:03 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 13:38:19 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/25 15:08:53 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_set_order(t_index_stack **stack_a)
 	ii = 0;
 	while (i++ <= (*stack_a)->previous->index)
 	{
-		if (tmp1->value < tmp1->next->value)
+		if (biggest < tmp1->next->value)
 			biggest = tmp1->next->value;
 		while (ii++ <= (*stack_a)->previous->index)
 		{
