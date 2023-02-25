@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:31:48 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 13:52:59 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/25 14:56:27 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,16 @@ t_index_stack *ft_reverse_rotate_a(t_index_stack *stack_a)
 	return (ft_reverse_rotate(stack_a));
 }
 
-void	ft_push_b(t_index_stack **stack_a, t_index_stack **stack_b)
+void	ft_push_b(t_index_stack **stack_from, t_index_stack **stack_to)
 {
-	ft_push(stack_a, stack_b);
+	ft_push(stack_from, stack_to);
 	write(1, "pb\n", 3);
+}
+
+void	ft_push_a(t_index_stack **stack_from, t_index_stack **stack_to)
+{
+	ft_push(stack_from, stack_to);
+	write(1, "pa\n", 3);
 }
 
 int	main(int argc, char *argv[])
@@ -96,7 +102,7 @@ int	main(int argc, char *argv[])
 	// {
 		while(z <= final)
 		{
-			if (!((stack_a->position >> 0) & 1))
+			if (!((stack_a->position >> i) & 1))
 			{
 				if (!stack_b)
 					stack_b = ft_new_stack(&stack_a);
@@ -107,11 +113,16 @@ int	main(int argc, char *argv[])
 				stack_a = ft_reverse_rotate_a(stack_a);
 			z++;
 		}
+		i = 0;
+		while(stack_b && i < 5)
+		{
+			ft_push_a(&stack_b, &stack_a);
+			i++;
+		}
 		// push back
-		z = 0;
+	// 	z = 0;
 	// 	i++;
 	// }
-
 printf("-----------------------\n");
 printf("node a value %d, index %d, position %d\n", stack_a->value, stack_a->index, stack_a->position);
 printf("node a value %d, index %d, position %d\n", stack_a->next->value, stack_a->next->index, stack_a->next->position);
@@ -123,6 +134,7 @@ printf("node a value %d, index %d, position %d\n", stack_a->next->next->next->ne
 printf("node a value %d, index %d, position %d\n", stack_a->next->next->next->next->next->next->next->value, stack_a->next->next->next->next->next->next->next->index, stack_a->next->next->next->next->next->next->next->position);
 
 
+if (stack_b){
 printf("-----------------------\n");
 printf("node b value %d, index %d, position %d\n", stack_b->value, stack_b->index, stack_b->position);
 printf("node b value %d, index %d, position %d\n", stack_b->next->value, stack_b->next->index, stack_b->next->position);
@@ -132,11 +144,15 @@ printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->ne
 printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->next->value, stack_b->next->next->next->next->next->index, stack_b->next->next->next->next->next->position);
 printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->next->next->value, stack_b->next->next->next->next->next->next->index, stack_b->next->next->next->next->next->next->position);
 printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->next->next->next->value, stack_b->next->next->next->next->next->next->next->index, stack_b->next->next->next->next->next->next->next->position);
+	ft_delete_stack(&stack_b);
+}
 
 	ft_delete_stack(&stack_a);
-	ft_delete_stack(&stack_b);
 	return (0);
 }
 
 // ft se a menor ou b menor push todo o resto
 // to do remove ft_create_stack and use only add to stack
+
+// testar com negativos e zero
+// testar só com numeros par e impar
