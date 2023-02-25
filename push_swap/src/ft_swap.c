@@ -14,10 +14,9 @@
 
 void	ft_swap(t_index_stack *first_node)
 {
-	void	*content_copy;
+	int	content_copy;
 
-	content_copy = first_node->content;
-	first_node->content = first_node->next->content;
-	first_node->next->content = content_copy;
-	ft_printf("s");
+	content_copy = first_node->value;
+	first_node->value = first_node->next->value;
+	first_node->next->value = content_copy;
 }

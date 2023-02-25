@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:31:48 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 12:19:39 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/25 13:52:59 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ t_index_stack *ft_reverse_rotate_a(t_index_stack *stack_a)
 
 void	ft_push_b(t_index_stack **stack_a, t_index_stack **stack_b)
 {
-	write(1, "pb\n", 3);
 	ft_push(stack_a, stack_b);
+	write(1, "pb\n", 3);
 }
 
 int	main(int argc, char *argv[])
@@ -92,59 +92,51 @@ int	main(int argc, char *argv[])
 	i = 0;
 	z = 0;
 	final = stack_a->previous->index;
-	while(z <= final)
-	{
-		// printf("value %d, index %d, position %d\n", stack_a->value, stack_a->index, stack_a->position);
-
-		// if (!((stack_a->position >> 0) & 1)) // dar push p b
-		// {
-		if (!stack_b)
-			stack_b = ft_new_stack(&stack_a);
-		else
+	// while (i < max_bits)
+	// {
+		while(z <= final)
 		{
-		// ft_printf("dentro a value %d, index %d, position %d\n", stack_a->value, stack_a->index, stack_a->position);
-		// ft_printf("dentro b value %d, index %d, position %d\n", stack_b->value, stack_b->index, stack_b->position);
-			// naõ estou alterando a e b e retornando os dois certos na segunda passada.
-			ft_push_b(&stack_a, &stack_b);
-
+			if (!((stack_a->position >> 0) & 1))
+			{
+				if (!stack_b)
+					stack_b = ft_new_stack(&stack_a);
+				else
+					ft_push_b(&stack_a, &stack_b);
+			}
+			else
+				stack_a = ft_reverse_rotate_a(stack_a);
+			z++;
 		}
-	
+		// push back
+		z = 0;
+	// 	i++;
+	// }
 
-		// }
-		// else //nao dar push
-		// {
-		// 	stack_a = ft_reverse_rotate_a(stack_a);	
-		// }
-		z++;
-	}
-
-// printf("-----------------------\n");
-// printf("node a value %d, index %d, position %d\n", stack_a->value, stack_a->index, stack_a->position);
-// printf("node a value %d, index %d, position %d\n", stack_a->next->value, stack_a->next->index, stack_a->next->position);
-// printf("node a value %d, index %d, position %d\n", stack_a->next->next->value, stack_a->next->next->index, stack_a->next->next->position);
-// printf("node a value %d, index %d, position %d\n", stack_a->next->next->next->value, stack_a->next->next->next->index, stack_a->next->next->next->position);
-// printf("node a value %d, index %d, position %d\n", stack_a->next->next->next->next->value, stack_a->next->next->next->next->index, stack_a->next->next->next->next->position);
-// printf("node a value %d, index %d, position %d\n", stack_a->next->next->next->next->next->value, stack_a->next->next->next->next->next->index, stack_a->next->next->next->next->next->position);
-// printf("node a value %d, index %d, position %d\n", stack_a->next->next->next->next->next->next->value, stack_a->next->next->next->next->next->next->index, stack_a->next->next->next->next->next->next->position);
-// printf("node a value %d, index %d, position %d\n", stack_a->next->next->next->next->next->next->next->value, stack_a->next->next->next->next->next->next->next->index, stack_a->next->next->next->next->next->next->next->position);
+printf("-----------------------\n");
+printf("node a value %d, index %d, position %d\n", stack_a->value, stack_a->index, stack_a->position);
+printf("node a value %d, index %d, position %d\n", stack_a->next->value, stack_a->next->index, stack_a->next->position);
+printf("node a value %d, index %d, position %d\n", stack_a->next->next->value, stack_a->next->next->index, stack_a->next->next->position);
+printf("node a value %d, index %d, position %d\n", stack_a->next->next->next->value, stack_a->next->next->next->index, stack_a->next->next->next->position);
+printf("node a value %d, index %d, position %d\n", stack_a->next->next->next->next->value, stack_a->next->next->next->next->index, stack_a->next->next->next->next->position);
+printf("node a value %d, index %d, position %d\n", stack_a->next->next->next->next->next->value, stack_a->next->next->next->next->next->index, stack_a->next->next->next->next->next->position);
+printf("node a value %d, index %d, position %d\n", stack_a->next->next->next->next->next->next->value, stack_a->next->next->next->next->next->next->index, stack_a->next->next->next->next->next->next->position);
+printf("node a value %d, index %d, position %d\n", stack_a->next->next->next->next->next->next->next->value, stack_a->next->next->next->next->next->next->next->index, stack_a->next->next->next->next->next->next->next->position);
 
 
-// printf("-----------------------\n");
-// printf("node b value %d, index %d, position %d\n", stack_b->value, stack_b->index, stack_b->position);
-// printf("node b value %d, index %d, position %d\n", stack_b->next->value, stack_b->next->index, stack_b->next->position);
-// printf("node b value %d, index %d, position %d\n", stack_b->next->next->value, stack_b->next->next->index, stack_b->next->next->position);
-// printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->value, stack_b->next->next->next->index, stack_b->next->next->next->position);
-// printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->value, stack_b->next->next->next->next->index, stack_b->next->next->next->next->position);
-// printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->next->value, stack_b->next->next->next->next->next->index, stack_b->next->next->next->next->next->position);
-// printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->next->next->value, stack_b->next->next->next->next->next->next->index, stack_b->next->next->next->next->next->next->position);
-// printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->next->next->next->value, stack_b->next->next->next->next->next->next->next->index, stack_b->next->next->next->next->next->next->next->position);
+printf("-----------------------\n");
+printf("node b value %d, index %d, position %d\n", stack_b->value, stack_b->index, stack_b->position);
+printf("node b value %d, index %d, position %d\n", stack_b->next->value, stack_b->next->index, stack_b->next->position);
+printf("node b value %d, index %d, position %d\n", stack_b->next->next->value, stack_b->next->next->index, stack_b->next->next->position);
+printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->value, stack_b->next->next->next->index, stack_b->next->next->next->position);
+printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->value, stack_b->next->next->next->next->index, stack_b->next->next->next->next->position);
+printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->next->value, stack_b->next->next->next->next->next->index, stack_b->next->next->next->next->next->position);
+printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->next->next->value, stack_b->next->next->next->next->next->next->index, stack_b->next->next->next->next->next->next->position);
+printf("node b value %d, index %d, position %d\n", stack_b->next->next->next->next->next->next->next->value, stack_b->next->next->next->next->next->next->next->index, stack_b->next->next->next->next->next->next->next->position);
 
 	ft_delete_stack(&stack_a);
 	ft_delete_stack(&stack_b);
 	return (0);
 }
 
-// ft to create stack b and push value with 0 in poistion
 // ft se a menor ou b menor push todo o resto
-
 // to do remove ft_create_stack and use only add to stack
