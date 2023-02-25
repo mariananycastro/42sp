@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_order_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 18:31:48 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 15:48:06 by mariana          ###   ########.fr       */
+/*   Created: 2023/02/25 15:43:54 by mariana           #+#    #+#             */
+/*   Updated: 2023/02/25 15:51:12 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-void	ft_rotate_a(t_index_stack stack_a)
+void	ft_order_stack(t_index_stack **stack_a, int stack_size)
 {
-	ft_rotate(&stack_a);
-	write(1, "ra\n", 3);
-}
-
-int	main(int argc, char *argv[])
-{
-	t_index_stack	*stack_a;
-	int				i;
-
-	ft_push_swap_valid_args(argc, argv);
-	i = 1;
-	stack_a = ft_create_stack(ft_atoi(argv[i]));
-	i++;
-	while (i < argc)
-	{
-		ft_add_to_stack(stack_a, ft_atoi(argv[i]));
-		i++;
-	}
-	ft_order_stack(&stack_a, argc);
-	ft_delete_stack(&stack_a);
-	return (0);
+	if (ft_is_sorted(stack_a))
+		return ;
+	else if (stack_size == 2)
+		ft_swap_a(*stack_a);
+	else if (stack_size == 3)
+		ft_printf("3 numbers\n");
+	else
+		ft_radix_order(stack_a);
 }

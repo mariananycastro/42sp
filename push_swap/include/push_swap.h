@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 17:21:23 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 12:14:23 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/25 15:54:48 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,8 @@ int				ft_repeated_input(int current_number, char **argv, int i);
 int				ft_isnum(int number, char *arg);
 int				ft_get_max_bits(int n);
 int				ft_set_order(t_index_stack **stack_a);
+void			ft_order_stack(t_index_stack **stack_a, int stack_size);
+void			ft_radix_order(t_index_stack **stack_a);
+int				ft_is_sorted(t_index_stack **stack);
+void			ft_swap_a(t_index_stack *stack_a);
 #endif

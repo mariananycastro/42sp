@@ -1,39 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_swap_a.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 18:31:48 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 15:48:06 by mariana          ###   ########.fr       */
+/*   Created: 2023/02/25 15:46:17 by mariana           #+#    #+#             */
+/*   Updated: 2023/02/25 15:47:47 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-void	ft_rotate_a(t_index_stack stack_a)
+void	ft_swap_a(t_index_stack *stack_a)
 {
-	ft_rotate(&stack_a);
-	write(1, "ra\n", 3);
-}
-
-int	main(int argc, char *argv[])
-{
-	t_index_stack	*stack_a;
-	int				i;
-
-	ft_push_swap_valid_args(argc, argv);
-	i = 1;
-	stack_a = ft_create_stack(ft_atoi(argv[i]));
-	i++;
-	while (i < argc)
-	{
-		ft_add_to_stack(stack_a, ft_atoi(argv[i]));
-		i++;
-	}
-	ft_order_stack(&stack_a, argc);
-	ft_delete_stack(&stack_a);
-	return (0);
+	ft_swap(stack_a);
+	write(1, "sa\n", 3);
 }

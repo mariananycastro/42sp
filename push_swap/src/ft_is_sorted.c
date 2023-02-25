@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_is_sorted.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 18:31:48 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 15:48:06 by mariana          ###   ########.fr       */
+/*   Created: 2023/02/25 15:47:12 by mariana           #+#    #+#             */
+/*   Updated: 2023/02/25 15:47:53 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-void	ft_rotate_a(t_index_stack stack_a)
+int	ft_is_sorted(t_index_stack **stack)
 {
-	ft_rotate(&stack_a);
-	write(1, "ra\n", 3);
-}
+	t_index_stack	*tmp;
 
-int	main(int argc, char *argv[])
-{
-	t_index_stack	*stack_a;
-	int				i;
-
-	ft_push_swap_valid_args(argc, argv);
-	i = 1;
-	stack_a = ft_create_stack(ft_atoi(argv[i]));
-	i++;
-	while (i < argc)
+	tmp = *stack;
+	while (tmp->next && tmp->index < tmp->next->index)
 	{
-		ft_add_to_stack(stack_a, ft_atoi(argv[i]));
-		i++;
+		if (tmp->value > tmp->next->value)
+			return (0);
+		tmp = tmp->next;
 	}
-	ft_order_stack(&stack_a, argc);
-	ft_delete_stack(&stack_a);
-	return (0);
+	return (1);
 }

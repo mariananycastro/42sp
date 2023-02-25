@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:04:54 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 14:56:03 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/25 15:42:40 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ t_index_stack	*ft_removed_node(t_index_stack **node)
 	int				new_index;
 	int				max_index;
 
-	if (!*node)
-		return (NULL);
 	node_copy = *node;
-	if (!node_copy)
-		return (NULL);
 	node_copy->previous->next = node_copy->next;
 	node_copy->next->previous = node_copy->previous;
 	if ((*node)->previous->value == (*node)->value)
