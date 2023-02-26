@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_max_bits.c                                  :+:      :+:    :+:   */
+/*   ft_max_bits.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:19:51 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/24 15:22:23 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/26 18:57:08 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_get_max_bits(int n)
+int	ft_max_bits(t_index_stack **stack_a)
 {
+	int	biggest_number;
 	int	max_bits;
 
+	biggest_number = ft_set_order(stack_a);
 	max_bits = 0;
-	while (n)
-	{
+	while (biggest_number >> max_bits)
 		max_bits++;
-		n >>= 1;
-	}
 	return (max_bits);
 }

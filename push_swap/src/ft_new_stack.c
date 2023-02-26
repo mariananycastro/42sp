@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:30:58 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 12:27:33 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/26 19:22:42 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ t_index_stack	*ft_new_stack(t_index_stack **node)
 	new_stack->next = new_stack;
 	new_stack->previous = new_stack;
 	new_stack->index = 0;
-	write(1, "pb\n", 3);
 	return (new_stack);
 }
