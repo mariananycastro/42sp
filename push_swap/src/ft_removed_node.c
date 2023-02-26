@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:04:54 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 15:42:40 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/26 11:14:44 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_index_stack	*ft_removed_node(t_index_stack **node)
 	node_copy = *node;
 	node_copy->previous->next = node_copy->next;
 	node_copy->next->previous = node_copy->previous;
-	if ((*node)->previous->value == (*node)->value)
+	if (ft_stack_last_item(*node))
 		*node = NULL;
 	else
 	{
