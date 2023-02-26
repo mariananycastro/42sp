@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:44:33 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/26 11:41:01 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/26 16:40:47 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_index_stack	*ft_reverse_rotate_a(t_index_stack *stack_a)
 {
-	write(1, "rra\n", 4);
+	write(1, "ra\n", 3);
 	return (ft_reverse_rotate(stack_a));
 }
 
@@ -38,20 +38,17 @@ void	ft_radix_order(t_index_stack **stack_a)
 	int				last_index;
 	int				z;
 	int				i;
-	int			count;
 
 	biggest_number = ft_set_order(stack_a);
 	max_bits = ft_get_max_bits(biggest_number);
 	stack_b = NULL;
 	i = 0;
 	z = 0;
-	count = 0;
 	last_index = (*stack_a)->previous->index;
 	while (i < max_bits)
 	{
 		while (z <= last_index)
 		{
-			count++;
 			if (!(((*stack_a)->position >> i) & 1) && !ft_stack_last_item(*stack_a))
 			{
 				if (!stack_b)
@@ -66,10 +63,8 @@ void	ft_radix_order(t_index_stack **stack_a)
 		while (stack_b)
 		{
 			ft_push_a(&stack_b, stack_a);
-			count++;
 		}
 		z = 0;
 		i++;
 	}
-	ft_printf("count %d\n", count);
 }
