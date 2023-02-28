@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 17:21:23 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/26 18:56:08 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/28 20:18:43 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct s_index_stack
 t_index_stack	*ft_create_node(void);
 t_index_stack	*ft_create_stack(int value);
 void			ft_add_to_stack(t_index_stack *first_of_lst, int new_content);
-t_index_stack	*ft_rotate(t_index_stack *first_node);
-t_index_stack	*ft_reverse_rotate(t_index_stack *first_node);
+void			ft_rotate(t_index_stack **first_node);
+void			ft_reverse_rotate(t_index_stack **first_node);
 void			ft_swap(t_index_stack *first_node);
 void			ft_delete_stack(t_index_stack **node);
 t_index_stack	*ft_removed_node(t_index_stack **node);
@@ -39,8 +39,10 @@ int				ft_isnum(int number, char *arg);
 int				ft_max_bits(t_index_stack **stack_a);
 int				ft_set_order(t_index_stack **stack_a);
 void			ft_order_stack(t_index_stack **stack_a, int stack_size);
-void			ft_radix_order(t_index_stack **stack_a);
+void			ft_radix_order(t_index_stack **stack_a, int max_bits);
 int				ft_is_sorted(t_index_stack **stack);
 void			ft_swap_a(t_index_stack *stack_a);
 int				ft_stack_last_item(t_index_stack *stack_a);
+void			ft_rotate_a(t_index_stack **stack_a);
+void			ft_reverse_rotate_a(t_index_stack **stack_a);
 #endif

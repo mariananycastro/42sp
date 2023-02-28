@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:30:17 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/26 16:42:18 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/28 20:09:03 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ t_index_stack	*ft_create_stack(int new_value)
 {
 	t_index_stack	*first_item;
 
-	if (!new_value)
-		return (NULL);
 	first_item = ft_create_node();
 	if (!first_item)
 		return (NULL);
