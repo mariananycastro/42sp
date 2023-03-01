@@ -16,7 +16,7 @@ FILES_NAMES			= ft_add_to_stack.c \
 									ft_reverse_rotate.c \
 									ft_rotate.c \
 									ft_swap.c \
-									ft_max_bits.c \
+									ft_set_position.c \
 									ft_set_order.c \
 									ft_order_stack.c \
 									ft_radix_order.c \
@@ -24,7 +24,10 @@ FILES_NAMES			= ft_add_to_stack.c \
 									ft_swap_a.c \
 									ft_stack_last_item.c \
 									ft_rotate_a.c \
-									ft_reverse_rotate_a.c
+									ft_reverse_rotate_a.c \
+									ft_push_b.c \
+									ft_push_all.c \
+									ft_push_a.c
 
 OBJ_DIR 				= obj/
 OBJ 						= $(FILES_NAMES:%.c=$(OBJ_DIR)%.o)

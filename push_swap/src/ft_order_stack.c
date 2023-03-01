@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:43:54 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/28 20:28:18 by mariana          ###   ########.fr       */
+/*   Updated: 2023/02/28 20:58:42 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_order_stack(t_index_stack **stack_a, int stack_size)
 
 	if (ft_is_sorted(stack_a))
 		return ;
-	max_bits = ft_max_bits(stack_a);
+	max_bits = ft_set_position(stack_a);
 	if (stack_size == 2)
 		ft_swap_a(*stack_a);
 	else if (stack_size == 3)
