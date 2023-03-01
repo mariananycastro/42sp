@@ -38,6 +38,37 @@ void	ft_sort_3(t_index_stack **stack)
 	}
 }
 
+// testar
+void	ft_sort_4(t_index_stack **stack)
+{
+	t_index_stack	*stack_b;
+
+	stack_b = NULL;
+	ft_push_b(&stack_b, stack);
+	ft_sort_3(stack);
+	ft_push_all(&stack_b, stack);
+
+	if ((*stack)->position == 0)
+		return ;
+	if ((*stack)->position == 1)
+		ft_swap_a(*stack);
+	if ((*stack)->position == 2)
+	{
+		ft_reverse_rotate_a(stack);
+		ft_swap_a(*stack);
+		ft_rotate_a(stack);
+		ft_rotate_a(stack);
+	}
+	else
+		ft_rotate_a(stack);	
+	// check if tirando o primeiro eles já estao ordenados só rotate e retorna
+}
+
+void	ft_sort_5(t_index_stack **stack)
+{
+	// to do
+}
+
 void	ft_order_stack(t_index_stack **stack_a, int stack_size)
 {
 	int	max_bits;
@@ -49,6 +80,10 @@ void	ft_order_stack(t_index_stack **stack_a, int stack_size)
 		ft_swap_a(*stack_a);
 	else if (stack_size == 3)
 		ft_sort_3(stack_a);
+	else if (stack_size == 4)
+		ft_sort_4(stack_a);
+	else if (stack_size == 5)
+		ft_sort_5(stack_a);
 	else
 		ft_radix_order(stack_a, max_bits);
 }
