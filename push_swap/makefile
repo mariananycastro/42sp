@@ -22,12 +22,16 @@ FILES_NAMES			= ft_add_to_stack.c \
 									ft_radix_order.c \
 									ft_is_sorted.c \
 									ft_swap_a.c \
+									ft_swap_b.c \
 									ft_stack_last_item.c \
 									ft_rotate_a.c \
 									ft_reverse_rotate_a.c \
 									ft_push_b.c \
 									ft_push_all.c \
-									ft_push_a.c
+									ft_push_a.c \
+									ft_sort_4.c \
+									ft_sort_3.c \
+									ft_sort_5.c
 
 OBJ_DIR 				= obj/
 OBJ 						= $(FILES_NAMES:%.c=$(OBJ_DIR)%.o)
@@ -62,7 +66,7 @@ VALGRIND = valgrind -s --leak-check=full --show-reachable=yes --track-origins=ye
 # ./push_swap 2 0 1 | ./checker_linux 2 0 1
 # ./push_swap 2 1 0 | ./checker_linux 2 1 0
 checker:
-	@$(VALGRIND) ./push_swap 3 2 4 0 5 -6 1 -3 | ./checker_linux 3 2 4 0 5 -6 1 -3
+	@$(VALGRIND) ./push_swap 1 3 2 6 4  | ./checker_linux 1 3 2 6 4 
 
 run_checker: #12 @$(VALGRIND) ok
 	@$(VALGRIND) ./push_swap 3 2 4 0 5 -6 | ./checker_linux 3 2 4 0 5 -6
@@ -71,7 +75,7 @@ run1: #erro maior q min int
 	./push_swap 2 3 4 -2 5 0 -2147483649
 
 run2: #29
-	@$(VALGRIND) ./push_swap 2 3 4 -2 5 0 2147483647 | ./checker_linux 2 3 4 -2 5 0 2147483647
+	@$(VALGRIND) ./push_swap 2 3 4 -2 5 0 2147483647
 
 run3: #erro
 	./push_swap 2 3 4 -2 5 0 2147483648

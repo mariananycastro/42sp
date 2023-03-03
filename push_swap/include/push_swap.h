@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 17:21:23 by mariana           #+#    #+#             */
-/*   Updated: 2023/03/02 22:30:54 by mariana          ###   ########.fr       */
+/*   Updated: 2023/03/03 20:14:46 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,14 @@ void			ft_order_stack(t_index_stack **stack_a, int stack_size);
 void			ft_radix_order(t_index_stack **stack_a, int max_bits);
 int				ft_is_sorted(t_index_stack **stack);
 void			ft_swap_a(t_index_stack **stack_a);
+void			ft_swap_b(t_index_stack **stack_b);
 int				ft_stack_last_item(t_index_stack *stack_a);
 void			ft_rotate_a(t_index_stack **stack_a);
 void			ft_reverse_rotate_a(t_index_stack **stack_a);
 void			ft_push_b(t_index_stack **stack_b, t_index_stack **stack_a);
 void			ft_push_all(t_index_stack **stack_b, t_index_stack **stack_a);
 void			ft_push_a(t_index_stack **stack_from, t_index_stack **stack_to);
+void			ft_sort_4(t_index_stack **stack);
+void			ft_sort_3(t_index_stack **stack);
+void			ft_sort_5(t_index_stack **stack);
 #endif
