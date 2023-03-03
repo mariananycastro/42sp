@@ -6,13 +6,13 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:46:17 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/25 15:47:47 by mariana          ###   ########.fr       */
+/*   Updated: 2023/03/02 22:31:26 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap_a(t_index_stack *stack_a)
+void	ft_swap_a(t_index_stack **stack_a)
 {
 	ft_swap(stack_a);
 	write(1, "sa\n", 3);

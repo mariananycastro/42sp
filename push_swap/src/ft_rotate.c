@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 19:03:36 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/28 19:40:37 by mariana          ###   ########.fr       */
+/*   Updated: 2023/03/02 23:19:53 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_rotate(t_index_stack **first_node)
 	i = 0;
 	end = (*first_node)->previous->index;
 	*first_node = (*first_node)->next;
-	next_node = (*first_node)->next;
+	next_node = (*first_node);
 	while (next_node && i <= end)
 	{
 		next_node->index = i;
