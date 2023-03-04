@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 20:44:28 by mariana           #+#    #+#             */
-/*   Updated: 2023/03/03 20:45:13 by mariana          ###   ########.fr       */
+/*   Updated: 2023/03/04 09:31:11 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_find_min(t_index_stack *stack)
 	{
 		if (min > next_node->position)
 			min = next_node->position;
-		next_node = stack->next;
+		next_node = next_node->next;
 	}
 	return (min);
 }
