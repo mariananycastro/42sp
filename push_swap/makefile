@@ -5,33 +5,16 @@ LIBFT_FILE 		 	= $(LIBRARY_PATH)/libft.a
 CC         			= clang
 CFLAGS     			= -Wall -Wextra -Werror
 NAME						= push_swap
-FILES_NAMES			= ft_add_to_stack.c \
-									ft_create_node.c \
-									ft_create_stack.c \
-									ft_delete_stack.c \
-									ft_new_stack.c \
-									ft_push.c \
-									ft_push_swap_valid_args.c \
-									ft_removed_node.c \
-									ft_reverse_rotate.c \
-									ft_rotate.c \
-									ft_swap.c \
-									ft_set_position.c \
-									ft_set_order.c \
-									ft_order_stack.c \
+FILES_NAMES			= ft_order_stack.c \
 									ft_radix_order.c \
-									ft_is_sorted.c \
-									ft_swap_a.c \
-									ft_swap_b.c \
-									ft_stack_last_item.c \
-									ft_rotate_a.c \
-									ft_reverse_rotate_a.c \
-									ft_push_b.c \
-									ft_push_all.c \
-									ft_push_a.c \
-									ft_sort_4.c \
-									ft_sort_3.c \
-									ft_sort_5.c
+									fts_stack.c \
+									push_swap_move_a.c \
+									push_swap_move_b.c \
+									push_swap_movements.c \
+									push_swap_sort.c \
+									push_swap_utils.c \
+									push_swap.c \
+									push_swap_validations.c
 
 OBJ_DIR 				= obj/
 OBJ 						= $(FILES_NAMES:%.c=$(OBJ_DIR)%.o)

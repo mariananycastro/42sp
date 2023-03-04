@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_set_order.c                                     :+:      :+:    :+:   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 15:24:03 by mariana           #+#    #+#             */
-/*   Updated: 2023/02/26 17:44:50 by mariana          ###   ########.fr       */
+/*   Created: 2023/03/03 21:08:43 by mariana           #+#    #+#             */
+/*   Updated: 2023/03/03 21:08:46 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,31 @@ int	ft_set_order(t_index_stack **stack_a)
 		tmp1 = tmp1->next;
 	}
 	return (biggest->position);
+}
+
+int	ft_set_position(t_index_stack **stack_a)
+{
+	int	biggest_number;
+	int	max_bits;
+
+	biggest_number = ft_set_order(stack_a);
+	max_bits = 0;
+	while (biggest_number >> max_bits)
+		max_bits++;
+	return (max_bits);
+}
+
+t_index_stack	*ft_create_node(void)
+{
+	t_index_stack	*node;
+
+	node = malloc(sizeof(t_index_stack));
+	if (!node)
+		return (NULL);
+	return (node);
+}
+
+int	ft_stack_last_item(t_index_stack *stack_a)
+{
+	return (stack_a->previous->value == stack_a->value);
 }

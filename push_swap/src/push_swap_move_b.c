@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
+/*   push_swap_move_b.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/26 19:04:07 by mariana           #+#    #+#             */
-/*   Updated: 2023/03/02 23:20:22 by mariana          ###   ########.fr       */
+/*   Created: 2023/03/03 20:51:48 by mariana           #+#    #+#             */
+/*   Updated: 2023/03/03 20:52:04 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_reverse_rotate(t_index_stack **first_node)
+void	ft_push_b(t_index_stack **stack_b, t_index_stack **stack_a)
 {
-	int				i;
-	int				end;
-	t_index_stack	*next_node;
+	if (!(*stack_b))
+		*stack_b = ft_new_stack(stack_a);
+	else
+		ft_push(stack_a, stack_b);
+	write(1, "pb\n", 3);
+}
 
-	i = 0;
-	end = (*first_node)->previous->index;
-	*first_node = (*first_node)->previous;
-	next_node = (*first_node);
-	while (next_node && i <= end)
-	{
-		next_node->index = i;
-		next_node = next_node->next;
-		i++;
-	}
+void	ft_swap_b(t_index_stack **stack_b)
+{
+	ft_swap(stack_b);
+	write(1, "sb\n", 3);
 }

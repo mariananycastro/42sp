@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_3.c                                        :+:      :+:    :+:   */
+/*   push_swap_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 20:09:24 by mariana           #+#    #+#             */
-/*   Updated: 2023/03/03 20:17:38 by mariana          ###   ########.fr       */
+/*   Created: 2023/03/03 20:44:28 by mariana           #+#    #+#             */
+/*   Updated: 2023/03/03 20:45:13 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,46 @@ void	ft_sort_3(t_index_stack **stack)
 			ft_reverse_rotate_a(stack);
 		}
 	}
+}
+
+void	ft_sort_4(t_index_stack **stack)
+{
+	t_index_stack	*stack_b;
+
+	stack_b = NULL;
+	if ((*stack)->next->position == 3)
+		ft_rotate_a(stack);
+	else if ((*stack)->previous->position == 3)
+		ft_reverse_rotate_a(stack);
+	else if ((*stack)->next->next->position == 3)
+	{
+		ft_reverse_rotate_a(stack);
+		ft_reverse_rotate_a(stack);
+	}
+	ft_push_b(&stack_b, stack);
+	ft_sort_3(stack);
+	ft_push_all(&stack_b, stack);
+	ft_rotate_a(stack);
+}
+
+void	ft_sort_5(t_index_stack **stack)
+{
+	t_index_stack	*stack_b;
+	int				i;
+
+	stack_b = NULL;
+	i = (*stack)->previous->index;
+	while (i > 2)
+	{
+		if ((*stack)->position == 0 || (*stack)->position == 1)
+		{
+			ft_push_b(&stack_b, stack);
+			i--;
+		}
+		ft_rotate_a(stack);
+	}
+	ft_sort_3(stack);
+	if (ft_is_sorted(&stack_b))
+		ft_swap_b(&stack_b);
+	ft_push_all(&stack_b, stack);
 }
