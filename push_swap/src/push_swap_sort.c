@@ -6,7 +6,7 @@
 /*   By: mariana <mariana@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 20:44:28 by mariana           #+#    #+#             */
-/*   Updated: 2023/03/04 19:01:50 by mariana          ###   ########.fr       */
+/*   Updated: 2023/03/04 19:07:41 by mariana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_sort_4(t_index_stack **stack)
 	else if ((*stack)->next->next->position == 3)
 	{
 		ft_reverse_rotate_a(stack);
-		if (!ft_is_sorted(stack))	
+		if (!ft_is_sorted(stack))
 			ft_reverse_rotate_a(stack);
 	}
 	if (!ft_is_sorted(stack))
@@ -90,7 +90,6 @@ void	ft_sort_5(t_index_stack **stack)
 
 	stack_b = NULL;
 	i = (*stack)->previous->index;
-	
 	while (i > 2)
 	{
 		if ((*stack)->position == 0 || (*stack)->position == 1)
@@ -100,7 +99,8 @@ void	ft_sort_5(t_index_stack **stack)
 		}
 		ft_rotate_a(stack);
 	}
-	ft_sort_3(stack);
+	if (!ft_is_sorted(stack))
+		ft_sort_3(stack);
 	if (ft_is_sorted(&stack_b))
 		ft_swap_b(&stack_b);
 	ft_push_all(&stack_b, stack);
