@@ -12,26 +12,6 @@ O(n elevado a n) - apos um tempo é pior q o linear
 
 Complexidade de memoria - qto de memoria eu uso
 
-Name	                 Best Case  	Average Case  	Worst Case  	Memory	    Stable   	Method Used
-Quick Sort  	          n log n	      n log n	        n^{2}	       log n	      No	      Partitioning
-Merge Sort	            n log n	      n log n	      n log n	        n	          Yes	      Merging
-Heap Sort	              n log n	      n log n	      n log n	        1	          No	      Selection
-Insertion Sort	           n	         n^{2}        	n^{2}	        1	          Yes	      Insertion
-Tim Sort	                 n	        n log n	      n log n	        n	          Yes	      Insertion & Merging
-Selection Sort	         n^{2}	       n^{2}	        n^{2}	        1	          No	      Selection
-Shell Sort	            n log n	      n^{4/3}	        n^{3/2}	      1	          No	      Insertion
-Bubble Sort	               n	         n^{2}	        n^{2}	        1	          Yes	      Exchanging
-Tree Sort	                 n log n	  n log n	      n log n	        n	          Yes	      Insertion
-Cycle Sort	             n^{2}	       n^{2}	        n^{2}	        1	          No	      Selection
-Strand Sort	               n	         n^{2}	        n^{2}	        n	          Yes	      Selection
-Cocktail Shaker Sort	     n	         n^{2}	        n^{2}	        1	          Yes	      Exchanging
-Comb Sort	              n log n	       n^{2}	        n^{2}	        1	          No	      Exchanging
-Gnome Sort	               n	         n^{2}	        n^{2}	        1	          Yes	      Exchanging
-Odd–even Sort	             n	         n^{2}	        n^{2}	        1	          Yes	      Exchanging
-
-x =  (1..100).map { |z| z }
-File.open("log.txt", "w") { |f| f.write x }
-
 sa (swap a): Swap the first 2 elements at the top of stack a.
             Do nothing if there is only one or no elements.
 sb (swap b): Swap the first 2 elements at the top of stack b.
@@ -43,18 +23,62 @@ pa (push a): Take the first element at the top of b and put it at the top of a.
 pb (push b): Take the first element at the top of a and put it at the top of b.
             Do nothing if a is empty.
 
-ra (rotate a): Shift up all elements of stack a by 1. The first element becomes the last one.
-rb (rotate b): Shift up all elements of stack b by 1. The first element becomes the last one.
+ra (rotate a): The first element becomes the last one.
+rb (rotate b): The first element becomes the last one.
 rr : ra and rb at the same time.
 
-rra (reverse rotate a): Shift down all elements of stack a by 1. The last element becomes the first one.
-rrb (reverse rotate b): Shift down all elements of stack b by 1. The last element becomes the first one.
+rra (reverse rotate a): The last element becomes the first one.
+rrb (reverse rotate b): The last element becomes  the first one.
 rrr : rra and rrb at the same time.
 
-list = ft_reverse_rotate(list);
-list = ft_rotate(list);
-ft_swap(list);
-ft_delete_node(&list);
-ft_delete_list(&list);
+  00001100
+& 00011001
+-----------
+  00001000
 
-printf("%p - %p\n", &(list->next), list->next);
+  00001100
+| 00011001
+  ________
+  00011101 
+
+  00001100
+^ 00011001
+  ________
+  00010101 
+
+~ 00100011 
+  ________
+  11011100
+
+
+x =  (1..100).map { |z| z }
+File.open("log.txt", "w") { |f| f.write x }
+
+Checks
+
+- com varios numeros negativos
+- com zero
+- com 100
+- com 500
+- com letras
+- com maior q max int
+- com menor q min int
+- numeros duplicados
+- testar só com pares
+- testar só com impar
+
+With 3 numbers <= 3 instructions.
+With 5 numbers <= 12 instructions.
+With 100 numbers, 
+5 < 700
+4 < 900
+3 < 1100
+2 < 1300
+1 < 1500
+With 500 numbers
+5 < 5500
+4 < 7000
+3 < 8500
+2 < 10000
+1 < 11500
+we need to get at least 6 points to pass.

@@ -42,6 +42,11 @@ $(OBJ_DIR):
 
 VALGRIND = valgrind -s --leak-check=full --show-reachable=yes --track-origins=yes --show-leak-kinds=all
 
+# ./push_swap 1 3 2 | ./checker_linux 1 3 2
+
+# ARG=$(shuf -i 0-10 -n 3); ./push_swap $ARG | ./checker_linux $ARG
+# ARG="1 3 2"; ./push_swap $ARG | ./checker_linux $ARG
+
 checker_with_3: # max instructions 3
 	@$(VALGRIND) ./push_swap 2 1 0 | ./checker_linux 2 1 0
 	@$(VALGRIND) ./push_swap 0 1 2 | ./checker_linux 0 1 2
@@ -53,26 +58,26 @@ checker_with_3: # max instructions 3
 	@$(VALGRIND) ./push_swap 2 1 0 | ./checker_linux 2 1 0
 
 checker_with_4:
-	./push_swap 3 2 1 0 | ./checker_linux 2 1 0
-	./push_swap 3 2 1 0 | wc -l
-	./push_swap 2 3 1 0 | ./checker_linux 2 1 0 
-	./push_swap 2 3 1 0 | wc -l
-	./push_swap 2 1 3 0 | ./checker_linux 2 1 0
-	./push_swap 2 1 3 0 | wc -l
-	./push_swap 2 1 0 3 | ./checker_linux 2 1 0
-	./push_swap 2 1 0 3 | wc -l
-	./push_swap 0 2 1 3 | ./checker_linux 2 1 0
-	./push_swap 0 2 1 3 | wc -l
-	./push_swap 0 2 3 1 | ./checker_linux 2 1 0
-	./push_swap 0 2 3 1 | wc -l
-	./push_swap 0 3 2 1 | ./checker_linux 2 1 0
-	./push_swap 0 3 2 1 | wc -l
-	./push_swap 3 0 2 1 | ./checker_linux 2 1 0
-	./push_swap 3 0 2 1 | wc -l
+	@$(VALGRIND)  ./push_swap 3 2 1 0 | ./checker_linux 3 2 1 0
+	@$(VALGRIND)  ./push_swap 2 3 1 0 | ./checker_linux 2 3 1 0
+	@$(VALGRIND)  ./push_swap 2 1 3 0 | ./checker_linux 2 1 3 0
+	@$(VALGRIND)  ./push_swap 2 1 0 3 | ./checker_linux 2 1 0 3
+	@$(VALGRIND)  ./push_swap 0 2 1 3 | ./checker_linux 0 2 1 3
+	@$(VALGRIND)  ./push_swap 0 2 3 1 | ./checker_linux 0 2 3 1
+	@$(VALGRIND)  ./push_swap 0 3 2 1 | ./checker_linux 0 3 2 1
+	@$(VALGRIND)  ./push_swap 3 0 2 1 | ./checker_linux 3 0 2 1
 
-checker_with_5: # max 12 instructions 
-	ARG="1 5 2 4 3"; ./push_swap $ARG | ./checker_linux $ARG
-	ARG="0 2 3 4 1"; ./push_swap $ARG | ./checker_linux $ARG
+checker_with_5:
+	@$(VALGRIND)  ./push_swap 3 2 1 0 4 | ./checker_linux 3 2 1 0 4
+	@$(VALGRIND)  ./push_swap 2 3 1 4 0 | ./checker_linux 2 3 1 4 0
+	@$(VALGRIND)  ./push_swap 2 1 4 3 0 | ./checker_linux 2 1 4 3 0
+	@$(VALGRIND)  ./push_swap 2 4 1 0 3 | ./checker_linux 2 4 1 0 3
+	@$(VALGRIND)  ./push_swap 4 2 1 0 3 | ./checker_linux 4 2 1 0 3
+	@$(VALGRIND)  ./push_swap 4 0 2 1 3 | ./checker_linux 4 0 2 1 3
+	@$(VALGRIND)  ./push_swap 0 4 2 3 1 | ./checker_linux 0 4 2 3 1
+	@$(VALGRIND)  ./push_swap 0 3 4 2 1 | ./checker_linux 0 3 4 2 1
+	@$(VALGRIND)  ./push_swap 3 0 2 4 1 | ./checker_linux 3 0 2 4 1
+	@$(VALGRIND)  ./push_swap 3 0 2 1 4 | ./checker_linux 3 0 2 1 4
 
 run_checker: #12 @$(VALGRIND) ok
 	@$(VALGRIND) ./push_swap 3 2 4 0 5 -6 | ./checker_linux 3 2 4 0 5 -6
@@ -80,17 +85,17 @@ run_checker: #12 @$(VALGRIND) ok
 run1: #erro maior q min int
 	./push_swap 2 3 4 -2 5 0 -2147483649
 
-run2: #29
+run2:
 	@$(VALGRIND) ./push_swap 2 3 4 -2 5 0 2147483647
 
 run3: #erro
 	./push_swap 2 3 4 -2 5 0 2147483648
 
-run4: #erro repertifo
+run4: #erro repertido
 	./push_swap 2 3 4 -2 5 0 -2147483649 2
 
 aleatory:
-	ARG=$(shuf -i 0-1000 -n 500) && ./push_swap $ARG | ./checker_linux $ARG
+	ARG=$(shuf -i 0-1000 -n 3); ./push_swap $ARG | ./checker_linux $ARG
 
 run5: #59
 	@$(VALGRIND) ./push_swap 87 -487 781 -100 101 0 1 5 -3 10 | ./checker_linux 87 -487 781 -100 101 0 1 5 -3 10
