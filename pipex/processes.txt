@@ -31,20 +31,34 @@ if (id != 0) { wait (); }
 int i;
 for (i = n; i < n + 5; i++) {
   do(sth)
+  printf("%d", i);
+  fflush(stdout);
 }
 
+=> 1 6 2 7 3 8 without line 29 (wait)
+=> 1 2 3 4 5 6 7 8 9 with wait
 ------
 
 getpid() -> get current process id (int)
 getppid() -> get parent process id (int)
 
-parent 78, current 84, 
-parent 72, current 78, 
+int id = fork();
+prinft("curent id %d, parent id %d", getpid(), getppid());
+
+parent 84, current 78,
+parent 78, current 72,
+
+but if the child does not finishes befeore parent, it will leak memory, therefore I alays have to wait for the child to finish
+
+
+with wait(NULL)
+parent 84, current 51,
+parent 64, current 84,
 
 ----
 *PIPE
 
-comunicate between process -> pipe()
+comunicate between process -> pipe() - in memory file
 in memory file - where you want to read and write data
 
 int fd[2];
